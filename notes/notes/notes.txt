@@ -1,0 +1,79 @@
+TODO{
+	Fix so you can die n stuff
+	Win. 3 Rounds. UI.
+	Fix actual menus
+	Fix 3 actual characters
+	Fix so you can see character attacks n combos
+	Make game look sexy, balanced and fun
+	Add sound n music
+}
+
+Debug tips:
+Is hitbox collision Automatic per Frame?
+Is hurtbox collision Manual per Frame?
+All pressed buttons work with buffer numbers. Gotta use if(a_pressed > 0) to check the input.
+cancel eff works when things goes in this order:
+1. Set sprite
+2. Subtract from cancels
+3. Spawn cancel eff
+4. Set recover alarm etc...
+
+Notes in notes:
+Hurtbox = sprite collision
+Attack collision = purple sprites
+We are not using particles since we cant manipulate it good enough. Slow mo, scaling per dmg etc...
+
+Battle system:
+Hitting an attack makes you able to cancel attack earlier with another actions.
+Works 2 times / combo. Combo wont reset in air and air dashes consume cancels.
+If you press down when hitting attack in air you will launch down making it easier to continue combo on ground.
+First cancel blink orange and second cancel blinks red meaning no more combo.
+You have meter that fills up to 4 bars.
+Build meter by: Moving toward opponent, hitting opponent (on block also), getting hit without blocking.
+You block with RT and LT.
+Low attacks hit standing blockers.
+High attacks hit crouching blockers.
+
+Some moves are cancelable meaning you can cancel them without hitting opponent and
+some are are final meaning it will finish you combo instantly.
+
+
+F:				Fast short attack.
+F + down:		Fast low attack.
+F + air:		Fast air attack.
+
+L:				Fast long attack with longer recovery.
+L + down:		Anti air attack.
+L + air:		Bigger air attack.
+
+S:				Strong but slow attack.
+S + down:		Launcher.
+S + air:		Spike attack.
+
+Circle movements + attack: Special moves
+
+v,> S:			20 frames high grounded attack.
+v,< S:			20 frames Sweeping low attack.
+
+X:				Meter moves that costs meter.
+<,v,> X:		Ultra move. Cost 100% meter.
+X + Dash:		Force dash. Can be used in bad situations but ends combo and cost 25% meter.
+
+Character ideas:
+
+Dash slightly upward.
+Summon an arrow from above at any time.
+X = teleport above, behind enemy.
+X = Create gravity field. (heavier or lighter)
+
+Batman{
+	X = Super ball. Bounce alot and lasts for long.
+}
+
+Speed man{
+	<v>X = slow game down to 20% for enemies.
+}
+
+Great sword{
+	v>F: Spin forward blocking high and low. Follow up with F, L or S
+}
