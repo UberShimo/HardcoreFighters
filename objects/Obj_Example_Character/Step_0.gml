@@ -11,6 +11,9 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	last_grip = grip;
 	last_air_grip = air_grip;
 	
+	// Only used for moves that ends combo
+	final_move = false;
+	
 	if(grounded && !is_blocking){
 		face_closest_enemy();
 	}
@@ -35,7 +38,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		reset_buffers();
 	}
 	else if(y_pressed){
 		if(!grounded){
@@ -57,7 +59,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		reset_buffers();
 	}
 	else if(b_pressed){
 		if(!grounded){
@@ -66,15 +67,15 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		else if(down_forward_pressed){
-			action = "26S";
-			sprite_index = Spr_Batman_26S_startup;
+		else if(half_circle_forward_pressed){
+			action = "426S";
+			sprite_index = Spr_Batman_High_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		else if(down_backward_pressed){
-			action = "24S";
-			sprite_index = Spr_Batman_24S_startup;
+		else if(half_circle_backward_pressed){
+			action = "624S";
+			sprite_index = Spr_Batman_Sweep_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
@@ -90,18 +91,17 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		reset_buffers();
 	}
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 25){
 			action = "426X";
 			meter -= 25;
-			sprite_index = Spr_Batman_426X_startup;
+			sprite_index = Spr_Batman_ULTRA_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		reset_buffers();
 	}
+	reset_buffers();
 	
 	// Check if cancel is legit
 	if(action == last_action){

@@ -11,7 +11,10 @@
     "name": "Spawners",
     "path": "folders/Objects/Spawners.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "Parent_Player_Spawner",
+    "path": "objects/Parent_Player_Spawner/Parent_Player_Spawner.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

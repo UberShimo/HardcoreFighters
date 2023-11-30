@@ -23,7 +23,7 @@
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"23625df1-0156-49f0-8311-d67a1a504963","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": null,
-  "origin": 1,
+  "origin": 0,
   "parent": {
     "name": "Character Select",
     "path": "folders/Sprites/Character Select.yy",
@@ -59,7 +59,7 @@
     ],
     "visibleRange": null,
     "volume": 1.0,
-    "xorigin": 32,
+    "xorigin": 0,
     "yorigin": 0,
   },
   "swatchColours": null,

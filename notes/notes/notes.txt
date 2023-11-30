@@ -1,27 +1,42 @@
 TODO{
-	Fix so you can die n stuff
-	Win. 3 Rounds. UI.
 	Fix actual menus
-	Fix 3 actual characters
 	Fix so you can see character attacks n combos
+	Fix tip hitbox logic better.
+	Claws X teleport out of bounds
+	Claws ULTRA slowdown dont work properly.
+	Batman Super ball hit error
 	Make game look sexy, balanced and fun
 	Add sound n music
+	
+	Claws closest enemy cant be found when 8 players
+	
+	Push :: Execution Error - Variable Index [8] out of range [8] - -1.players(100244,8)
+ at gml_Script_anon_gml_Object_Obj_Match_Manager_Create_0_159_gml_Object_Obj_Match_Manager_Create_0 (line 18) - players[j] = players[j+1];
+	
+	NAME!?: Wicked Fighters, Bloodbath Armagheddon
 }
 
 Debug tips:
 Is hitbox collision Automatic per Frame?
 Is hurtbox collision Manual per Frame?
 All pressed buttons work with buffer numbers. Gotta use if(a_pressed > 0) to check the input.
+Keep an eye out for reset_buffers(), reset_physics().
 cancel eff works when things goes in this order:
 1. Set sprite
 2. Subtract from cancels
 3. Spawn cancel eff
 4. Set recover alarm etc...
+When checking attack input it has to get checked in this order:
+1. Air moves
+2. Half circle moves
+3. Quarter circle moves
+4. Normal moves
 
 Notes in notes:
 Hurtbox = sprite collision
 Attack collision = purple sprites
 We are not using particles since we cant manipulate it good enough. Slow mo, scaling per dmg etc...
+Dont fuck with image angle on attacks...
 
 Battle system:
 Hitting an attack makes you able to cancel attack earlier with another actions.
@@ -31,29 +46,32 @@ First cancel blink orange and second cancel blinks red meaning no more combo.
 You have meter that fills up to 4 bars.
 Build meter by: Moving toward opponent, hitting opponent (on block also), getting hit without blocking.
 You block with RT and LT.
+RT and LT also makes you unable to cancel if you want to not cancel a move.
 Low attacks hit standing blockers.
 High attacks hit crouching blockers.
 
 Some moves are cancelable meaning you can cancel them without hitting opponent and
 some are are final meaning it will finish you combo instantly.
 
-
+F = FAST
 F:				Fast short attack.
 F + down:		Fast low attack.
 F + air:		Fast air attack.
 
+L = LONG
 L:				Fast long attack with longer recovery.
 L + down:		Anti air attack.
 L + air:		Bigger air attack.
 
+S = STRONG
 S:				Strong but slow attack.
-S + down:		Launcher.
+S + down:		Launcher. Combos without using cancels.
 S + air:		Spike attack.
 
 Circle movements + attack: Special moves
 
-v,> S:			20 frames high grounded attack.
-v,< S:			20 frames Sweeping low attack.
+<,v,> S:			20 frames High grounded attack.
+>,v,< S:			20 frames Sweep low attack.
 
 X:				Meter moves that costs meter.
 <,v,> X:		Ultra move. Cost 100% meter.
@@ -63,17 +81,26 @@ Character ideas:
 
 Dash slightly upward.
 Summon an arrow from above at any time.
-X = teleport above, behind enemy.
+Attack that hits front and behind.
+Dash that attack backward after.
 X = Create gravity field. (heavier or lighter)
 
-Batman{
-	X = Super ball. Bounce alot and lasts for long.
+katana{
+	X = create clone that performs 426F aftter delay
 }
 
-Speed man{
+Claws{
+	v<F: Spawn circle backward
+	v<L: Spawn circle more upward n slower
+	
 	<v>X = slow game down to 20% for enemies.
+	X = teleport above, behind enemy.
 }
 
 Great sword{
 	v>F: Spin forward blocking high and low. Follow up with F, L or S
+}
+
+Ball n chain goblin{
+	
 }

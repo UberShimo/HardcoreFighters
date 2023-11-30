@@ -2,6 +2,73 @@ logic_time = object_time * global.game_time;
 
 ground_check = (character_height/2)+1;
 
+#region alarms  V-----V
+if(action_alarm > 0){
+	action_alarm -= logic_time;
+	
+	if(action_alarm <= 0){
+		action_trigger();
+	}
+}
+
+if(recover_alarm > 0){
+	recover_alarm -= logic_time;
+	
+	if(recover_alarm <= 0){
+		recover_alarm = 0;
+		
+		action = noone;
+		sprite_index = stand_spr;
+		
+		reset_physics()
+		is_unstoppable = false;
+		is_invincible = false;
+		
+		can_cancel = false;
+	}
+}
+
+if(time_reset_alarm > 0){
+	time_reset_alarm -= global.game_time;
+	
+	if(time_reset_alarm <= 0){
+		time_reset_alarm = 0;
+		
+		object_time = 1;
+		shake_amount = 0;
+	}
+}
+
+if(respawn_alarm > 0){
+	respawn_alarm -= global.game_time;
+	
+	if(respawn_alarm <= 0){
+		respawn_alarm = 0;
+		
+		visible = true;
+		is_controllable = true;
+		is_respawning = false;
+		is_invincible = true;
+		alarm[0] = 120; // Invincibility reset
+		
+		face_closest_enemy();
+		read_input();
+		if(forward_hold){
+			h_velocity = 4*image_xscale;
+			v_velocity = -4;
+		}
+		else if(backward_hold){
+			h_velocity = -4*image_xscale;
+			v_velocity = -4;
+		}
+		HP = 100;
+		meter = 0;
+	}
+}
+#endregion
+
+if(!is_respawning){
+	
 #region control V-----V
 // Movement
 if(action == noone && grounded && !is_blocking){
@@ -19,7 +86,7 @@ if(action == noone && grounded && !is_blocking){
 			h_velocity += (grip+acceleration)*image_xscale*logic_time;
 		}
 		// Gain meter by moving forward
-		meter += 5/60; // 5 meter / second
+		meter += 10/60; // 10 meter / second
 	}
 	// Backward
 	else if(backward_hold){
@@ -39,7 +106,6 @@ if(action == noone && grounded && !is_blocking){
 }
 // Extra jump / Jump cancel
 else if(a_pressed && extra_jumps_left > 0 && (action == noone || check_for_cancel())){
-	face_closest_enemy();
 	reset_physics();
 	a_pressed = 0; // Just reset A buffer
 	
@@ -76,19 +142,34 @@ else if(a_pressed && extra_jumps_left > 0 && (action == noone || check_for_cance
 if(action == noone && v_velocity < -jump_power*mini_jump_power && !a_hold){
 	v_velocity = -jump_power*mini_jump_power;
 }
+// Suicide
+if(start_hold){
+	surrender_count += 1;
+	if(surrender_count >= 180){
+		HP = 0;
+		hearts = 0;
+		att = instance_create_depth(x, y, 0, Obj_Suicide_Shockwave_hitbox);
+		att.initiate(self);
+		att.index = -1;
+	}
+}
+else{
+	surrender_count = 0;
+}
 #endregion
 
 #region physics V-----V
 // H velocity
 val = h_velocity*logic_time;
 x_check = val;
+// Add character width to x_check
 if(val > 0){
 	x_check += (character_width/2);
 }
 else{
 	x_check -= (character_width/2);
 }
-
+// Move time
 if(!position_meeting(x+x_check, y, Parent_Collision)){
 	x += val;
 }
@@ -101,6 +182,10 @@ else{
 		else{
 			x -= 1;
 		}
+	}
+	// Wall bounce
+	if(action == "launched"){
+		h_velocity = -h_velocity/2;
 	}
 }
 
@@ -147,7 +232,6 @@ else if(v_velocity > 0){
 	
 	// Land
 	if(action != noone){
-		action = "land";
 		sprite_index = land_spr;
 		if(action_alarm > 0){
 			recover_alarm = action_alarm;
@@ -155,7 +239,7 @@ else if(v_velocity > 0){
 		}
 	}
 }
-// Grounded or not?
+// Grounded or not? also reset cancels
 if(position_meeting(x, y+ground_check, Parent_Collision)){
 	grounded = true;
 	
@@ -226,42 +310,6 @@ else if(action == "launched" && !grounded){
 }
 #endregion
 
-#region alarms  V-----V
-if(action_alarm > 0){
-	action_alarm -= logic_time;
-	
-	if(action_alarm <= 0){
-		action_trigger();
-	}
-}
-
-if(recover_alarm > 0){
-	recover_alarm -= logic_time;
-	
-	if(recover_alarm <= 0){
-		recover_alarm = 0;
-		
-		action = noone;
-		sprite_index = stand_spr;
-		
-		reset_physics()
-		
-		can_cancel = false;
-	}
-}
-
-if(time_reset_alarm > 0){
-	time_reset_alarm -= global.game_time;
-	
-	if(time_reset_alarm <= 0){
-		time_reset_alarm = 0;
-		
-		object_time = 1;
-		shake_amount = 0;
-	}
-}
-#endregion
-
 #region buffer subtraction V-----V
 forward_pressed--;
 down_pressed--;
@@ -290,12 +338,15 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		if(backward_hold){
 			sprite_index = dash_backward_spr;
 			h_velocity = -dash_speed*image_xscale;
+			blink_h(-dash_blink*image_xscale);
 		}
 		else{
 			sprite_index = dash_forward_spr;
 			h_velocity = dash_speed*image_xscale;
+			blink_h(dash_blink*image_xscale);
 			meter += 2;
 		}
+		image_index = 0;
 	
 		if(recover_alarm > 0){
 			cancels -= 1;
@@ -318,12 +369,15 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		if(backward_hold){
 			sprite_index = dash_backward_spr;
 			h_velocity = -dash_speed*image_xscale;
+			blink_h(-dash_blink*image_xscale);
 		}
 		else{
 			sprite_index = dash_forward_spr;
 			h_velocity = dash_speed*image_xscale;
+			blink_h(dash_blink*image_xscale);
 			meter += 2;
 		}
+		image_index = 0;
 	
 		// Air dash always counts as a cancel
 		cancels -= 1;
@@ -351,11 +405,14 @@ if(lb_pressed && rb_pressed && meter >= 25){
 	if(backward_hold){
 		sprite_index = dash_backward_spr;
 		h_velocity = -dash_speed*image_xscale;
+		blink_h(-dash_blink*image_xscale);
 	}
 	else{
 		sprite_index = dash_forward_spr;
 		h_velocity = dash_speed*image_xscale;
+		blink_h(dash_blink*image_xscale);
 	}
+	image_index = 0;
 	
 	// Cancel eff
 	eff = instance_create_depth(x, y, 1, Eff_Cancel);
@@ -363,6 +420,7 @@ if(lb_pressed && rb_pressed && meter >= 25){
 	
 	action = "force dash";
 	is_collidable = false;
+	is_invincible = true;
 	grip = dash_grip;
 	air_grip = dash_grip;
 	v_velocity = 0;
@@ -382,3 +440,18 @@ if(meter > max_meter){
 	meter = max_meter;
 }
 #endregion
+
+// Fully charged
+if(meter == 100){
+	eff = instance_create_depth(x, y, 1, Eff_Spark);
+	eff.image_blend = c_lime;
+	eff.image_xscale *= random_range(1, 2);
+}
+
+}
+// Is respawning
+else{
+	visible = false;
+	is_controllable = false;
+	is_respawning = true;
+}

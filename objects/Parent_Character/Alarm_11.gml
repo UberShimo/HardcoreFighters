@@ -8,7 +8,7 @@ lt_hold = false;
 
 reset_buffers();
 
-if(irandom_range(1, 100) <= 60){ // 60% for movement
+if(irandom_range(1, 100) <= 50){ // 50% for movement
 	rng = irandom_range(1, 4);
 	
 	if(rng == 1){ // 25% chance to jump

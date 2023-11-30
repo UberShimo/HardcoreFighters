@@ -2,13 +2,14 @@ depth = -1;
 
 index = -1;
 controller_index = -1;
-is_controllable = true;
+is_controllable = false;
+is_respawning = false;
 is_CPU = false;
-debugging = false;
-debug_focus = "";
+surrender_count = 0;
+player_color = global.p1_color;
 
 #region Initialize input values / buffers
-buffer_duration = 8;
+buffer_duration = 10;
 
 forward_hold = false;
 backward_hold = false;
@@ -19,13 +20,17 @@ down_pressed = 0;
 a_pressed = 0;
 a_hold = false;
 b_pressed = 0;
+b_hold = false;
 x_pressed = 0;
+x_hold = false;
 y_pressed = 0;
-grab_pressed = 0;
-lb_pressed = 0;
+y_hold = false;
 rb_pressed = 0;
-lt_hold = 0;
-rt_hold = 0;
+rb_hold = false;
+lb_pressed = 0;
+lt_hold = false;
+rt_hold = false;
+start_hold = false;
 down_forward_pressed = 0;
 forward_down_pressed = 0;
 half_circle_forward_pressed = 0;
@@ -51,36 +56,41 @@ crouch_block_spr = noone;
 #endregion
 
 #region Stats
+// Fixed stats
 HP = 100;
 max_HP = HP;
 meter = 0;
 max_meter = 100;
+hearts = global.heart_amount;
+can_cancel = false;
+cancels = 2;
+is_blocking = false;
+is_unstoppable = false;
+is_invincible = false;
+is_collidable = true;
+// Variating stats
 start_speed = 3;
 max_speed = 6;
 acceleration = 0.1;
-dash_speed = 16;
+dash_speed = 12;
+dash_blink = 16;
 dash_duration = 24;
-dash_grip = 1.5;
-grip = 0.5;
-original_grip = grip;
+dash_grip = 1;
+grip = global.standard_grip; // Slippy: 0.3, Standard: 0.5, Steady: 0.7
 air_grip = 0;
-original_air_grip = air_grip;
-can_cancel = false;
-cancels = 2;
 jump_power = 12;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
 extra_jumps = 1;
 extra_jumps_left = extra_jumps;
-weight = 0.7;
-original_weight = weight;
+weight = global.standard_weight; // Light: 0.6, Standard: 0.7, Heavy: 0.8
 max_fall_speed = 16;
-is_blocking = false;
-is_unstoppable = false;
-is_invincible = false;
-is_collidable = true;
 character_width = 24;
-character_height = 64;
+character_height = global.standard_height; // Short: 48, Standard: 64, Tall: 80
+// Original stats
+original_grip = grip;
+original_air_grip = air_grip;
+original_weight = weight;
 #endregion
 
 #region Physics values
@@ -104,6 +114,7 @@ multi_hit_action_index = 0;
 action_alarm = 0;
 recover_alarm = 0;
 time_reset_alarm = 0;
+respawn_alarm = 0;
 
 // Methods
 action_trigger = function(){
@@ -154,15 +165,12 @@ read_input = function(){
 			forward_pressed = buffer_duration;
 		}
 		
-		// Make sure you cant hold forward and backward at the same time
-		if(!forward_hold){
-			backward_held = backward_hold;
-			backward_hold = gamepad_button_check(controller_index, gp_padl)
-			|| gamepad_axis_value(controller_index, gp_axislh) < -0.5;
+		backward_held = backward_hold;
+		backward_hold = gamepad_button_check(controller_index, gp_padl)
+		|| gamepad_axis_value(controller_index, gp_axislh) < -0.5;
 		
-			if(!backward_held && backward_hold){
-				backward_pressed = buffer_duration;
-			}
+		if(!backward_held && backward_hold){
+			backward_pressed = buffer_duration;
 		}
 	}
 	// Facing left
@@ -175,15 +183,12 @@ read_input = function(){
 			forward_pressed = buffer_duration;
 		}
 		
-		// Make sure you cant hold forward and backward at the same time
-		if(!forward_hold){
-			backward_held = backward_hold;
-			backward_hold = gamepad_button_check(controller_index, gp_padr)
-			|| gamepad_axis_value(controller_index, gp_axislh) > 0.5;
+		backward_held = backward_hold;
+		backward_hold = gamepad_button_check(controller_index, gp_padr)
+		|| gamepad_axis_value(controller_index, gp_axislh) > 0.5;
 		
-			if(!backward_held && backward_hold){
-				backward_pressed = buffer_duration;
-			}
+		if(!backward_held && backward_hold){
+			backward_pressed = buffer_duration;
 		}
 	}
 	// Down
@@ -198,6 +203,9 @@ read_input = function(){
 	// Block hold
 	rt_hold = gamepad_button_check(controller_index, gp_shoulderrb) && !lt_hold;
 	lt_hold = gamepad_button_check(controller_index, gp_shoulderlb) && !rt_hold;
+	
+	// Start
+	start_hold = gamepad_button_check(controller_index, gp_start);
 
 	// Jump
 	if(gamepad_button_check_pressed(controller_index, gp_face1)){
@@ -209,36 +217,44 @@ read_input = function(){
 	if(gamepad_button_check_pressed(controller_index, gp_face2)){
 		b_pressed = buffer_duration;
 	}
+	b_hold = gamepad_button_check(controller_index, gp_face2);
+	
 	if(gamepad_button_check_pressed(controller_index, gp_face3)){
 		x_pressed = buffer_duration;
 	}
+	x_hold = gamepad_button_check(controller_index, gp_face3);
+	
 	if(gamepad_button_check_pressed(controller_index, gp_face4)){
 		y_pressed = buffer_duration;
 	}
-	if(gamepad_button_check_pressed(controller_index, gp_shoulderl)){
-		lb_pressed = buffer_duration;
-	}
+	y_hold = gamepad_button_check(controller_index, gp_face4);
+	
 	if(gamepad_button_check_pressed(controller_index, gp_shoulderr)){
 		rb_pressed = buffer_duration;
+	}
+	rb_hold = gamepad_button_check(controller_index, gp_shoulderr);
+	
+	if(gamepad_button_check_pressed(controller_index, gp_shoulderl)){
+		lb_pressed = buffer_duration;
 	}
 	
 	// Circle movements
 	if(down_pressed && !down_hold && forward_pressed){
 		down_forward_pressed = buffer_duration;
 	}
-	else if(forward_pressed && !forward_hold && down_pressed){
+	if(forward_pressed && !forward_hold && down_pressed){
 		forward_down_pressed = buffer_duration;
 	}
-	else if(backward_down_pressed && !down_hold && forward_pressed){
-		half_circle_forward_pressed = buffer_duration;
-	}
-	else if(down_pressed && !down_hold && backward_pressed){
+	if(down_pressed && !down_hold && backward_pressed){
 		down_backward_pressed = buffer_duration;
 	}
-	else if(backward_pressed && !backward_hold && down_pressed){
+	if(backward_pressed && !backward_hold && down_pressed){
 		backward_down_pressed = buffer_duration;
 	}
-	else if(forward_down_pressed && !down_hold && backward_pressed){
+	if(backward_down_pressed && !down_hold && forward_pressed){
+		half_circle_forward_pressed = buffer_duration;
+	}
+	if(forward_down_pressed && !down_hold && backward_pressed){
 		half_circle_backward_pressed = buffer_duration;
 	}
 }
@@ -259,8 +275,30 @@ action_button_pressed = function(){
 }
 
 check_for_cancel = function(){
+	if(lt_hold || rt_hold){
+		return false;
+	}
+	
 	if(can_cancel && cancels > 0 && recover_alarm < cancelable_recovery_frames){
 		return true;
 	}
 	return false;
+}
+
+blink_h = function(x_val){
+	if(!place_meeting(x+x_val, y, Parent_Collision)){
+		x += x_val;
+	}
+	// Snap to wall
+	else{
+		x_check = 1;
+		if(x_val < 0){
+			x_check = -x_check;
+		}
+		repeat(x_val){
+			if(!place_meeting(x+x_check, y, Parent_Collision)){
+				x += x_check;
+			}
+		}
+	}
 }
