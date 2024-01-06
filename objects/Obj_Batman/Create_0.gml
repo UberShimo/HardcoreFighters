@@ -102,6 +102,8 @@ action_trigger = function(){
 	else if(action == "8S"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_8S_hitbox);
 		attack.initiate(self);
+		tip = instance_create_depth(x, y, 0, Obj_Batman_8S_tip_hitbox);
+		tip.initiate(self);
 		
 		sprite_index = Spr_Batman_8S_recovery;
 		image_index = 0;
@@ -173,7 +175,6 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_Sweep_hitbox);
 		attack.initiate(self);
 		
-		h_velocity = 8*image_xscale;
 		sprite_index = Spr_Batman_Sweep_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);

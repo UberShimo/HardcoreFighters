@@ -1,8 +1,11 @@
 if(is_collidable && other.is_collidable){
-	if(x < other.x && h_velocity > 0){
-		x = other.x-(other.character_width/2);
+	width_check = character_width/2;
+	// Left side
+	if(x < other.x && x > other.x-width_check && h_velocity > 0){
+		x = other.x-width_check;
 	}
-	else if(x > other.x && h_velocity < 0){
-		x = other.x+(other.character_width/2);
+	// Right side
+	else if(x > other.x && x < other.x+width_check && h_velocity < 0){
+		x = other.x+width_check;
 	}
 }

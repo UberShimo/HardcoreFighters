@@ -3,6 +3,7 @@ global.screen_ratio = 1.78; // 16:9
 global.is_debugging = false;
 global.chaos_mode = true;
 global.heart_amount = 3;
+global.arena = Arena_Cage;
 
 // Global character stats
 global.slippy_grip = 0.3;

@@ -8,9 +8,3 @@ if(is_active){
 	eff.image_yscale = image_yscale;
 	eff.image_angle = image_angle;
 }
-
-lifespan -= logic_time;
-
-if(lifespan <= 0){
-	instance_destroy();
-}

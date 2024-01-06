@@ -12,8 +12,8 @@
     "path": "folders/Objects/Characters/Claws/Hitboxes.yy",
   },
   "parentObjectId": {
-    "name": "Parent_Hitbox",
-    "path": "objects/Parent_Hitbox/Parent_Hitbox.yy",
+    "name": "Parent_Attack",
+    "path": "objects/Parent_Attack/Parent_Attack.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_Claws_8S_hitbox",
-    "path": "sprites/Spr_Claws_8S_hitbox/Spr_Claws_8S_hitbox.yy",
+    "name": "Spr_Claws_8S_tip_hitbox",
+    "path": "sprites/Spr_Claws_8S_tip_hitbox/Spr_Claws_8S_tip_hitbox.yy",
   },
   "spriteMaskId": null,
   "visible": false,

@@ -12,8 +12,8 @@
     "path": "folders/Objects/Characters/Katana/Hitboxes.yy",
   },
   "parentObjectId": {
-    "name": "Parent_Hitbox",
-    "path": "objects/Parent_Hitbox/Parent_Hitbox.yy",
+    "name": "Parent_Attack",
+    "path": "objects/Parent_Attack/Parent_Attack.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

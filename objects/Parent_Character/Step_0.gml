@@ -1,6 +1,6 @@
-logic_time = object_time * global.game_time;
+event_inherited();
 
-ground_check = (character_height/2)+1;
+ground_check = (character_height/2)+1;// +1 couse it works ok?
 
 #region alarms  V-----V
 if(action_alarm > 0){
@@ -22,21 +22,37 @@ if(recover_alarm > 0){
 		
 		reset_physics()
 		is_unstoppable = false;
-		is_invincible = false;
 		
 		can_cancel = false;
 	}
 }
 
-if(time_reset_alarm > 0){
-	time_reset_alarm -= global.game_time;
+if(death_alarm > 0){
+	death_alarm -= global.game_time;
 	
-	if(time_reset_alarm <= 0){
-		time_reset_alarm = 0;
+	if(death_alarm <= 0){
+		death_alarm = 0;
 		
-		object_time = 1;
-		shake_amount = 0;
-	}
+		hearts -= 1;
+		h_velocity = 0;
+		v_velocity = 0;
+		// Blood / respawn effect
+		spawn_effect(x, y, 12, Eff_Blood, 1, 0.05, 4);
+		eff = instance_create_depth(x, y, -1, Eff_Ring);
+		eff.grow *= 4;
+		eff.image_blend = c_red;
+		
+		if(hearts > 0){
+			respawn_alarm = 120;
+			is_invincible = true;
+			is_respawning = true;
+		}
+		
+		x = Obj_Respawner.x;
+		y = Obj_Respawner.y;
+		
+		Obj_Match_Manager.check_for_winner();
+	}	
 }
 
 if(respawn_alarm > 0){
@@ -49,8 +65,9 @@ if(respawn_alarm > 0){
 		is_controllable = true;
 		is_respawning = false;
 		is_invincible = true;
-		alarm[0] = 120; // Invincibility reset
+		invincibility_alarm = 120;
 		
+		reset_physics();
 		face_closest_enemy();
 		read_input();
 		if(forward_hold){
@@ -63,6 +80,16 @@ if(respawn_alarm > 0){
 		}
 		HP = 100;
 		meter = 0;
+	}
+}
+
+if(invincibility_alarm > 0){
+	invincibility_alarm -= logic_time;
+	
+	if(invincibility_alarm <= 0){
+		invincibility_alarm = 0;
+		
+		is_invincible = false;
 	}
 }
 #endregion
@@ -184,8 +211,9 @@ else{
 		}
 	}
 	// Wall bounce
-	if(action == "launched"){
-		h_velocity = -h_velocity/2;
+	if(action == "launched" && abs(h_velocity) > wall_bounce_limit){
+		h_velocity = -h_velocity*0.75;
+		spawn_effect(x, y, 8, Eff_Splash, 1, 0.05, 1);
 	}
 }
 
@@ -228,14 +256,22 @@ else if(v_velocity > 0){
 	while(!position_meeting(x, y+ground_check, Parent_Collision)){
 		y += 1;
 	}
-	v_velocity = 0;
-	
+	// Ground bounce
+	if(action == "launched" && v_velocity > ground_bounce_limit){
+		v_velocity = -v_velocity*0.5;
+		spawn_effect(x, y, 8, Eff_Splash, 1, 0.05, 1);
+	}
 	// Land
-	if(action != noone){
-		sprite_index = land_spr;
-		if(action_alarm > 0){
-			recover_alarm = action_alarm;
-			action_alarm = 0;
+	else{
+		v_velocity = 0;
+	
+		// Harsh land
+		if(action != noone){
+			sprite_index = land_spr;
+			if(action_alarm > 0){
+				recover_alarm = action_alarm;
+				action_alarm = 0;
+			}
 		}
 	}
 }
@@ -338,12 +374,12 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		if(backward_hold){
 			sprite_index = dash_backward_spr;
 			h_velocity = -dash_speed*image_xscale;
-			blink_h(-dash_blink*image_xscale);
+			blink_h(-dash_blink*image_xscale, true);
 		}
 		else{
 			sprite_index = dash_forward_spr;
 			h_velocity = dash_speed*image_xscale;
-			blink_h(dash_blink*image_xscale);
+			blink_h(dash_blink*image_xscale, true);
 			meter += 2;
 		}
 		image_index = 0;
@@ -360,7 +396,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		is_collidable = false;
 		grip = dash_grip;
 		air_grip = dash_grip;
-		v_velocity = 0;
+		v_velocity = dash_lift;
 		weight = original_weight/4;
 		recover_alarm = dash_duration;
 	}
@@ -369,12 +405,12 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		if(backward_hold){
 			sprite_index = dash_backward_spr;
 			h_velocity = -dash_speed*image_xscale;
-			blink_h(-dash_blink*image_xscale);
+			blink_h(-dash_blink*image_xscale, true);
 		}
 		else{
 			sprite_index = dash_forward_spr;
 			h_velocity = dash_speed*image_xscale;
-			blink_h(dash_blink*image_xscale);
+			blink_h(dash_blink*image_xscale, true);
 			meter += 2;
 		}
 		image_index = 0;
@@ -390,7 +426,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		is_collidable = false;
 		grip = dash_grip;
 		air_grip = dash_grip;
-		v_velocity = 0;
+		v_velocity = dash_lift;
 		weight = original_weight/4;
 		recover_alarm = dash_duration;
 	}
@@ -405,12 +441,12 @@ if(lb_pressed && rb_pressed && meter >= 25){
 	if(backward_hold){
 		sprite_index = dash_backward_spr;
 		h_velocity = -dash_speed*image_xscale;
-		blink_h(-dash_blink*image_xscale);
+		blink_h(-dash_blink*image_xscale, true);
 	}
 	else{
 		sprite_index = dash_forward_spr;
 		h_velocity = dash_speed*image_xscale;
-		blink_h(dash_blink*image_xscale);
+		blink_h(dash_blink*image_xscale, true);
 	}
 	image_index = 0;
 	
@@ -423,10 +459,11 @@ if(lb_pressed && rb_pressed && meter >= 25){
 	is_invincible = true;
 	grip = dash_grip;
 	air_grip = dash_grip;
-	v_velocity = 0;
+	v_velocity = dash_lift;
 	weight = original_weight/4;
 	action_alarm = 0;
 	recover_alarm = 24;
+	invincibility_alarm = 24;
 }
 // Block
 if(grounded && (lt_hold || rt_hold)){
@@ -443,13 +480,18 @@ if(meter > max_meter){
 
 // Fully charged
 if(meter == 100){
-	eff = instance_create_depth(x, y, 1, Eff_Spark);
-	eff.image_blend = c_lime;
-	eff.image_xscale *= random_range(1, 2);
+	meter_effect_counter += logic_time;
+	
+	if(meter_effect_counter >= 1){
+		meter_effect_counter = 0;
+		eff = instance_create_depth(x, y, 1, Eff_Spark);
+		eff.image_blend = c_lime;
+		eff.image_xscale *= random_range(1, 2);
+	}
 }
 
 }
-// Is respawning
+// Is respawning THIS CODE SUCKS
 else{
 	visible = false;
 	is_controllable = false;

@@ -2,7 +2,7 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "Spr_Batman_8S_hitbox",
-  "bbox_bottom": 89,
+  "bbox_bottom": 75,
   "bbox_left": 50,
   "bbox_right": 113,
   "bbox_top": 0,

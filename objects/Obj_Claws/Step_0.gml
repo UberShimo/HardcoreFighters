@@ -1,5 +1,6 @@
 if(is_hypermode){
-	object_time = 5;
+	object_time = 3;
+	meter = 0;
 }
 
 event_inherited();
@@ -58,6 +59,12 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
+		else if(half_circle_forward_pressed){
+			action = "426F";
+			sprite_index = Spr_Claws_Flurry_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
 		else if(down_hold){
 			action = "2F";
 			sprite_index = Spr_Claws_2F_startup;
@@ -97,7 +104,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		else if(!grounded){
 			action = "8L";
 			h_velocity = 4*image_xscale;
-			v_velocity = -5;
+			v_velocity = -2;
 			sprite_index = Spr_Claws_8L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -142,7 +149,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(down_hold){
 			action = "2S";
-			h_velocity = 6*image_xscale;
+			h_velocity += 6*image_xscale;
 			sprite_index = Spr_Claws_2S_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -159,7 +166,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action = "426X";
 			meter -= 100;
 			shake_amount = 16;
-			global.game_time = 0.2;
+			global.game_time = 0.5;
 			eff = instance_create_depth(x, y, depth, Eff_Ring);
 			eff.grow *= 8;
 			action_alarm = 4;

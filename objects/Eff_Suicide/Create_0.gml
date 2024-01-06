@@ -1,5 +1,4 @@
-object_time = 1;
-logic_time = 1;
+event_inherited();
 
 image_xscale = 0;
 image_yscale = 0;

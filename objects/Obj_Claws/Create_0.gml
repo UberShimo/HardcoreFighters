@@ -60,7 +60,7 @@ action_trigger = function(){
 			multi_hit_action_index += 1;
 		}
 		else if(multi_hit_action_index == 1){
-			attack = instance_create_depth(x, y, 0, Obj_Batman_8F_hitbox);
+			attack = instance_create_depth(x, y, 0, Obj_Claws_8F_hitbox);
 			attack.initiate(self);
 		}
 	}
@@ -100,7 +100,7 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_5L_hitbox);
 		attack.initiate(self);
 		
-		blink_h(28*image_xscale);
+		blink_h(28*image_xscale, false);
 		sprite_index = Spr_Claws_5L_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -108,6 +108,8 @@ action_trigger = function(){
 	else if(action == "8S"){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_8S_hitbox);
 		attack.initiate(self);
+		tip = instance_create_depth(x, y, 0, Obj_Claws_8S_tip_hitbox);
+		tip.initiate(self);
 		
 		sprite_index = Spr_Claws_8S_recovery;
 		image_index = 0;
@@ -153,6 +155,7 @@ action_trigger = function(){
 		ring2.h_acceleration *= 0.5*image_xscale;
 		ring2.v_velocity = -3;
 		ring2.max_speed = 2;
+		ring2.image_angle = 90;
 		
 		sprite_index = Spr_Claws_Skyring_recovery;
 		image_index = 0;
@@ -174,13 +177,38 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_Deepdive_hitbox);
 		attack.initiate(self);
 		
-		h_velocity = 8*image_xscale;
+		h_velocity = 6*image_xscale;
 		v_velocity = 16;
 		grip = 1;
 		
 		sprite_index = Spr_Claws_Deepdive_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action = "426F"){
+		if(multi_hit_action_index == 0){
+			attack = instance_create_depth(x, y, 0, Obj_Claws_Flurry_hitbox);
+			attack.initiate(self);
+			
+			blink_h(8*image_xscale, false);
+			h_velocity = 3*image_xscale;
+		
+			sprite_index = Spr_Claws_Flurry_recovery;
+			image_index = 0;
+			recover_alarm = generate_sprite_frames(sprite_index);
+			action_alarm = 12;
+			multi_hit_action_index += 1;
+		}
+		else if(multi_hit_action_index < 3){
+			attack = instance_create_depth(x, y, 0, Obj_Claws_Flurry_hitbox);
+			attack.initiate(self);
+			
+			blink_h(8*image_xscale, false);
+			h_velocity = 3*image_xscale;
+			
+			action_alarm = 12;
+			multi_hit_action_index += 1;
+		}
 	}
 	else if(action == "426S"){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_High_hitbox);
@@ -206,13 +234,18 @@ action_trigger = function(){
 		sprite_index = stand_spr;
 		image_index = 0;
 		recover_alarm = 1;
-		alarm[10] = 300; // global Time reset alarm
+		alarm[10] = 240; // Time reset alarm
 	}
 	else if(action == "X"){
 		action = noone;
 		
 		instance_create_depth(x, y, depth, Eff_Claws_Teleport);
-		x = closest_enemy.x + 24*image_xscale;
+		if(!place_meeting(closest_enemy.x + 24*image_xscale, y, Parent_Collision)){
+			x = closest_enemy.x + 24*image_xscale;
+		}
+		else{
+			x = closest_enemy.x;
+		}
 		y = closest_enemy.y - 32;
 		h_velocity = 0;
 		v_velocity = -4;

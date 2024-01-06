@@ -1,4 +1,4 @@
-logic_time = object_time*global.game_time;
+event_inherited();
 
 ground_check = (character_height/2)+1;
 
@@ -11,23 +11,6 @@ if(action_alarm > 0){
 	}
 }
 
-if(recover_alarm > 0){
-	recover_alarm -= logic_time;
-	
-	if(recover_alarm <= 0){
-		recover_alarm = 0;
-		
-		action = noone;
-		sprite_index = stand_spr;
-		
-		reset_physics()
-		is_unstoppable = false;
-		is_invincible = false;
-		
-		can_cancel = false;
-	}
-}
-
 if(time_reset_alarm > 0){
 	time_reset_alarm -= global.game_time;
 	
@@ -36,6 +19,7 @@ if(time_reset_alarm > 0){
 		
 		object_time = 1;
 		shake_amount = 0;
+		priority_struck = false;
 	}
 }
 #endregion
@@ -88,13 +72,11 @@ if(!position_meeting(x, y+ground_check+val, Parent_Collision)){
 	y += val;
 	
 	// Gravity
-	if(!grounded && v_velocity < max_fall_speed){
+	if(!grounded){
 		val = weight*logic_time;
+		// Clone float
+		val /= 2;
 		
-		// Just to add some float
-		if(abs(v_velocity) < jump_power/8){
-			val /= 2;
-		}
 		v_velocity += val;
 	}
 	
@@ -120,11 +102,6 @@ else if(v_velocity > 0){
 // Grounded or not? also reset cancels
 if(position_meeting(x, y+ground_check, Parent_Collision)){
 	grounded = true;
-	
-	if(action == noone){
-		cancels = 2;
-		extra_jumps_left = extra_jumps;
-	}
 }
 else{
 	grounded = false;
@@ -133,74 +110,48 @@ else{
 
 #region dashy moves V-----V
 // Dash
-if(lb_pressed > 0 && (action == noone || check_for_cancel())){
-	read_input();
-	lb_pressed = 0; // Just reset LB buffer
+if(lb_pressed && (action == noone || check_for_cancel())){
+	lb_pressed = false; // Just reset LB buffer
 	
 	if(grounded){
-		if(backward_hold){
-			sprite_index = dash_backward_spr;
-			h_velocity = -dash_speed*image_xscale;
-			x += -dash_blink*image_xscale;
-		}
-		else{
-			sprite_index = dash_forward_spr;
-			h_velocity = dash_speed*image_xscale;
-			x += dash_blink*image_xscale;
-			meter += 2;
-		}
-	
-		if(recover_alarm > 0){
-			cancels -= 1;
-			// Cancel eff
-			eff = instance_create_depth(x, y, 1, Eff_Cancel);
-			eff.initiate(self);
-		}
+		sprite_index = dash_forward_spr;
+		h_velocity = dash_speed*image_xscale;
+		x += dash_blink*image_xscale;
 	
 		action = "dash";
-		can_cancel = true;
-		is_collidable = false;
 		grip = dash_grip;
 		air_grip = dash_grip;
 		v_velocity = 0;
-		weight = original_weight/4;
-		recover_alarm = dash_duration;
+		weight = weight/4;
 	}
 	// Air dash
-	else if(cancels > 0){
-		if(backward_hold){
-			sprite_index = dash_backward_spr;
-			h_velocity = -dash_speed*image_xscale;
-			x += -dash_blink*image_xscale;
-		}
-		else{
-			sprite_index = dash_forward_spr;
-			h_velocity = dash_speed*image_xscale;
-			x += dash_blink*image_xscale;
-			meter += 2;
-		}
-	
-		// Air dash always counts as a cancel
-		cancels -= 1;
-		// Cancel eff
-		eff = instance_create_depth(x, y, 1, Eff_Cancel);
-		eff.initiate(self);
+	else{
+		sprite_index = dash_forward_spr;
+		h_velocity = dash_speed*image_xscale;
+		x += dash_blink*image_xscale;
 	
 		action = "dash";
-		can_cancel = true;
-		is_collidable = false;
 		grip = dash_grip;
 		air_grip = dash_grip;
 		v_velocity = 0;
-		weight = original_weight/4;
-		recover_alarm = dash_duration;
+		weight = weight/4;
 	}
 }
 #endregion
 
-life_span -= logic_time;
 
-if(life_span <= 0){
-	instance_create_depth(x, y, 0, Eff_Clone_Dissapear);
-	instance_destroy();
+if(life_span > 0){
+	life_span -= logic_time;
+	
+	if(life_span <= 0){
+		instance_create_depth(x, y, 0, Eff_Clone_Dissapear);
+		instance_destroy();
+	}
+}
+
+// Fully charged
+if(meter == 100){
+	eff = instance_create_depth(x, y, 1, Eff_Spark);
+	eff.image_blend = c_lime;
+	eff.image_xscale *= random_range(1, 2);
 }

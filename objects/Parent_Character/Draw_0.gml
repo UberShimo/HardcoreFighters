@@ -28,7 +28,7 @@ if(global.chaos_mode){
 }
 
 if(global.is_debugging){
-	draw_text(x, y-character_height-128, string(index));
+	draw_text(x, y-character_height-128, string(can_cancel));
 	draw_text(x, y-character_height-112, "HP:  " + string(HP));
 	draw_text(x, y-character_height-96, "Meter:  " + string(meter));
 	draw_text(x, y-character_height-80, "h_vel:  " + string(h_velocity));

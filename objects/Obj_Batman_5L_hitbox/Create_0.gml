@@ -9,7 +9,7 @@ block_stun = 12;
 hit_push = 5;
 block_push = 4;
 freeze_duration = 8;
-h_launch = 3;
+h_launch = 2.5;
 v_launch = -5;
 
 is_sticky = true;

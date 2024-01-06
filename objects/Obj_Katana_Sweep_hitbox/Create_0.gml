@@ -9,8 +9,8 @@ block_stun = 12;
 hit_push = 8;
 block_push = 8;
 freeze_duration = 12;
-h_launch = 1;
-v_launch = -6;
+h_launch = 2;
+v_launch = -8;
 
 is_launcher = true;
 is_low = true;

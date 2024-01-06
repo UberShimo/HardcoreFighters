@@ -11,7 +11,10 @@
     "name": "Katana",
     "path": "folders/Objects/Characters/Katana.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "Parent_Time",
+    "path": "objects/Parent_Time/Parent_Time.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

@@ -1,4 +1,4 @@
-logic_time = object_time*global.game_time;
+event_inherited();
 
 x += h_velocity*logic_time;
 y += v_velocity*logic_time;

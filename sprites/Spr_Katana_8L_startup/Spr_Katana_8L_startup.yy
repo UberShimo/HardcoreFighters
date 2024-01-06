@@ -2,10 +2,10 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "Spr_Katana_8L_startup",
-  "bbox_bottom": 157,
-  "bbox_left": 115,
-  "bbox_right": 138,
-  "bbox_top": 98,
+  "bbox_bottom": 154,
+  "bbox_left": 108,
+  "bbox_right": 155,
+  "bbox_top": 106,
   "bboxMode": 2,
   "collisionKind": 4,
   "collisionTolerance": 0,
@@ -14,7 +14,7 @@
   "For3D": false,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"6e1075da-25ad-47b3-bc6b-bc6125c978c1",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"f54437c5-df60-4835-9a9f-bbc00859f828",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"34ea818f-6a7a-4c1a-96a6-69dfa1314d9f",},
   ],
   "gridX": 32,
   "gridY": 32,
@@ -57,7 +57,7 @@
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"6e1075da-25ad-47b3-bc6b-bc6125c978c1","path":"sprites/Spr_Katana_8L_startup/Spr_Katana_8L_startup.yy",},},},"Disabled":false,"id":"160093d5-ef38-4104-9c78-6ed0fdc4cb2c","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"f54437c5-df60-4835-9a9f-bbc00859f828","path":"sprites/Spr_Katana_8L_startup/Spr_Katana_8L_startup.yy",},},},"Disabled":false,"id":"e764cf0f-b8e6-440c-b6f8-2c2446a336ba","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"34ea818f-6a7a-4c1a-96a6-69dfa1314d9f","path":"sprites/Spr_Katana_8L_startup/Spr_Katana_8L_startup.yy",},},},"Disabled":false,"id":"f6c5ffaf-d947-4774-8e56-498f459412bc","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

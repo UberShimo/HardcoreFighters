@@ -51,6 +51,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			sprite_index = Spr_Batman_2L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
+			multi_hit_action_index = 0;
 		}
 		else{
 			action = "5L";
@@ -93,12 +94,14 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 	}
 	else if(rb_pressed){
-		if(half_circle_forward_pressed && meter >= 25){
+		if(half_circle_forward_pressed && meter >= 100){
 			action = "426X";
-			meter -= 25;
+			meter -= 100;
 			sprite_index = Spr_Batman_ULTRA_startup;
 			image_index = 0;
+			global.game_time = 0.25;
 			action_alarm = generate_sprite_frames(sprite_index);
+			alarm[10] = action_alarm*4;
 		}
 	}
 	reset_buffers();

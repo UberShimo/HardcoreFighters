@@ -1,5 +1,4 @@
-object_time = 1;
-logic_time = 1;
+event_inherited();
 
 fade = 0.1;
 duration = 0;

@@ -1,3 +1,5 @@
+event_inherited();
+
 depth = -1;
 
 index = -1;
@@ -6,7 +8,7 @@ is_controllable = false;
 is_respawning = false;
 is_CPU = false;
 surrender_count = 0;
-player_color = global.p1_color;
+player_color = c_white;
 
 #region Initialize input values / buffers
 buffer_duration = 10;
@@ -73,6 +75,7 @@ start_speed = 3;
 max_speed = 6;
 acceleration = 0.1;
 dash_speed = 12;
+dash_lift = 0; // Only used for bow basically...
 dash_blink = 16;
 dash_duration = 24;
 dash_grip = 1;
@@ -96,10 +99,10 @@ original_weight = weight;
 #region Physics values
 h_velocity = 0;
 v_velocity = 0;
+wall_bounce_limit = 4;
+ground_bounce_limit = 10;
 grounded = true;
-object_time = 1; // % based
-logic_time = 1; // % based
-shake_amount = 0;
+priority_struck = false; // When you get hit by a priority hitbox. Sweetspots usually. This variable resets in time_alarm
 #endregion
 
 // Stuff
@@ -108,13 +111,16 @@ last_action = noone; // Used for checking if cancel is legit
 hitbox_list = ds_list_create();
 cancelable_recovery_frames = 24;
 closest_enemy = self;
-multi_hit_action_index = 0;
+multi_hit_action_index = 0; // When one move does many attacks this variable keeps track on what attack you are on
+meter_effect_counter = 0; // Fixes so that you spawn less effects when time goes slower
 
 // Alarms
 action_alarm = 0;
 recover_alarm = 0;
 time_reset_alarm = 0;
 respawn_alarm = 0;
+invincibility_alarm = 0;
+death_alarm = 0;
 
 // Methods
 action_trigger = function(){
@@ -141,16 +147,18 @@ reset_buffers = function(){
 }
 
 face_closest_enemy = function(){
-	temp_x = x;
-	x = -room_width;
-	closest_enemy = instance_nearest(temp_x, y, Parent_Character);
-	x = temp_x;
+	if(instance_number(Parent_Character) > 1){
+		temp_x = x;
+		x = -room_width;
+		closest_enemy = instance_nearest(temp_x, y, Parent_Character);
+		x = temp_x;
 		
-	if(x < closest_enemy.x){
-		image_xscale = 1;
-	}
-	else{
-		image_xscale = -1;
+		if(x < closest_enemy.x){
+			image_xscale = 1;
+		}
+		else{
+			image_xscale = -1;
+		}
 	}
 }
 
@@ -241,21 +249,29 @@ read_input = function(){
 	// Circle movements
 	if(down_pressed && !down_hold && forward_pressed){
 		down_forward_pressed = buffer_duration;
+		down_pressed = 0;
 	}
 	if(forward_pressed && !forward_hold && down_pressed){
 		forward_down_pressed = buffer_duration;
+		forward_pressed = 0;
 	}
 	if(down_pressed && !down_hold && backward_pressed){
 		down_backward_pressed = buffer_duration;
+		down_pressed = 0;
 	}
 	if(backward_pressed && !backward_hold && down_pressed){
 		backward_down_pressed = buffer_duration;
+		backward_pressed = 0;
 	}
 	if(backward_down_pressed && !down_hold && forward_pressed){
 		half_circle_forward_pressed = buffer_duration;
+		backward_down_pressed = 0;
+		down_forward_pressed = 0;
 	}
 	if(forward_down_pressed && !down_hold && backward_pressed){
 		half_circle_backward_pressed = buffer_duration;
+		forward_down_pressed = 0;
+		down_backward_pressed = 0;
 	}
 }
 	
@@ -265,6 +281,7 @@ reset_physics = function(){
 	weight = original_weight;
 	multi_hit_action_index = 0;
 	is_collidable = true;
+	object_time = 1;
 }
 
 action_button_pressed = function(){
@@ -285,20 +302,26 @@ check_for_cancel = function(){
 	return false;
 }
 
-blink_h = function(x_val){
-	if(!place_meeting(x+x_val, y, Parent_Collision)){
-		x += x_val;
+blink_h = function(x_val, cross_up){
+	// Prep
+	x_check = 1;
+	loops = abs(x_val);
+	if(x_val < 0){
+		x_check = -x_check;
 	}
-	// Snap to wall
-	else{
-		x_check = 1;
-		if(x_val < 0){
-			x_check = -x_check;
+	// Moving time
+	if(cross_up){
+		while(loops > 0 && !place_meeting(x+x_check, y, Parent_Collision)){
+			x += x_check;
+			loops -= 1;
 		}
-		repeat(x_val){
-			if(!place_meeting(x+x_check, y, Parent_Collision)){
-				x += x_check;
-			}
+	}
+	else{
+		while(loops > 0
+		&& !place_meeting(x+x_check, y, Parent_Collision)
+		&& !place_meeting(x+x_check, y, Parent_Character)){
+			x += x_check;
+			loops -= 1;
 		}
 	}
 }

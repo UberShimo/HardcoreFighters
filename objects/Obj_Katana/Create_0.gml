@@ -73,6 +73,8 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_8L_hitbox);
 		attack.initiate(self);
 		
+		h_velocity += 3*image_xscale;
+		
 		sprite_index = Spr_Katana_8L_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -88,6 +90,8 @@ action_trigger = function(){
 	else if(action == "5L"){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_5L_hitbox);
 		attack.initiate(self);
+		
+		grip = original_grip;
 		
 		sprite_index = Spr_Katana_5L_recovery;
 		image_index = 0;
@@ -128,8 +132,11 @@ action_trigger = function(){
 		can_cancel = true;
 		
 		clone = instance_create_depth(x, y, 0, Obj_Katana_Clone);
+		clone.HP = HP;
+		clone.meter = meter;
 		clone.index = index;
 		clone.hearts = hearts;
+		clone.player_color = player_color;
 		clone.image_xscale = image_xscale;
 		clone.lb_pressed = buffer_duration; // Clone dash
 		
@@ -142,8 +149,11 @@ action_trigger = function(){
 		meter += 2;
 		
 		clone = instance_create_depth(x, y, 0, Obj_Katana_Clone);
+		clone.HP = HP;
+		clone.meter = meter;
 		clone.index = index;
 		clone.hearts = hearts;
+		clone.player_color = player_color;
 		clone.image_xscale = image_xscale;
 		
 		if(!grounded){	
@@ -190,6 +200,8 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_High_hitbox);
 		attack.initiate(self);
 		
+		h_velocity = 6*image_xscale;
+		
 		sprite_index = Spr_Katana_High_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -198,6 +210,8 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_Sweep_hitbox);
 		attack.initiate(self);
 		
+		h_velocity += 9*image_xscale;
+		
 		sprite_index = Spr_Katana_Sweep_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -205,12 +219,16 @@ action_trigger = function(){
 	// Meter moves
 	else if(action == "X"){
 			clone = instance_create_depth(x, y, 0, Obj_Katana_Clone);
+			clone.HP = HP;
+			clone.meter = meter;
 			clone.index = index;
+			clone.hearts = hearts;
+			clone.player_color = player_color;
 			clone.image_xscale = image_xscale;
 			clone.sprite_index = Spr_Katana_Clone_Quickdraw_startup;
 			clone.action = "426L";
 			clone.action_alarm = 90;
-			clone.life_span = 116;
+			clone.life_span = 0;
 			clone.weight = 0;
 			clone.shake_amount = 2;
 			

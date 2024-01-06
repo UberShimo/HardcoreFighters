@@ -50,21 +50,18 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	else if(y_pressed){
 		if(half_circle_forward_pressed){
 			action = "426L";
-			final_move = true;
 			sprite_index = Spr_Katana_Quickdraw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_forward_pressed){
 			action = "26L";
-			final_move = true;
 			sprite_index = Spr_Katana_Quickdraw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(backward_down_pressed){
 			action = "42L";
-			final_move = true;
 			sprite_index = Spr_Katana_Quickdraw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -83,6 +80,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else{
 			action = "5L";
+			grip = original_grip/2;
 			sprite_index = Spr_Katana_5L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -126,7 +124,9 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			meter -= 100;
 			sprite_index = Spr_Katana_ULTRA_startup;
 			image_index = 0;
+			global.game_time = 0.5;
 			action_alarm = generate_sprite_frames(sprite_index);
+			alarm[10] = action_alarm*2;
 		}
 		else if(meter >= 25){
 			action = "X";
@@ -136,16 +136,8 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	reset_buffers();
 	
-	if(final_move){
-		cancels = 0;
-		can_cancel = false;
-		recover_alarm = 0;
-		// Cancel eff
-		eff = instance_create_depth(x, y, 1, Eff_Cancel);
-		eff.initiate(self);
-	}
 	// Check if cancel is legit
-	else if(action == last_action){
+	if(action == last_action){
 		sprite_index = last_sprite;
 		image_index = last_image_index;
 		action_alarm = last_action_alarm;

@@ -1,8 +1,6 @@
-object_time = 1;
-logic_time = 1;
+event_inherited();
 
 fade = 0;
-duration = 0;
 
 image_angle = random_range(0, 360);
 

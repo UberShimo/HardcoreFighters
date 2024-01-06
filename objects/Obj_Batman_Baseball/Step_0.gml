@@ -6,10 +6,12 @@ if(is_active){
 	
 	if(velocity > 4){
 		image_xscale = velocity/8;
+		image_yscale = 0.5/image_xscale;
 		image_angle = point_direction(0, 0, h_velocity, v_velocity);
 	}
 	else{
 		image_xscale = 0.5;
+		image_yscale = 0.5;
 	}
 	// Effect
 	eff = instance_create_depth(x, y, depth, Eff_Baseball);
@@ -18,10 +20,10 @@ if(is_active){
 	eff.image_yscale = image_yscale;
 	eff.image_angle = image_angle;
 	
-	hit_push = h_velocity;
-	block_push = h_velocity;
-	h_launch = h_velocity;
-	v_launch = v_velocity;
+	hit_push = h_velocity/8;
+	block_push = h_velocity/12;
+	h_launch = h_velocity/8;
+	v_launch = v_velocity/8;
 }
 
 h_velocity += h_spin;

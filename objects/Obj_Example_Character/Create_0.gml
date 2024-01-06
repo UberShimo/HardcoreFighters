@@ -1,7 +1,5 @@
 event_inherited();
 
-index = -1;
-
 #region Sprites
 stand_spr = Spr_Batman_Stand;
 forward_spr = Spr_Batman_Forward;
@@ -129,7 +127,7 @@ action_trigger = function(){
 	}
 	// Special moves
 	else if(action == "426S"){
-		attack = instance_create_depth(x, y, 0, Obj_Batman_426S_hitbox);
+		attack = instance_create_depth(x, y, 0, Obj_Batman_High_hitbox);
 		attack.initiate(self);
 		
 		sprite_index = Spr_Batman_High_recovery;
@@ -137,7 +135,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "624S"){
-		attack = instance_create_depth(x, y, 0, Obj_Batman_624S_hitbox);
+		attack = instance_create_depth(x, y, 0, Obj_Batman_Sweep_hitbox);
 		attack.initiate(self);
 		
 		h_velocity = -8*image_xscale;
@@ -147,7 +145,7 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "426X"){
-		attack = instance_create_depth(x, y, 0, Obj_Batman_426X_hitbox);
+		attack = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox);
 		attack.initiate(self);
 		
 		sprite_index = Spr_Batman_ULTRA_recovery;

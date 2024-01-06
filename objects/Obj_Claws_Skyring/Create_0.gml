@@ -1,5 +1,4 @@
-object_time = 1;
-logic_time = 1;
+event_inherited();
 
 h_velocity = 0;
 v_velocity = 0;

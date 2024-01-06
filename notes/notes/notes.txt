@@ -1,19 +1,15 @@
 TODO{
+	You can run through opponent
+	Add all 8 start characters
+	Fix character sprite size so it matches the size of the actual sprites
 	Fix actual menus
 	Fix so you can see character attacks n combos
-	Fix tip hitbox logic better.
-	Claws X teleport out of bounds
-	Claws ULTRA slowdown dont work properly.
-	Batman Super ball hit error
-	Make game look sexy, balanced and fun
 	Add sound n music
-	
-	Claws closest enemy cant be found when 8 players
+	Make cool death effect/scene
+	Make game look sexy, balanced and fun
 	
 	Push :: Execution Error - Variable Index [8] out of range [8] - -1.players(100244,8)
  at gml_Script_anon_gml_Object_Obj_Match_Manager_Create_0_159_gml_Object_Obj_Match_Manager_Create_0 (line 18) - players[j] = players[j+1];
-	
-	NAME!?: Wicked Fighters, Bloodbath Armagheddon
 }
 
 Debug tips:
@@ -30,7 +26,7 @@ When checking attack input it has to get checked in this order:
 1. Air moves
 2. Half circle moves
 3. Quarter circle moves
-4. Normal moves
+4. Normal ground moves
 
 Notes in notes:
 Hurtbox = sprite collision
@@ -77,30 +73,113 @@ X:				Meter moves that costs meter.
 <,v,> X:		Ultra move. Cost 100% meter.
 X + Dash:		Force dash. Can be used in bad situations but ends combo and cost 25% meter.
 
-Character ideas:
+Character stuff:
 
-Dash slightly upward.
-Summon an arrow from above at any time.
-Attack that hits front and behind.
-Dash that attack backward after.
-X = Create gravity field. (heavier or lighter)
+Leave DoT on ground. Leave bomb on ground.
 
-katana{
-	X = create clone that performs 426F aftter delay
+Batman{
+	Make 5L, 5S and ULTRA reach longer. It looks stupid atm...
+}
+
+Katana{
+	
 }
 
 Claws{
-	v<F: Spawn circle backward
-	v<L: Spawn circle more upward n slower
 	
-	<v>X = slow game down to 20% for enemies.
-	X = teleport above, behind enemy.
+}
+
+
+Baller{
+	
+}
+
+Wind Bow{
+	
 }
 
 Great sword{
-	v>F: Spin forward blocking high and low. Follow up with F, L or S
+	X = Grab that drain meter from opponent. Free move!
+	<v>X = Slam sword down in rampage faster and faster! Last attack is an unstoppable launch.
+	
+	v>F: Spin forward blocking high and low. EARTH stance:
+		F: Kick up and go into v>S
+		L: Spin around sword 3 times starting high then mid then low. Attack hits behind and you can move during move.
+		S: Slam sword down doing big boy dmg. You are + frames after this move even if you dont cancel it.
+	v>L: Step forward and point sword forward. OCEAN stance:
+		F: Smack with handle then swing sword high
+		L: Stab forward real hard
+		S: Stab low but slower
+	v>S: Jump back and balance on your sword / In air your dash down and stab sword into ground. HEAVEN stance:
+		F: Launch yourself forward (works well into 8S)
+		L: Land and stab Low
+		S: Land and swing sword upward into v>F
+		A: Jump out and cancel stance
+	>vF/L/S: Stomp to create a pillar in the distance hitting from behind. 
+	Stomp deals super small dmg so you can cancel if it hits :)
+	Hold attack to delay the pillars arrival.
 }
 
-Ball n chain goblin{
+Boom hand{
+	Is steady
+	Has 2 extra jumps.
+	Dash is very low.
 	
+	5F = Punch
+	2F = Kick
+	8F = Stop momentum then kick forward.
+	5L = High kick that slightly move forward
+	2L = Back flip
+	8L = Stop momentum then kick upward.
+	5S = Right hook punch
+	2S = Uppercut that lift you up
+	8S = One handed dunk.
+	
+	X = Create smoke that deal tiny dmg to opponent but also hides you.
+	<v>X = Become invincible for 6 sec.
+	
+	<v>S = Gorilla smash forward. (small jump then smash)
+	>v<S = Grab feet and throw up.
+	
+	>vF = Punch ground dealing small dmg Low.
+	<v>F = Roar that increase you next attack dmg by 10% and penetration by 20%. Stacks 5 times. More stacks = more character shake.
+	>vL = Burrow into ground then reappear. Hold attack to du an uppercut on arrival. Teleport to make camera not reading you movement.
+	v<L = Backstep. Cancelable. Hold attack to then punch forward Like slayer!
+	>v<L = Hjula frammåt.
+	v>S = Slow unblockable explosion. Also spreads smoke.
+	v<S = Slow unblockable explosion upward. Also spreads smoke.
+}
+
+Dark ritual mage with a triangle{
+	Slower dash but it is a teleport.
+	
+	Has timed AoEs projectiled sprays and all kind of random shit.
+	
+	5F/8F = Create a quick shockwave. Cancelable. That pushes various magics. Projectiles, diamond aerial bombs.
+	2F = Low kick
+	Has daimond that gravitate around you.
+	5L = Daimond stab Forward
+	2L = Diamond stab Upward
+	>vL = Diamond stab down
+	8L = Spawn 3 explosions in front of you in succession
+	5S = Triangle moves forward until you release attack and it explodes.
+	2S = Plants a dark mine that explode when someone touches it. Including yourself.
+	Mine explosion launch upward and isnt super big.
+	8S = Spawn lighsting that you throw downward
+	
+	v>F = Create the circle. And dash forward. Cancelable.
+	v<F = Create the circle. And dash backwards. Cancelable.
+	<v>F = Circle implodes.
+	>v<F = Pull the circle in a slim line dealing good dmg and destroys the circle.
+	v>L = Slow moving orb slightly upward that gravitate down. Explodes. Final.
+	<v>L = Slow moving orb straight forward. Explodes. Final.
+	<vL = Slow moving orb forward that gravitate up. Final.
+	
+	Has a burning shadow on ground that keeps on moving if you crouch. It deals small DoT
+	v>S = Shadow bite upward.
+	Shadow bite yourself makes it eat you and heal you a little while also reseting you completely.
+	Shadow bite mine makes it explode BIG.
+	
+	X = Time slowdown field. But speeds up you things.
+	<v>X = Summon a copy of enemy that loose HP slowly.
 }
