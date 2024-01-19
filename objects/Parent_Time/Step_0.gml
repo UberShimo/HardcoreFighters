@@ -10,5 +10,9 @@ if(time_reset_alarm > 0){
 		
 		object_time = 1;
 		shake_amount = 0;
+		
+		if(object_exists(Obj_Match_Camera)){
+			Obj_Match_Camera.shake = 0;
+		}
 	}
 }

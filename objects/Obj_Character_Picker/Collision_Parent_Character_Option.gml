@@ -1,10 +1,12 @@
 if(gamepad_button_check_pressed(controller_index, gp_face1)){
+	// Pick for CPU
 	if(connection != noone){
 		global.picked_characters[connection.index] = other.character;
 		global.is_CPU[connection.index] = true;
 		connection.connection = other;
 		connection = noone;
 	}
+	// Pick for player
 	else{
 		global.picked_characters[index] = other.character;
 		if(index == 0){

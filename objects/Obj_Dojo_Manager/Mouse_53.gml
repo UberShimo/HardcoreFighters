@@ -6,6 +6,6 @@ if(global.is_debugging){
 	action = "noone";
 	land_spr = Spr_EMPTY;
 
-	att = instance_create_depth(mouse_x, mouse_y, depth, Obj_Katana_ULTRA_hitbox);
+	att = instance_create_depth(mouse_x, mouse_y, depth, Obj_Greatsword_Pillar_hitbox);
 	att.initiate(self);
 }

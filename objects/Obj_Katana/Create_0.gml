@@ -255,4 +255,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
+	else{
+		action = noone;
+	}
 }

@@ -210,6 +210,17 @@ action_trigger = function(){
 			multi_hit_action_index += 1;
 		}
 	}
+	else if(action == "penguin"){
+		attack = instance_create_depth(x, y, 0, Obj_Claws_Penguin_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = 8*image_xscale;
+		grip = 0.15;
+		
+		sprite_index = Spr_Claws_Penguin_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
 	else if(action == "426S"){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_High_hitbox);
 		attack.initiate(self);
@@ -239,7 +250,9 @@ action_trigger = function(){
 	else if(action == "X"){
 		action = noone;
 		
-		instance_create_depth(x, y, depth, Eff_Claws_Teleport);
+		eff = instance_create_depth(x, y, depth, Eff_Claws_Teleport);
+		eff.image_xscale = image_xscale;
+		
 		if(!place_meeting(closest_enemy.x + 24*image_xscale, y, Parent_Collision)){
 			x = closest_enemy.x + 24*image_xscale;
 		}
@@ -250,5 +263,8 @@ action_trigger = function(){
 		h_velocity = 0;
 		v_velocity = -4;
 		face_closest_enemy();
+	}
+	else{
+		action = noone;
 	}
 }

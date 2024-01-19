@@ -1,7 +1,11 @@
 TODO{
-	You can run through opponent
 	Add all 8 start characters
-	Fix character sprite size so it matches the size of the actual sprites
+	Rename actions like "426S" to "high" so it is more humane. "This Is Standard Naming"
+	Make some attacks into hit_effect instead.
+	Check all attacks initiators and see so it works correctly.
+	Make all hitboxes have correct startup/recovery info.
+	Respawn works bad. You can fly like hell. Hit opponent. Shitty stuff!
+	Fix character sprite size so it matches the size of the actual sprites. Then fix collision boxes ofc.
 	Fix actual menus
 	Fix so you can see character attacks n combos
 	Add sound n music
@@ -13,6 +17,7 @@ TODO{
 }
 
 Debug tips:
+Is hitbox mask same as sprite?
 Is hitbox collision Automatic per Frame?
 Is hurtbox collision Manual per Frame?
 All pressed buttons work with buffer numbers. Gotta use if(a_pressed > 0) to check the input.
@@ -29,6 +34,7 @@ When checking attack input it has to get checked in this order:
 4. Normal ground moves
 
 Notes in notes:
+"This Is Standard Naming"
 Hurtbox = sprite collision
 Attack collision = purple sprites
 We are not using particles since we cant manipulate it good enough. Slow mo, scaling per dmg etc...
@@ -75,14 +81,18 @@ X + Dash:		Force dash. Can be used in bad situations but ends combo and cost 25%
 
 Character stuff:
 
-Leave DoT on ground. Leave bomb on ground.
+Balanced:	Batman, Katana
+Power:		Boomhand, Greatsword
+Agility:	Claws, Baller
+Zoner:		Bow, Mage
 
 Batman{
 	Make 5L, 5S and ULTRA reach longer. It looks stupid atm...
+	ULTRA should only one shot at TIP.
 }
 
 Katana{
-	
+	Clone quickdraw doest exist?
 }
 
 Claws{
@@ -99,87 +109,34 @@ Wind Bow{
 }
 
 Great sword{
-	X = Grab that drain meter from opponent. Free move!
-	<v>X = Slam sword down in rampage faster and faster! Last attack is an unstoppable launch.
-	
-	v>F: Spin forward blocking high and low. EARTH stance:
-		F: Kick up and go into v>S
-		L: Spin around sword 3 times starting high then mid then low. Attack hits behind and you can move during move.
-		S: Slam sword down doing big boy dmg. You are + frames after this move even if you dont cancel it.
-	v>L: Step forward and point sword forward. OCEAN stance:
-		F: Smack with handle then swing sword high
-		L: Stab forward real hard
-		S: Stab low but slower
-	v>S: Jump back and balance on your sword / In air your dash down and stab sword into ground. HEAVEN stance:
-		F: Launch yourself forward (works well into 8S)
-		L: Land and stab Low
-		S: Land and swing sword upward into v>F
-		A: Jump out and cancel stance
-	>vF/L/S: Stomp to create a pillar in the distance hitting from behind. 
-	Stomp deals super small dmg so you can cancel if it hits :)
-	Hold attack to delay the pillars arrival.
+	Heaven_F can jump high if you also press/hold A which is kinda wierd...
 }
 
 Boom hand{
-	Is steady
-	Has 2 extra jumps.
-	Dash is very low.
-	
-	5F = Punch
-	2F = Kick
-	8F = Stop momentum then kick forward.
-	5L = High kick that slightly move forward
-	2L = Back flip
-	8L = Stop momentum then kick upward.
-	5S = Right hook punch
-	2S = Uppercut that lift you up
-	8S = One handed dunk.
-	
-	X = Create smoke that deal tiny dmg to opponent but also hides you.
-	<v>X = Become invincible for 6 sec.
-	
-	<v>S = Gorilla smash forward. (small jump then smash)
-	>v<S = Grab feet and throw up.
-	
-	>vF = Punch ground dealing small dmg Low.
-	<v>F = Roar that increase you next attack dmg by 10% and penetration by 20%. Stacks 5 times. More stacks = more character shake.
-	>vL = Burrow into ground then reappear. Hold attack to du an uppercut on arrival. Teleport to make camera not reading you movement.
-	v<L = Backstep. Cancelable. Hold attack to then punch forward Like slayer!
-	>v<L = Hjula frammåt.
-	v>S = Slow unblockable explosion. Also spreads smoke.
-	v<S = Slow unblockable explosion upward. Also spreads smoke.
+	Make roars do something.
+	Make 5S chargable.
 }
 
 Dark ritual mage with a triangle{
 	Slower dash but it is a teleport.
 	
-	Has timed AoEs projectiled sprays and all kind of random shit.
+	Mine explodes on collision. Meaning you can dash through it.
 	
-	5F/8F = Create a quick shockwave. Cancelable. That pushes various magics. Projectiles, diamond aerial bombs.
-	2F = Low kick
-	Has daimond that gravitate around you.
-	5L = Daimond stab Forward
-	2L = Diamond stab Upward
-	>vL = Diamond stab down
-	8L = Spawn 3 explosions in front of you in succession
-	5S = Triangle moves forward until you release attack and it explodes.
-	2S = Plants a dark mine that explode when someone touches it. Including yourself.
-	Mine explosion launch upward and isnt super big.
-	8S = Spawn lighsting that you throw downward
+	Has timed AoEs projectiled sprays and all kind of random shit.
 	
 	v>F = Create the circle. And dash forward. Cancelable.
 	v<F = Create the circle. And dash backwards. Cancelable.
-	<v>F = Circle implodes.
-	>v<F = Pull the circle in a slim line dealing good dmg and destroys the circle.
-	v>L = Slow moving orb slightly upward that gravitate down. Explodes. Final.
-	<v>L = Slow moving orb straight forward. Explodes. Final.
-	<vL = Slow moving orb forward that gravitate up. Final.
+	<v>F = Circle implodes. Final.
+	>v<F = Pull the circle in a slim line dealing good dmg and destroys the circle. Final.
+	v>L = Slow moving star slightly upward that gravitate down. Explodes. Final.
+	<v>L = Slow moving star straight forward. Explodes. Final.
+	<vL = Slow moving star forward that gravitate up. Final.
 	
 	Has a burning shadow on ground that keeps on moving if you crouch. It deals small DoT
-	v>S = Shadow bite upward.
+	>vS = Shadow bite upward.
 	Shadow bite yourself makes it eat you and heal you a little while also reseting you completely.
 	Shadow bite mine makes it explode BIG.
 	
-	X = Time slowdown field. But speeds up you things.
+	X = Time slowdown field. Moving sloooowly forward. Speeds up your projectiles.
 	<v>X = Summon a copy of enemy that loose HP slowly.
 }

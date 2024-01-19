@@ -12,7 +12,6 @@ freeze_duration = 0;
 h_launch = 0;
 v_launch = 0;
 
-is_tick = true;
 is_side_irrelevant = true;
 swing_sound = Snd_NOTHING;
 hit_sound = Snd_NOTHING;

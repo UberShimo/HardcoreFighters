@@ -13,5 +13,4 @@ h_launch = 5;
 v_launch = -3;
 
 is_launcher = true;
-
 hit_effect_y = -8;

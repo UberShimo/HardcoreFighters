@@ -7,9 +7,7 @@ if(action_alarm > 0){
 		action_alarm = 0;
 		
 		hitbox = instance_create_depth(x, y, 0, Obj_Greatsword_Pillar_hitbox);
-		hitbox.initiate(spawner); // Spawner spawned this ok?
-		hitbox.image_xscale = image_xscale;
-		
+		hitbox.initiate(self);
 		
 		sprite_index = Spr_Greatsword_Pillar;
 		image_index = 0;

@@ -70,7 +70,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		else if(down_forward_pressed){
 			action = "ocean_start";
 			grip = 0.4;
-			h_velocity = 6*image_xscale;
+			h_velocity = 8*image_xscale;
 			sprite_index = Spr_Greatsword_Ocean_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -90,7 +90,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else{
 			action = "5L";
-			h_velocity = 6*image_xscale;
+			h_velocity += 3*image_xscale;
 			sprite_index = Spr_Greatsword_5L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -117,8 +117,9 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(down_forward_pressed){
 			action = "heaven_start";
-			grip = 0.2;
-			h_velocity = -3*image_xscale;
+			
+			h_velocity = -8*image_xscale;
+			
 			sprite_index = Spr_Greatsword_Heaven_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -132,8 +133,8 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(down_hold){
 			action = "2S";
-			h_velocity += 6*image_xscale;
-			grip = 0.3;
+			h_velocity = 4*image_xscale;
+			grip = 0.1;
 			sprite_index = Spr_Greatsword_2S_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -193,19 +194,23 @@ else if(action == "earth"){
 		sprite_index = Spr_Greatsword_Earth_F_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 	}
 	else if(y_pressed){
 		action = "earth_L";
 		sprite_index = Spr_Greatsword_Earth_L_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 	}
 	else if(b_pressed){
 		action = "earth_S";
 		sprite_index = Spr_Greatsword_Earth_S_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 	}
+	reset_buffers();
 }
 else if(action == "ocean"){
 	if(x_pressed){
@@ -213,6 +218,7 @@ else if(action == "ocean"){
 		sprite_index = Spr_Greatsword_Ocean_F_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 		multi_hit_action_index = 0;
 	}
 	else if(y_pressed){
@@ -220,13 +226,16 @@ else if(action == "ocean"){
 		sprite_index = Spr_Greatsword_Ocean_L_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 	}
 	else if(b_pressed){
 		action = "ocean_S";
 		sprite_index = Spr_Greatsword_Ocean_S_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 	}
+	reset_buffers();
 }
 else if(action == "heaven"){
 	if(x_pressed){
@@ -234,18 +243,56 @@ else if(action == "heaven"){
 		sprite_index = Spr_Greatsword_Heaven_F_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 	}
 	else if(y_pressed){
 		action = "heaven_L";
+		
+		h_velocity = 8*image_xscale;
+		
 		sprite_index = Spr_Greatsword_Heaven_L_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
 	}
 	else if(b_pressed){
 		action = "heaven_S";
+		
+		h_velocity = 5*image_xscale;
+		
 		sprite_index = Spr_Greatsword_Heaven_S_startup;
 		image_index = 0;
 		action_alarm = generate_sprite_frames(sprite_index);
+		recover_alarm = 0;
+	}
+	// Just jump outa it
+	else if(a_pressed){
+		action = noone;
+		
+		action_alarm = 0;
+		recover_alarm = 0;
+		
+		v_velocity = -jump_power;
+		
+		if(forward_hold){
+			h_velocity = start_speed*image_xscale;
+		}
+		else if(backward_hold){
+			h_velocity = -start_speed*image_xscale;
+		}
+	}
+	reset_buffers();
+}
+
+// Movement during earth_L
+if(action == "earth_L" && recover_alarm > 16){
+	h_velocity = 0;
+	
+	if(forward_hold){
+		h_velocity = 3*image_xscale*logic_time;
+	}
+	else if(backward_hold){
+		h_velocity = -3*image_xscale*logic_time;
 	}
 }
 

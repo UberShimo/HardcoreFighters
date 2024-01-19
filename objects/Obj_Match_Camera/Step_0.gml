@@ -62,6 +62,10 @@ else{
 	camera_y += lengthdir_y(camera_speed, dir);
 }
 
+// Shake
+camera_x += random_range(-shake, shake);
+camera_y += random_range(-shake, shake);
+
 // Set properties
 camera_set_view_size(view_camera[0], camera_width, camera_height);
 camera_set_view_pos(view_camera[0], camera_x, camera_y);

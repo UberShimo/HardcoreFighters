@@ -8,6 +8,7 @@ freeze_amount = 0; // % in time (0.1 = 10% time speed)
 shake_amount = 0; // Shakes the opponent
 startup = 0; // 100% informational not used in logic
 recovery = 0; // 100% informational not used in logic
+info = "";
 // Essential stats
 damage = 0;
 hit_stun = 0;
@@ -32,7 +33,7 @@ hit_effect_scale = 1;
 hit_effect_time = 1;
 effect = Nothing; // Hit effect or whatever that is left behind after attack
 hit_effect_y = 0; // Makes hit effect spawn between opponent and this y value
-collision_check_distance = sprite_width/2;
+collision_check_distance = sprite_width/2; // Projectile related
 is_active = true;
 is_low = false; // Must crouch to block
 is_high = false; // Must stand to block
@@ -45,24 +46,22 @@ is_sticky = false; // Sticks to spawner
 is_cancelable = false; // Can cancel move even if you dont hit anything
 is_final = false; // Cannot be canceled into other moves (informational)
 is_priority = false; // Some attacks have sweetspot hitboxes that take some priorities for example
-is_tick = false; // A tick is just a quick hitbox that dont do hitstun and shit
 h_affecting = true; // Means that is knocks and pushes in horizontal velocity
 v_affecting = true; // Means that is knocks and pushes in vertical velocity
 is_collidable = true; // Goes through walls or not?
+is_initiated_by_character = true;
 
 // Methods
 initiate = function(initiator){
 	index = initiator.index;
 	spawner = initiator;
+	image_xscale *= initiator.image_xscale;
 	
-	if(is_tick){
-		active_frames = 1;
-		meter_gain = 0;
-		meter_gain_multiplier = 0;
-	}
-	else{
+	// Is initiated by a character?
+	is_initiated_by_character = object_is_ancestor(initiator.object_index, Parent_Character);
+	
+	if(is_initiated_by_character){
 		spawner_action = spawner.action;
-		image_xscale *= initiator.image_xscale;
 		meter_gain = (damage/2)*meter_gain_multiplier;
 		initiator.can_cancel = is_cancelable;
 	
@@ -88,6 +87,7 @@ initiate = function(initiator){
 	audio_play_sound(swing_sound, 0, false);
 }
 
+// Projectile only
 collide = function(){
 	// What happens when you hit the wall?
 }

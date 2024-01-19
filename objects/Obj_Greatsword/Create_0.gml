@@ -17,16 +17,16 @@ crouch_block_spr = Spr_Greatsword_Crouch_Block;
 #endregion
 
 #region Stats
-start_speed = 3;
+start_speed = 2.5;
 max_speed = 5;
-acceleration = 0.15;
-dash_speed = 10;
+acceleration = 0.1;
+dash_speed = 8;
 dash_blink = 0;
 dash_duration = 24;
-dash_grip = 0.5;
+dash_grip = 0.3;
 grip = global.standard_grip;
 air_grip = 0;
-jump_power = 14;
+jump_power = 13;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
 extra_jumps = 1;
@@ -138,9 +138,12 @@ action_trigger = function(){
 	}
 	else if(action == "stomp"){
 		pillar = instance_create_depth(x, y, depth+1, Obj_Greatsword_Pillar);
-		pillar.spawner = self;
+		pillar.index = index;
 		pillar.image_xscale = -image_xscale;
 		pillar.x += pillar_distance*image_xscale;
+		
+		stomp = instance_create_depth(x, y, 0, Obj_Greatsword_Stomp_hitbox);
+		stomp.initiate(self);
 		
 		if(x_hold || y_hold || b_hold){
 			pillar.action_alarm = 90;
@@ -176,17 +179,35 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_F_hitbox);
 		attack.initiate(self);
 		
+		h_velocity = 3*image_xscale;
+		
 		sprite_index = Spr_Greatsword_Earth_F_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "earth_L"){
-		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_L_hitbox);
-		attack.initiate(self);
+		if(multi_hit_action_index == 0){
+			multi_hit_action_index += 1;
+			
+			attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_L_hitbox);
+			attack.initiate(self);
 		
-		sprite_index = Spr_Greatsword_Earth_L_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
+			sprite_index = Spr_Greatsword_Earth_L_recovery;
+			image_index = 0;
+			action_alarm = 8;
+			recover_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(multi_hit_action_index < 5){
+			attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_L_hitbox);
+			attack.initiate(self);
+			
+			if(multi_hit_action_index == 1 || multi_hit_action_index == 3){
+				attack.image_xscale *= -1;
+			}
+			
+			action_alarm = 8;
+			multi_hit_action_index += 1;
+		}
 	}
 	else if(action == "earth_S"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_S_hitbox);
@@ -201,6 +222,8 @@ action_trigger = function(){
 			attack = instance_create_depth(x, y, 0, Obj_Greatsword_Ocean_F_hitbox1);
 			attack.initiate(self);
 		
+			blink_h(12*image_xscale);
+			
 			sprite_index = Spr_Greatsword_Ocean_F_recovery;
 			image_index = 0;
 			recover_alarm = generate_sprite_frames(sprite_index);
@@ -232,8 +255,12 @@ action_trigger = function(){
 	else if(action == "heaven_F"){
 		action = noone;
 		
-		h_velocity = start_speed*1.5*image_xscale;
-		v_velocity = -5;
+		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_F_hitbox);
+		attack.initiate(self);
+		
+		y -= 8;
+		h_velocity = start_speed*2*image_xscale;
+		v_velocity = -jump_power;
 	}
 	else if(action == "heaven_L"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_L_hitbox);
@@ -292,5 +319,8 @@ action_trigger = function(){
 	else if(action == "X2"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_X2_hitbox);
 		attack.initiate(self);
+	}
+	else{
+		action = noone;
 	}
 }

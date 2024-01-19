@@ -13,5 +13,3 @@ h_launch = 3;
 v_launch = -7;
 
 is_launcher = true;
-is_projectile = true;
-projectile_duration = 6;

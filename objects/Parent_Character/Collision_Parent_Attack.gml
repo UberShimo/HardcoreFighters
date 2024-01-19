@@ -58,15 +58,17 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 	#region Get smacked
 	if(hit){
 		HP -= other.damage;
-		meter += other.meter_gain;
-		other.spawner.meter += other.meter_gain;
+		if(other.is_initiated_by_character){
+			meter += other.meter_gain;
+			other.spawner.meter += other.meter_gain;
+		}
 		
 		// Also all first code is calculated in vain if you get launched...
 		// Dont flinch against normal attacks if you are priority struck
 		if(!is_unstoppable && other.hit_stun > 0 && (!priority_struck || other.is_priority)){
 			if(other.is_priority){
 				priority_struck = true;
-				alarm[9] = other.freeze_duration;
+				alarm[9] = other.freeze_duration; // Priority struck alarm
 			}
 			
 			action = "stunned";
@@ -136,8 +138,12 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 	
 	#region Freeze time
 	if(other.freeze_duration > 0){
+		// Shake things up!
 		if(other.shake_amount > shake_amount){
 			shake_amount = other.shake_amount;
+			if(object_exists(Obj_Match_Camera)){
+				Obj_Match_Camera.shake = other.shake_amount/2;
+			}
 		}
 		object_time = other.freeze_amount;
 		time_reset_alarm = other.freeze_duration;

@@ -4,7 +4,7 @@
   "name": "Spr_Greatsword_Pillar_Hitbox",
   "bbox_bottom": 63,
   "bbox_left": 0,
-  "bbox_right": 42,
+  "bbox_right": 47,
   "bbox_top": 16,
   "bboxMode": 0,
   "collisionKind": 4,

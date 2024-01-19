@@ -6,6 +6,7 @@ screen_extra_height = 64;
 camera_x = 0;
 camera_y = 0;
 camera_speed = 16;
+shake = 0;
 
 x_destination = x;
 y_destination = y;

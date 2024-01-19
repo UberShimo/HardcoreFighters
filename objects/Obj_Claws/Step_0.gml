@@ -109,6 +109,12 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
+		else if(half_circle_forward_pressed){
+			action = "penguin";
+			sprite_index = Spr_Claws_Penguin_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
 		else if(down_backward_pressed){
 			action = "24L";
 			sprite_index = Spr_Claws_Skyring_startup;
@@ -174,7 +180,10 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		else if(meter >= 25){
 			action = "X";
 			meter -= 25;
-			action_alarm = 4;
+			
+			sprite_index = Spr_Claws_Teleport_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
 		}
 	}
 	reset_buffers();

@@ -1,5 +1,5 @@
 event_inherited();
 
-spawner = noone;
+index = -1;
 action_alarm = 12;
 destroy_alarm = 0;

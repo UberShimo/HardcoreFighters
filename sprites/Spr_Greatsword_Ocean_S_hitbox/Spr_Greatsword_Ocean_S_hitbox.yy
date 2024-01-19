@@ -2,7 +2,7 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "Spr_Greatsword_Ocean_S_hitbox",
-  "bbox_bottom": 163,
+  "bbox_bottom": 159,
   "bbox_left": 118,
   "bbox_right": 224,
   "bbox_top": 129,

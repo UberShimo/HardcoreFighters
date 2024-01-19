@@ -20,11 +20,11 @@ crouch_block_spr = Spr_Bow_Crouch_Block;
 start_speed = 4;
 max_speed = 9;
 acceleration = 0.05;
-dash_speed = 12;
+dash_speed = 10;
 dash_lift = -4;
 dash_blink = 0;
 dash_duration = 24;
-dash_grip = 1;
+dash_grip = 0.5;
 grip = global.standard_grip;
 air_grip = 0;
 jump_power = 12;
@@ -252,5 +252,8 @@ action_trigger = function(){
 		sprite_index = Spr_Bow_ULTRA_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else{
+		action = noone;
 	}
 }

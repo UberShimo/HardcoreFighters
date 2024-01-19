@@ -34,9 +34,6 @@
     "name": "Spr_Greatsword_Pillar_Hitbox",
     "path": "sprites/Spr_Greatsword_Pillar_Hitbox/Spr_Greatsword_Pillar_Hitbox.yy",
   },
-  "spriteMaskId": {
-    "name": "Spr_Greatsword_8F_hitbox",
-    "path": "sprites/Spr_Greatsword_8F_hitbox/Spr_Greatsword_8F_hitbox.yy",
-  },
+  "spriteMaskId": null,
   "visible": false,
 }

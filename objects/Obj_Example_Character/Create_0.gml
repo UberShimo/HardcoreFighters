@@ -126,7 +126,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "426S"){
+	else if(action == "High"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_High_hitbox);
 		attack.initiate(self);
 		
@@ -134,7 +134,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "624S"){
+	else if(action == "Sweep"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_Sweep_hitbox);
 		attack.initiate(self);
 		
@@ -144,12 +144,15 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Meter moves
-	else if(action == "426X"){
+	else if(action == "ULTRA"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox);
 		attack.initiate(self);
 		
 		sprite_index = Spr_Batman_ULTRA_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else{
+		action = noone;
 	}
 }

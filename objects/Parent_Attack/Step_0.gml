@@ -50,10 +50,10 @@ else if(active_frames > 0){
 		instance_destroy();
 	}
 	
-	if(spawner != noone){
-		if(spawner.action != spawner_action
-		|| spawner.sprite_index == spawner.land_spr){
-			instance_destroy();
-		}
+	// Spawner is a character?
+	if(object_is_ancestor(spawner.object_index, Parent_Character)
+	&& (spawner.action != spawner_action
+	|| spawner.sprite_index == spawner.land_spr)){
+		instance_destroy();
 	}
 }

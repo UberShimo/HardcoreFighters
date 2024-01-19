@@ -15,6 +15,8 @@
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"1d010828-d365-47a8-aa0c-2c8189d1cbe9",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"2f4ec3a0-dc24-4f1b-9d57-7c6b2542544f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"a04a8a37-db5c-4753-8a6f-be3a40e1a847",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"3594220c-5705-4566-9796-1a8f3f4f51ed",},
   ],
   "gridX": 32,
   "gridY": 32,
@@ -45,7 +47,7 @@
     "events": {"resourceType":"KeyframeStore<MessageEventKeyframe>","resourceVersion":"1.0","Keyframes":[],},
     "eventStubScript": null,
     "eventToFunction": {},
-    "length": 2.0,
+    "length": 4.0,
     "lockOrigin": false,
     "moments": {"resourceType":"KeyframeStore<MomentsEventKeyframe>","resourceVersion":"1.0","Keyframes":[],},
     "playback": 1,
@@ -58,6 +60,8 @@
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"1d010828-d365-47a8-aa0c-2c8189d1cbe9","path":"sprites/Spr_Greatsword_Heaven_L_startup/Spr_Greatsword_Heaven_L_startup.yy",},},},"Disabled":false,"id":"04ad79f7-5657-473d-8513-3f2e6c588ee8","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"2f4ec3a0-dc24-4f1b-9d57-7c6b2542544f","path":"sprites/Spr_Greatsword_Heaven_L_startup/Spr_Greatsword_Heaven_L_startup.yy",},},},"Disabled":false,"id":"681cf773-8dc7-4847-84d7-744beaafd0ca","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"a04a8a37-db5c-4753-8a6f-be3a40e1a847","path":"sprites/Spr_Greatsword_Heaven_L_startup/Spr_Greatsword_Heaven_L_startup.yy",},},},"Disabled":false,"id":"addf9c13-601c-4795-b742-c50b19935783","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"3594220c-5705-4566-9796-1a8f3f4f51ed","path":"sprites/Spr_Greatsword_Heaven_L_startup/Spr_Greatsword_Heaven_L_startup.yy",},},},"Disabled":false,"id":"b06ffeb9-afad-4d16-9096-8598213e4d9f","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

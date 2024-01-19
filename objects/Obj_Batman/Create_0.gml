@@ -175,6 +175,7 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_Sweep_hitbox);
 		attack.initiate(self);
 		
+		h_velocity = -6*image_xscale;
 		sprite_index = Spr_Batman_Sweep_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -201,5 +202,8 @@ action_trigger = function(){
 		sprite_index = Spr_Batman_ULTRA_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else{
+		action = noone;
 	}
 }
