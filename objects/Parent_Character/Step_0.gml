@@ -1,5 +1,6 @@
 event_inherited();
 
+effect_counter += logic_time;
 ground_check = (character_height/2)+1;// +1 couse it works ok?
 
 #region alarms  V-----V
@@ -113,7 +114,7 @@ if(action == noone && grounded && !is_blocking){
 			h_velocity += (grip+acceleration)*image_xscale*logic_time;
 		}
 		// Gain meter by moving forward
-		meter += 10/60; // 10 meter / second
+		meter += 10/60*logic_time; // 10 meter / second
 	}
 	// Backward
 	else if(backward_hold){
@@ -432,7 +433,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 	}
 }
 // Force dash
-if(lb_pressed && rb_pressed && meter >= 25){
+if(action == "stunned" && lb_pressed && rb_pressed && meter >= 25){
 	read_input();
 	reset_buffers();
 	meter -= 25;
@@ -479,15 +480,10 @@ if(meter > max_meter){
 #endregion
 
 // Fully charged
-if(meter == 100){
-	meter_effect_counter += logic_time;
-	
-	if(meter_effect_counter >= 1){
-		meter_effect_counter = 0;
-		eff = instance_create_depth(x, y, 1, Eff_Spark);
-		eff.image_blend = c_lime;
-		eff.image_xscale *= random_range(1, 2);
-	}
+if(meter == 100 && effect_counter >= 1){
+	eff = instance_create_depth(x, y, 1, Eff_Spark);
+	eff.image_blend = c_lime;
+	eff.image_xscale *= random_range(1, 2);
 }
 
 }

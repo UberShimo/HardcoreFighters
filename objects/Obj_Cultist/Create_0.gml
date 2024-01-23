@@ -17,9 +17,9 @@ crouch_block_spr = Spr_Cultist_Crouch_Block;
 #endregion
 
 #region Stats
-start_speed = 2;
+start_speed = 3;
 max_speed = 5;
-acceleration = 0.3;
+acceleration = 0.1;
 dash_speed = 0;
 dash_blink = 96;
 dash_duration = 32;
@@ -48,6 +48,8 @@ diamond = instance_create_depth(x, y, depth-1, Obj_Cultist_Diamond);
 diamond.spawner = self;
 shadow = instance_create_depth(x, y, depth-1, Obj_Cultist_Shadow);
 shadow.spawner = self;
+is_slowing_down_time = false;
+slow_amount = 0.25; // RB slowdown power. % based
 
 action_trigger = function(){
 	// Normal moves
@@ -87,47 +89,37 @@ action_trigger = function(){
 		attack = instance_create_depth(x+32*image_xscale, y, 0, Obj_Cultist_8S_hitbox);
 		attack.initiate(self);
 		
+		h_velocity = 0;
+		v_velocity = -6;
+		
 		sprite_index = Spr_Cultist_8S_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "2S"){
-		if(b_hold){
-			action = "Plant Mine";
-			sprite_index = Spr_Cultist_Mine_startup;
-			image_index = 0;
-			action_alarm = generate_sprite_frames(sprite_index);
-		}
-		else{
-			attack = instance_create_depth(x+48, y, 0, Obj_Cultist_Mine_hitbox);
-			attack.initiate(self);
-		
-			sprite_index = Spr_Cultist_2S_recovery;
-			image_index = 0;
-			recover_alarm = generate_sprite_frames(sprite_index);
-		}
-	}
-	else if(action == "5S"){
-		attack = instance_create_depth(triangle.x, triangle.y, 0, Obj_Cultist_Triangle_hitbox);
+		attack = instance_create_depth(x+32*image_xscale, y, 0, Obj_Cultist_2S_hitbox);
 		attack.initiate(self);
 		
-		instance_destroy(triangle);
-		triangle = noone;
+		sprite_index = Spr_Cultist_2S_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "5S"){
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_5S_hitbox);
+		attack.initiate(self);
 		
 		sprite_index = Spr_Cultist_5S_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "Circle Implosion"){
-		attack = instance_create_depth(circle.x, circle.y, 0, Obj_Cultist_Circle_Implosion_hitbox);
-		attack.initiate(self);
+	else if(action == "Circle Teleport"){
+		x = circle.x;
+		y = circle.y;
 		instance_destroy(circle);
 		circle = noone;
 		
-		sprite_index = Spr_Cultist_Circleimplode_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
+		action = noone;
 	}
 	else if(action == "Circle Pullback"){
 		attack = instance_create_depth(circle.x, circle.y, 0, Obj_Cultist_Circle_Pullback_hitbox);
@@ -143,7 +135,7 @@ action_trigger = function(){
 		eff.image_xscale = scale;
 		eff.image_angle = dir;
 		
-		sprite_index = Spr_Cultist_Circleimplode_recovery;
+		sprite_index = Spr_Cultist_Circlepull_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
@@ -152,8 +144,10 @@ action_trigger = function(){
 			instance_destroy(circle);
 		}
 		circle = instance_create_depth(x, y, depth-1, Obj_Cultist_Circle);
+		circle.initiate(self);
 		
-		h_velocity = 8*image_xscale;
+		h_velocity = 10*image_xscale;
+		air_grip = 0.5;
 		
 		sprite_index = Spr_Cultist_Circledash_Forward_recovery;
 		image_index = 0;
@@ -164,8 +158,10 @@ action_trigger = function(){
 			instance_destroy(circle);
 		}
 		circle = instance_create_depth(x, y, depth-1, Obj_Cultist_Circle);
+		circle.initiate(self);
 		
-		h_velocity = -8*image_xscale;
+		h_velocity = -10*image_xscale;
+		air_grip = 0.5;
 		
 		sprite_index = Spr_Cultist_Circledash_Backward_recovery;
 		image_index = 0;
@@ -209,6 +205,11 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
+	else if(action == "Heal"){
+		sprite_index = Spr_Cultist_Heal;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
 	else if(action == "High"){
 		attack = instance_create_depth(x, y, 0, Obj_Cultist_High_hitbox);
 		attack.initiate(self);
@@ -228,12 +229,7 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "ULTRA"){
-		attack = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox);
-		attack.initiate(self);
-		
-		sprite_index = Spr_Batman_ULTRA_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
+		action = noone;
 	}
 	else{
 		action = noone;

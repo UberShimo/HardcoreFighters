@@ -2,7 +2,6 @@ event_inherited();
 
 depth = -1;
 
-index = -1;
 controller_index = -1;
 is_controllable = false;
 is_respawning = false;
@@ -97,8 +96,6 @@ original_weight = weight;
 #endregion
 
 #region Physics values
-h_velocity = 0;
-v_velocity = 0;
 wall_bounce_limit = 4;
 ground_bounce_limit = 10;
 grounded = true;
@@ -112,7 +109,7 @@ hitbox_list = ds_list_create();
 cancelable_recovery_frames = 24;
 closest_enemy = self;
 multi_hit_action_index = 0; // When one move does many attacks this variable keeps track on what attack you are on
-meter_effect_counter = 0; // Fixes so that you spawn less effects when time goes slower
+effect_counter = 0; // Fixes so that you spawn less effects when time goes slower
 
 // Alarms
 action_alarm = 0;

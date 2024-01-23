@@ -151,6 +151,7 @@ action_trigger = function(){
 		sprite_index = Spr_Batman_ULTRA_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
+		Obj_Match_Manager.global_time_reset_alarm = action_alarm*4;
 	}
 	else{
 		action = noone;

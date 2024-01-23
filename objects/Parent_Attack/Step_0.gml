@@ -23,8 +23,7 @@ if(is_projectile){
 		}
 	}
 	else{
-		x += h_velocity*logic_time;
-		y += v_velocity*logic_time;
+		move_step();
 	}
 	v_velocity += weight*logic_time;
 	

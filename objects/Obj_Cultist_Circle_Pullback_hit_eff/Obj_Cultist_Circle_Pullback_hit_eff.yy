@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_Cultist_Circle_Pullback_hit_eff",
-    "path": "sprites/Spr_Cultist_Circle_Pullback_hit_eff/Spr_Cultist_Circle_Pullback_hit_eff.yy",
+    "name": "Spr_Cultist_Circle_Pulled_hit_eff",
+    "path": "sprites/Spr_Cultist_Circle_Pulled_hit_eff/Spr_Cultist_Circle_Pulled_hit_eff.yy",
   },
   "spriteMaskId": null,
   "visible": true,

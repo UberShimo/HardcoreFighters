@@ -26,11 +26,11 @@ if(time_to_bite_buffer && action == noone){
 }
 
 // Movement
-if(spawner != noone){
-	if(spawner.forward_hold){
+if(spawner != noone && action == noone){
+	if(spawner.forward_hold && !place_meeting(x+move_speed*spawner.image_xscale*logic_time, y, Parent_Collision)){
 		x += move_speed*spawner.image_xscale*logic_time;
 	}
-	else if(spawner.backward_hold){
+	else if(spawner.backward_hold && !place_meeting(x-move_speed*spawner.image_xscale*logic_time, y, Parent_Collision)){
 		x -= move_speed*spawner.image_xscale*logic_time;
 	}
 }

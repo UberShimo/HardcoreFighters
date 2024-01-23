@@ -1,6 +1,5 @@
 event_inherited();
 
-index = -1;
 spawner = noone;
 spawner_action = noone;
 time_reset_alarm = 0; // Time alarm
@@ -24,8 +23,6 @@ hit_sound = Snd_Hit1;
 meter_gain = 0;
 meter_gain_multiplier = 1; // % based
 penetration = 0; // % based, 1 = unblockable
-h_velocity = 0;
-v_velocity = 0;
 weight = 0;
 active_frames = 8;
 projectile_duration = 0; // Projectile dissapears after those frames
@@ -71,17 +68,17 @@ initiate = function(initiator){
 			eff = instance_create_depth(x, y, 1, Eff_Cancel);
 			eff.initiate(initiator);
 		}
-	
-		if(effect != Nothing){
-			eff = instance_create_depth(x, y, depth, effect);
-			eff.image_xscale = image_xscale;
-		}
 	}
 	
 	if(global.is_debugging){
 		visible = true;
 		image_alpha = 0.5;
 		depth = -5;
+	}
+	
+	if(effect != Nothing){
+		eff = instance_create_depth(x, y, depth, effect);
+		eff.image_xscale = image_xscale;
 	}
 	
 	audio_play_sound(swing_sound, 0, false);

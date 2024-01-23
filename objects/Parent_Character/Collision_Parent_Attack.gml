@@ -6,7 +6,7 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 	#region Check if you got hit
 	hit = false;
 	
-	if(!is_blocking || other.penetration = 1){
+	if(!is_blocking || other.penetration >= 1){
 		hit = true;
 	}
 	else if(is_blocking){
@@ -132,7 +132,9 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 		action_alarm = 0;
 		h_velocity = other.block_push*other.image_xscale;
 		
-		other.spawner.meter += other.meter_gain;
+		if(other.is_initiated_by_character){
+			other.spawner.meter += other.meter_gain;
+		}
 	}
 	#endregion
 	

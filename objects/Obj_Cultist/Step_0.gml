@@ -21,27 +21,41 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	
 	if(x_pressed){
 		if(half_circle_forward_pressed && circle != noone){
-			action = "Circle Implosion";
-			circle.sprite_index = Spr_Cultist_Circle_Implosion_startup
-			sprite_index = Spr_Cultist_Circleimplode_startup;
-			image_index = 0;
-			action_alarm = generate_sprite_frames(sprite_index);
+			if(circle.implode_alarm == 0){
+				action = "Circle Teleport";
+			
+				sprite_index = Spr_Cultist_Circlepull_startup;
+				image_index = 0;
+				action_alarm = generate_sprite_frames(sprite_index);
+			}
 		}
 		else if(half_circle_backward_pressed && circle != noone){
-			action = "Circle Pullback";
-			circle.sprite_index = Spr_Cultist_Circle_Pullback_startup
-			sprite_index = Spr_Cultist_Circleimplode_startup;
-			image_index = 0;
-			action_alarm = generate_sprite_frames(sprite_index);
+			if(circle.implode_alarm == 0){
+				action = "Circle Pullback";
+			
+				sprite_index = Spr_Cultist_Circlepull_startup;
+				image_index = 0;
+				action_alarm = generate_sprite_frames(sprite_index);
+			}
 		}
 		else if(down_forward_pressed){
 			action = "Circle Dash Forward";
+			
+			h_velocity = 0;
+			v_velocity = 0;
+			weight = 0;
+			
 			sprite_index = Spr_Cultist_Circledash_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_backward_pressed){
 			action = "Circle Dash Backward";
+			
+			h_velocity = 0;
+			v_velocity = 0;
+			weight = 0;
+			
 			sprite_index = Spr_Cultist_Circledash_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -104,7 +118,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 	}
 	else if(b_pressed){
-		if(forward_down_pressed){
+		if(down_forward_pressed){
 			shadow.time_to_bite_buffer = buffer_duration;
 		}
 		else if(!grounded){
@@ -125,6 +139,12 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
+		else if(forward_down_pressed){
+			action = "Plant Mine";
+			sprite_index = Spr_Cultist_Mine_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
 		else if(down_hold){
 			action = "2S";
 			sprite_index = Spr_Cultist_2S_startup;
@@ -132,24 +152,26 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else{
-			triangle = instance_create_depth(x, y, depth-1, Obj_Cultist_Triangle);
-			triangle.image_xscale = image_xscale;
-			triangle.spawner = self;
-			
-			action = "Send";
-			sprite_index = Spr_Cultist_5S_send;
+			action = "5S";
+			sprite_index = Spr_Cultist_5S_startup;
 			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
 		}
 	}
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
 			action = "ULTRA";
 			meter -= 100;
-			sprite_index = Spr_Batman_ULTRA_startup;
+			sprite_index = Spr_Cultist_ULTRA_startup;
 			image_index = 0;
 			global.game_time = 0.25;
 			action_alarm = generate_sprite_frames(sprite_index);
-			alarm[10] = action_alarm*4;
+			Obj_Match_Manager.global_time_reset_alarm = action_alarm*4;
+			
+			spawner = instance_create_depth(x, y-96, 0, Obj_Zombie_Spawner);
+			spawner.index = index;
+			spawner.zombie_color = player_color;
+			spawner.character_to_spawn = closest_enemy.object_index;
 		}
 	}
 	reset_buffers();
@@ -176,11 +198,29 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 }
 
-// Stop send Triangle
-if(action == "Send" && !b_hold){
-	action = "5S";
-	triangle.h_velocity = 0;
-	sprite_index = Spr_Cultist_5S_startup;
-	image_index = 0;
-	action_alarm = generate_sprite_frames(sprite_index);
+// Heal logic
+if(action == "Heal"){
+	if(HP < max_HP){
+		HP += logic_time/2;
+	}
+	else{
+		HP = max_HP;
+	}
+}
+
+// Time slowdown logic
+if(is_slowing_down_time){
+	if(meter >= logic_time && rb_hold){
+		meter -= logic_time;
+	}
+	else{
+		is_slowing_down_time = false;
+		if(Obj_Match_Manager.global_time_reset_alarm < 1){
+			Obj_Match_Manager.global_time_reset_alarm = 1;
+		}
+	}
+}
+else if(rb_hold && meter >= logic_time && global.game_time > slow_amount){
+	is_slowing_down_time = true;
+	global.game_time = slow_amount;
 }

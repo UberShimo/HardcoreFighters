@@ -195,7 +195,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "426X"){
+	else if(action == "ULTRA"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox);
 		attack.initiate(self);
 		

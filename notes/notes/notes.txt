@@ -1,9 +1,9 @@
 TODO{
-	Add all 8 start characters
 	Rename actions like "426S" to "high" so it is more humane. "This Is Standard Naming"
 	Make some attacks into hit_effect instead.
 	Check all attacks initiators and see so it works correctly.
 	Make all hitboxes have correct startup/recovery info.
+	Fix cpu behaviours
 	Respawn works bad. You can fly like hell. Hit opponent. Shitty stuff!
 	Fix character sprite size so it matches the size of the actual sprites. Then fix collision boxes ofc.
 	Fix actual menus
@@ -11,6 +11,8 @@ TODO{
 	Add sound n music
 	Make cool death effect/scene
 	Make game look sexy, balanced and fun
+	
+	Move h_velocity/v_velocity logic to parent time?
 	
 	Push :: Execution Error - Variable Index [8] out of range [8] - -1.players(100244,8)
  at gml_Script_anon_gml_Object_Obj_Match_Manager_Create_0_159_gml_Object_Obj_Match_Manager_Create_0 (line 18) - players[j] = players[j+1];
@@ -96,7 +98,7 @@ Katana{
 }
 
 Claws{
-	
+	X = Go back 2 sec in time instead?
 }
 
 
@@ -113,30 +115,9 @@ Great sword{
 }
 
 Boom hand{
-	Make roars do something.
-	Make 5S chargable.
+	
 }
 
 Dark ritual mage with a triangle{
-	Slower dash but it is a teleport.
 	
-	Mine explodes on collision. Meaning you can dash through it.
-	
-	Has timed AoEs projectiled sprays and all kind of random shit.
-	
-	v>F = Create the circle. And dash forward. Cancelable.
-	v<F = Create the circle. And dash backwards. Cancelable.
-	<v>F = Circle implodes. Final.
-	>v<F = Pull the circle in a slim line dealing good dmg and destroys the circle. Final.
-	v>L = Slow moving star slightly upward that gravitate down. Explodes. Final.
-	<v>L = Slow moving star straight forward. Explodes. Final.
-	<vL = Slow moving star forward that gravitate up. Final.
-	
-	Has a burning shadow on ground that keeps on moving if you crouch. It deals small DoT
-	>vS = Shadow bite upward.
-	Shadow bite yourself makes it eat you and heal you a little while also reseting you completely.
-	Shadow bite mine makes it explode BIG.
-	
-	X = Time slowdown field. Moving sloooowly forward. Speeds up your projectiles.
-	<v>X = Summon a copy of enemy that loose HP slowly.
 }

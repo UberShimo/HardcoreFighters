@@ -17,7 +17,7 @@ crouch_block_spr = Spr_Baller_Crouch_Block;
 #endregion
 
 #region Stats
-start_speed = 3;
+start_speed = 3.5;
 max_speed = 5;
 acceleration = 0.2;
 dash_speed = 10;
@@ -26,7 +26,7 @@ dash_duration = 24;
 dash_grip = 1;
 grip = global.standard_grip;
 air_grip = 0;
-jump_power = 12;
+jump_power = 11;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
 extra_jumps = 1;

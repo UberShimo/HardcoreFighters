@@ -17,8 +17,8 @@ crouch_block_spr = Spr_Greatsword_Crouch_Block;
 #endregion
 
 #region Stats
-start_speed = 2.5;
-max_speed = 5;
+start_speed = 2;
+max_speed = 4;
 acceleration = 0.1;
 dash_speed = 8;
 dash_blink = 0;

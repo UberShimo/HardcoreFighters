@@ -2,7 +2,7 @@ event_inherited();
 
 if(spawner != noone){
 	// Distance logic
-	if(distance_to_point(spawner.x, spawner.y) > 16){
+	if(distance_to_point(spawner.x, spawner.y) > distance_range){
 		dir = point_direction(x, y, spawner.x, spawner.y);
 		acc = acceleration;
 		

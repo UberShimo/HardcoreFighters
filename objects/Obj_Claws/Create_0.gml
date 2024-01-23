@@ -245,7 +245,7 @@ action_trigger = function(){
 		sprite_index = stand_spr;
 		image_index = 0;
 		recover_alarm = 1;
-		alarm[10] = 240; // Time reset alarm
+		Obj_Match_Manager.global_time_reset_alarm = 240;
 	}
 	else if(action == "X"){
 		action = noone;

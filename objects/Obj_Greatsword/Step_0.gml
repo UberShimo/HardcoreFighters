@@ -154,7 +154,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			global.game_time = 0.25;
 			action_alarm = generate_sprite_frames(sprite_index);
-			alarm[10] = action_alarm*4;
+			Obj_Match_Manager.global_time_reset_alarm = action_alarm*4;
 			multi_hit_action_index = 0;
 		}
 		else{

@@ -26,7 +26,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		else if(half_circle_forward_pressed){
+		else if(half_circle_forward_pressed && roars < max_roars){
 			action = "Roar";
 			sprite_index = Spr_Boomhand_Roar_startup;
 			image_index = 0;
@@ -121,13 +121,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(down_hold){
 			action = "2S";
-			burrow_teleport = 0;
 			sprite_index = Spr_Boomhand_2S_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else{
 			action = "5S";
+			hook_charge = 0;
 			sprite_index = Spr_Boomhand_5S_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -141,7 +141,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			global.game_time = 0.25;
 			action_alarm = generate_sprite_frames(sprite_index);
-			alarm[10] = action_alarm*4;
+			Obj_Match_Manager.global_time_reset_alarm = action_alarm*4;
 		}
 	}
 	reset_buffers();
@@ -168,6 +168,19 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 }
 
+if(action == "Hook Charge"){
+	// Charged enough
+	if(!b_hold || hook_charge >= 1){
+		action = "5S";
+		action_alarm = 1;
+	}
+	// Keep charging
+	else{
+		hook_charge += logic_time/max_charge_duration;
+		shake_amount += logic_time/15;
+	}
+}
+
 // Smoke logic
 if(rb_hold && meter >= 2 && smoke_cd <= 0){
 	instance_create_depth(x, y, depth-10, Obj_Boomhand_Smoke);
@@ -176,4 +189,17 @@ if(rb_hold && meter >= 2 && smoke_cd <= 0){
 }
 if(smoke_cd > 0){
 	smoke_cd -= logic_time;
+}
+
+// Roar effect
+if(roars > 0 && effect_counter >= 1){
+	repeat(roars){
+		x_spawn = x+random_range(-character_width/2, character_width/2);
+		y_spawn = y+random_range(-character_height/2, character_height/2);
+		eff = instance_create_depth(x_spawn, y_spawn, depth-1, Eff_Pixel);
+		eff.image_blend = c_orange;
+		eff.image_xscale = roars/2;
+		eff.image_yscale = roars/2;
+		eff.v_velocity = -0.25;
+	}
 }

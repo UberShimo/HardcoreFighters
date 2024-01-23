@@ -117,13 +117,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
-			action = "426X";
+			action = "ULTRA";
 			meter -= 100;
 			sprite_index = Spr_Batman_ULTRA_startup;
 			image_index = 0;
 			global.game_time = 0.25;
 			action_alarm = generate_sprite_frames(sprite_index);
-			alarm[10] = action_alarm*4;
+			Obj_Match_Manager.global_time_reset_alarm = action_alarm*4;
 			
 			audio_play_sound(Snd_AP1, 0, false);
 		}
