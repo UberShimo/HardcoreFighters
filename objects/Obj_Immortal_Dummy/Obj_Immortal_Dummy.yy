@@ -33,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_Batman_Stand",
-    "path": "sprites/Spr_Batman_Stand/Spr_Batman_Stand.yy",
+    "name": "Spr_Dojo_Stand",
+    "path": "sprites/Spr_Dojo_Stand/Spr_Dojo_Stand.yy",
   },
   "spriteMaskId": null,
   "visible": true,

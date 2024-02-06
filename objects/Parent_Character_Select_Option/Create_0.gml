@@ -1,3 +1,3 @@
-clicked = function(){
+clicked = function(clicker){
 	// something_happens
 }

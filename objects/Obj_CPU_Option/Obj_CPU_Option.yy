@@ -13,7 +13,10 @@
     "name": "Character Select",
     "path": "folders/Objects/Character Select.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "Parent_Character_Select_Option",
+    "path": "objects/Parent_Character_Select_Option/Parent_Character_Select_Option.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

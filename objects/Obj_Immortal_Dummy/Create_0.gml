@@ -1,23 +1,23 @@
 event_inherited();
 
 #region Sprites
-stand_spr = Spr_Batman_Stand;
-forward_spr = Spr_Batman_Forward;
-backward_spr = Spr_Batman_Backward;
-dash_forward_spr = Spr_Batman_Dash_Forward;
-dash_backward_spr = Spr_Batman_Dash_Backward;
-crouch_spr = Spr_Batman_Crouch;
-ascend_spr = Spr_Batman_Ascend;
-descend_spr = Spr_Batman_Descend;
-stunned_spr = Spr_Batman_Stunned;
-launched_spr = Spr_Batman_Launched;
-land_spr = Spr_Batman_Land;
-block_spr = Spr_Batman_Block;
-crouch_block_spr = Spr_Batman_Crouch_Block;
+stand_spr = Spr_Dojo_Stand;
+forward_spr = Spr_Dojo_Forward;
+backward_spr = Spr_Dojo_Backward;
+dash_forward_spr = Spr_Dojo_Dash_Forward;
+dash_backward_spr = Spr_Dojo_Dash_Backward;
+crouch_spr = Spr_Dojo_Crouch;
+ascend_spr = Spr_Dojo_Ascend;
+descend_spr = Spr_Dojo_Descend;
+stunned_spr = Spr_Dojo_Stunned;
+launched_spr = Spr_Dojo_Launched;
+land_spr = Spr_Dojo_Land;
+block_spr = Spr_Dojo_Block;
+crouch_block_spr = Spr_Dojo_Crouch_Block;
 #endregion
 
 #region Stats
-HP = 1000;
+HP = 100;
 max_HP = HP;
 #endregion
 

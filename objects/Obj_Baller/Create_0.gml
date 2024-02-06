@@ -163,14 +163,30 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "pull"){
+	else if(action == "High"){
+		attack = instance_create_depth(x, y, 0, Obj_Baller_High_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Baller_High_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Sweep"){
+		attack = instance_create_depth(x, y, 0, Obj_Baller_Sweep_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Baller_Sweep_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Pull"){
 		ball.is_returning = true;
 		
 		sprite_index = Spr_Baller_Ballpull_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "ballsmash"){
+	else if(action == "Ballsmash"){
 		attack = instance_create_depth(x, y, 0, Obj_Baller_Ballsmash_hitbox);
 		attack.initiate(self);
 		
@@ -180,7 +196,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "balldash"){
+	else if(action == "Balldash"){
 		// Face toward ball
 		if(x > ball.x){
 			image_xscale = -1;
@@ -196,24 +212,8 @@ action_trigger = function(){
 		sprite_index = Spr_Baller_Balldash_recovery;
 		image_index = 0;
 	}
-	else if(action == "426S"){
-		attack = instance_create_depth(x, y, 0, Obj_Baller_High_hitbox);
-		attack.initiate(self);
-		
-		sprite_index = Spr_Baller_High_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "624S"){
-		attack = instance_create_depth(x, y, 0, Obj_Baller_Sweep_hitbox);
-		attack.initiate(self);
-		
-		sprite_index = Spr_Baller_Sweep_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
 	// Meter moves
-	else if(action == "426X"){
+	else if(action == "ULTRA"){
 		ball.weight = ball.original_weight;
 		ball.v_velocity = 12;
 		ball.armageddon_is_coming = true;

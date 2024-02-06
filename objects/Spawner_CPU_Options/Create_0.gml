@@ -1,4 +1,4 @@
-spawn_amount = 8;
+spawn_amount = global.max_players;
 spawn_width = sprite_get_width(sprite_index);
 
 for(i = 0; i < spawn_amount; i++){

@@ -1,8 +1,5 @@
 event_inherited();
 
-startup = generate_sprite_frames(Spr_Batman_8F_startup); // 100% informational not used in logic
-recovery = generate_sprite_frames(Spr_Batman_8F_recovery); // 100% informational not used in logic
-
 damage = 8;
 hit_stun = 20;
 block_stun = 12;

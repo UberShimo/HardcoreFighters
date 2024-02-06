@@ -126,7 +126,27 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "26F"){
+	else if(action == "High"){
+		attack = instance_create_depth(x, y, 0, Obj_Katana_High_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = 6*image_xscale;
+		
+		sprite_index = Spr_Katana_High_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Sweep"){
+		attack = instance_create_depth(x, y, 0, Obj_Katana_Sweep_hitbox);
+		attack.initiate(self);
+		
+		h_velocity += 9*image_xscale;
+		
+		sprite_index = Spr_Katana_Sweep_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Send Clone"){
 		v_velocity = 0;
 		h_velocity = 0;
 		can_cancel = true;
@@ -142,7 +162,7 @@ action_trigger = function(){
 		
 		recover_alarm = dash_duration;
 	}
-	else if(action == "426F"){ // Do a dash...
+	else if(action == "Leave Clone"){ // Do a dash...
 		sprite_index = dash_forward_spr;
 		h_velocity = dash_speed*image_xscale;
 		x += dash_blink*image_xscale;
@@ -172,7 +192,7 @@ action_trigger = function(){
 		weight = original_weight/4;
 		recover_alarm = dash_duration;
 	}
-	else if(action == "426L"){
+	else if(action == "Quickdraw Straight"){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_Quickdraw_hitbox);
 		attack.initiate(self);
 		
@@ -180,7 +200,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "26L"){
+	else if(action == "Quickdraw Up"){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_Quickdraw_UP_hitbox);
 		attack.initiate(self);
 		
@@ -188,31 +208,11 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "42L"){
+	else if(action == "Quickdraw Down"){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_Quickdraw_DOWN_hitbox);
 		attack.initiate(self);
 		
 		sprite_index = Spr_Katana_Quickdraw_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "426S"){
-		attack = instance_create_depth(x, y, 0, Obj_Katana_High_hitbox);
-		attack.initiate(self);
-		
-		h_velocity = 6*image_xscale;
-		
-		sprite_index = Spr_Katana_High_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "624S"){
-		attack = instance_create_depth(x, y, 0, Obj_Katana_Sweep_hitbox);
-		attack.initiate(self);
-		
-		h_velocity += 9*image_xscale;
-		
-		sprite_index = Spr_Katana_Sweep_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
@@ -226,7 +226,7 @@ action_trigger = function(){
 			clone.player_color = player_color;
 			clone.image_xscale = image_xscale;
 			clone.sprite_index = Spr_Katana_Clone_Quickdraw_startup;
-			clone.action = "426L";
+			clone.action = "Quickdraw";
 			clone.action_alarm = 90;
 			clone.life_span = 0;
 			clone.weight = 0;
@@ -234,7 +234,7 @@ action_trigger = function(){
 			
 			recover_alarm = 1;
 	}
-	else if(action == "426X"){
+	else if(action == "ULTRA"){
 		step_distance = 16;
 		steps = 0;
 		attack_spr_width = sprite_get_width(Spr_Katana_ULTRA_hitbox);

@@ -26,7 +26,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	
 	if(x_pressed){
 		if(down_forward_pressed && instance_exists(ring1)){
-			action = "26F";
+			action = "Dive";
 			instance_create_depth(x, y, depth, Eff_Claws_Teleport);
 			weight = 0;
 			x = ring1.x;
@@ -37,7 +37,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(forward_down_pressed && instance_exists(ring1)){
-			action = "62F";
+			action = "Deep Dive";
 			instance_create_depth(x, y, depth, Eff_Claws_Teleport);
 			weight = 0;
 			x = ring1.x;
@@ -54,13 +54,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_backward_pressed){
-			action = "24F";
+			action = "H Ring Spawn";
 			sprite_index = Spr_Claws_Skyring_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_forward_pressed){
-			action = "426F";
+			action = "Claw Flurry";
 			sprite_index = Spr_Claws_Flurry_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -80,7 +80,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(y_pressed){
 		if(down_forward_pressed && instance_exists(ring2)){
-			action = "26L";
+			action = "Dive";
 			instance_create_depth(x, y, depth, Eff_Claws_Teleport);
 			weight = 0;
 			x = ring2.x;
@@ -91,7 +91,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(forward_down_pressed && instance_exists(ring2)){
-			action = "62L";
+			action = "Deep Dive";
 			instance_create_depth(x, y, depth, Eff_Claws_Teleport);
 			weight = 0;
 			x = ring2.x;
@@ -110,13 +110,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_forward_pressed){
-			action = "penguin";
+			action = "Penguin";
 			sprite_index = Spr_Claws_Penguin_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_backward_pressed){
-			action = "24L";
+			action = "V Ring Spawn";
 			sprite_index = Spr_Claws_Skyring_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -142,13 +142,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_forward_pressed){
-			action = "426S";
+			action = "High";
 			sprite_index = Spr_Claws_High_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_backward_pressed){
-			action = "624S";
+			action = "Sweep";
 			sprite_index = Spr_Claws_Sweep_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -169,7 +169,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
-			action = "426X";
+			action = "ULTRA";
 			meter -= 100;
 			shake_amount = 16;
 			global.game_time = 0.5;

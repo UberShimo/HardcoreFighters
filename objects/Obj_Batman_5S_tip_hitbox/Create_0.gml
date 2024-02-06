@@ -1,6 +1,6 @@
 event_inherited();
 
-damage = 16;
+damage = 10;
 hit_stun = 40;
 block_stun = 16;
 hit_push = 16;

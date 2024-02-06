@@ -119,7 +119,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "426S"){
+	else if(action == "High"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_High_hitbox);
 		attack.initiate(self);
 		
@@ -127,7 +127,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "624S"){
+	else if(action == "Sweep"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Sweep_hitbox);
 		attack.initiate(self);
 		
@@ -136,7 +136,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "stomp"){
+	else if(action == "Stomp"){
 		pillar = instance_create_depth(x, y, depth+1, Obj_Greatsword_Pillar);
 		pillar.index = index;
 		pillar.image_xscale = -image_xscale;
@@ -153,29 +153,29 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "earth_start"){
-		action = "earth";
+	else if(action == "Earth Start"){
+		action = "Earth";
 		
 		sprite_index = Spr_Greatsword_Earth_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "ocean_start"){
-		action = "ocean";
+	else if(action == "Ocean Start"){
+		action = "Ocean";
 		
 		sprite_index = Spr_Greatsword_Ocean_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "heaven_start"){
-		action = "heaven";
+	else if(action == "Heaven Start"){
+		action = "Heaven";
 		
 		sprite_index = Spr_Greatsword_Heaven_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Ughhhhh stance actions...
-	else if(action == "earth_F"){
+	else if(action == "Earth F"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_F_hitbox);
 		attack.initiate(self);
 		
@@ -185,7 +185,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "earth_L"){
+	else if(action == "Earth L"){
 		if(multi_hit_action_index == 0){
 			multi_hit_action_index += 1;
 			
@@ -209,7 +209,7 @@ action_trigger = function(){
 			multi_hit_action_index += 1;
 		}
 	}
-	else if(action == "earth_S"){
+	else if(action == "Earth S"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_S_hitbox);
 		attack.initiate(self);
 		
@@ -217,7 +217,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "ocean_F"){
+	else if(action == "Ocean F"){
 		if(multi_hit_action_index == 0){
 			attack = instance_create_depth(x, y, 0, Obj_Greatsword_Ocean_F_hitbox1);
 			attack.initiate(self);
@@ -236,7 +236,7 @@ action_trigger = function(){
 			attack.initiate(self);
 		}
 	}
-	else if(action == "ocean_L"){
+	else if(action == "Ocean L"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Ocean_L_hitbox);
 		attack.initiate(self);
 		
@@ -244,7 +244,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "ocean_S"){
+	else if(action == "Ocean S"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Ocean_S_hitbox);
 		attack.initiate(self);
 		
@@ -252,17 +252,18 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "heaven_F"){
-		action = noone;
-		
+	else if(action == "Heaven F"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_F_hitbox);
 		attack.initiate(self);
 		
-		y -= 8;
-		h_velocity = start_speed*2*image_xscale;
-		v_velocity = -jump_power;
+		blink_h(-16*image_xscale, true);
+		h_velocity = -4*image_xscale;
+		
+		sprite_index = Spr_Greatsword_Heaven_F_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "heaven_L"){
+	else if(action == "Heaven L"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_L_hitbox);
 		attack.initiate(self);
 		
@@ -270,7 +271,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "heaven_S"){
+	else if(action == "Heaven S"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_S_hitbox);
 		attack.initiate(self);
 		
@@ -279,9 +280,9 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Meter moves
-	else if(action == "426X"){
+	else if(action == "ULTRA"){
 		if(multi_hit_action_index < 8){
-			action = "more smash";
+			action = "More Smash";
 			multi_hit_action_index += 1;
 			
 			attack = instance_create_depth(x, y, 0, Obj_Greatsword_ULTRA_hitbox);
@@ -300,8 +301,8 @@ action_trigger = function(){
 			recover_alarm = generate_sprite_frames(sprite_index);
 		}
 	}
-	else if(action == "more smash"){
-		action = "426X";
+	else if(action == "More Smash"){
+		action = "ULTRA";
 		h_velocity = 4*image_xscale;
 		
 		sprite_index = Spr_Greatsword_ULTRA_more_smash;

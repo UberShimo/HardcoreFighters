@@ -132,7 +132,23 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "24F"){
+	else if(action == "High"){
+		attack = instance_create_depth(x, y, 0, Obj_Claws_High_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Claws_High_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Sweep"){
+		attack = instance_create_depth(x, y, 0, Obj_Claws_Sweep_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Claws_Sweep_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "H Ring Spawn"){
 		if(ring1 != noone){
 			instance_destroy(ring1);
 		}
@@ -146,7 +162,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "24L"){
+	else if(action == "V Ring Spawn"){
 		if(ring2 != noone){
 			instance_destroy(ring2);
 		}
@@ -161,7 +177,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "26F" || action == "26L"){
+	else if(action == "Dive"){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_Dive_hitbox);
 		attack.initiate(self);
 		
@@ -173,7 +189,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "62F" || action == "62L"){
+	else if(action == "Deep Dive"){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_Deepdive_hitbox);
 		attack.initiate(self);
 		
@@ -185,7 +201,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action = "426F"){
+	else if(action = "Claw Flurry"){
 		if(multi_hit_action_index == 0){
 			attack = instance_create_depth(x, y, 0, Obj_Claws_Flurry_hitbox);
 			attack.initiate(self);
@@ -210,7 +226,7 @@ action_trigger = function(){
 			multi_hit_action_index += 1;
 		}
 	}
-	else if(action == "penguin"){
+	else if(action == "Penguin"){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_Penguin_hitbox);
 		attack.initiate(self);
 		
@@ -221,24 +237,8 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "426S"){
-		attack = instance_create_depth(x, y, 0, Obj_Claws_High_hitbox);
-		attack.initiate(self);
-		
-		sprite_index = Spr_Claws_High_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "624S"){
-		attack = instance_create_depth(x, y, 0, Obj_Claws_Sweep_hitbox);
-		attack.initiate(self);
-		
-		sprite_index = Spr_Claws_Sweep_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
 	// Meter moves
-	else if(action == "426X"){
+	else if(action == "ULTRA"){
 		is_hypermode = true;
 		shake_amount = 0;
 		
@@ -246,6 +246,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = 1;
 		Obj_Match_Manager.global_time_reset_alarm = 240;
+		alarm[10] = 240;
 	}
 	else if(action == "X"){
 		action = noone;

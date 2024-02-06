@@ -21,11 +21,11 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	
 	if(x_pressed){
 		if(half_circle_forward_pressed){
-			action = "426F";
+			action = "Leave Clone";
 			action_alarm = 1;
 		}
 		else if(down_forward_pressed){
-			action = "26F";
+			action = "Send Clone";
 			action_alarm = 1;
 		}
 		else if(!grounded){
@@ -49,19 +49,19 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(y_pressed){
 		if(half_circle_forward_pressed){
-			action = "426L";
+			action = "Quickdraw Straight";
 			sprite_index = Spr_Katana_Quickdraw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_forward_pressed){
-			action = "26L";
+			action = "Quickdraw Up";
 			sprite_index = Spr_Katana_Quickdraw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(backward_down_pressed){
-			action = "42L";
+			action = "Quickdraw Down";
 			sprite_index = Spr_Katana_Quickdraw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -94,13 +94,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_forward_pressed){
-			action = "426S";
+			action = "High";
 			sprite_index = Spr_Katana_High_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_backward_pressed){
-			action = "624S";
+			action = "Sweep";
 			sprite_index = Spr_Katana_Sweep_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -120,7 +120,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
-			action = "426X";
+			action = "ULTRA";
 			meter -= 100;
 			sprite_index = Spr_Katana_ULTRA_startup;
 			image_index = 0;

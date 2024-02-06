@@ -2,6 +2,7 @@ event_inherited();
 
 startup = generate_sprite_frames(Spr_Claws_Flurry_startup); // 100% informational not used in logic
 recovery = generate_sprite_frames(Spr_Claws_Flurry_recovery); // 100% informational not used in logic
+info = "A 3 hit combo";
 
 damage = 5;
 hit_stun = 16;

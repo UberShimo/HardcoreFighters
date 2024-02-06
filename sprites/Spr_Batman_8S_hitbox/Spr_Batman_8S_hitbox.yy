@@ -4,7 +4,7 @@
   "name": "Spr_Batman_8S_hitbox",
   "bbox_bottom": 75,
   "bbox_left": 50,
-  "bbox_right": 113,
+  "bbox_right": 117,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 4,

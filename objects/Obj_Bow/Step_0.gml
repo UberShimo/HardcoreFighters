@@ -35,13 +35,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_forward_pressed){
-			action = "426F";
+			action = "Boomerang Straight";
 			sprite_index = Spr_Bow_Boomerang_Throw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_forward_pressed){
-			action = "26F";
+			action = "Boomerang Up";
 			sprite_index = Spr_Bow_Boomerang_Throw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -61,14 +61,14 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(y_pressed){
 		if(down_forward_pressed){
-			action = "aim_d";
+			action = "Aim Down";
 			aim_dir = -45;
 			sprite_index = Spr_Bow_Aim_Down_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(forward_down_pressed){
-			action = "aim_u";
+			action = "Aim Up";
 			aim_dir = 45;
 			sprite_index = Spr_Bow_Aim_Up_startup;
 			image_index = 0;
@@ -103,19 +103,19 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_forward_pressed){
-			action = "426S";
+			action = "High";
 			sprite_index = Spr_Bow_High_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_backward_pressed){
-			action = "624S";
+			action = "Sweep";
 			sprite_index = Spr_Bow_Sweep_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_forward_pressed){
-			action = "26S";
+			action = "Back Swing";
 			h_velocity = 10*image_xscale;
 			is_collidable = false;
 			sprite_index = Spr_Bow_Backsmack_startup;
@@ -139,7 +139,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
-			action = "426X";
+			action = "ULTRA";
 			meter -= 100;
 			sprite_index = Spr_Bow_ULTRA_startup;
 			image_index = 0;
@@ -180,43 +180,11 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 }
 
-// Bows air control
-if(!grounded){
-	if(forward_hold){
-		h_velocity += 0.15*image_xscale;
-		wind_eff_counter += logic_time;
-		
-		if(wind_eff_counter >= 1){
-			wind_eff_counter = 0;
-			x_pos = random_range(x-character_width/2, x+character_width/2);
-			y_pos = random_range(y-character_height/2, y+character_height/2);
-			eff = instance_create_depth(x_pos, y_pos, depth-1, Eff_Pixel);
-			eff.h_velocity = 8*image_xscale;
-			eff.image_xscale = 8*image_xscale;
-			eff.image_alpha = 0.25;
-		}
-	}
-	else if(backward_hold){
-		h_velocity -= 0.1*image_xscale;
-		wind_eff_counter += logic_time;
-		
-		if(wind_eff_counter >= 1){
-			wind_eff_counter = 0;
-			x_pos = random_range(x-character_width/2, x+character_width/2);
-			y_pos = random_range(y-character_height/2, y+character_height/2);
-			eff = instance_create_depth(x_pos, y_pos, depth-1, Eff_Pixel);
-			eff.h_velocity = -8*image_xscale;
-			eff.image_xscale = -8*image_xscale;
-			eff.image_alpha = 0.25;
-		}
-	}
-}
-
 // Aim down logic
-if(action == "aim_d" && y_hold){
+if(action == "Aim Down" && y_hold){
 	aim_dir += (45/aim_duration)*logic_time;
 }
 // Aim up logic
-else if(action == "aim_u" && y_hold){
+else if(action == "Aim Up" && y_hold){
 	aim_dir -= (45/aim_duration)*logic_time;
 }

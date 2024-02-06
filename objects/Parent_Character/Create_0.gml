@@ -6,11 +6,12 @@ controller_index = -1;
 is_controllable = false;
 is_respawning = false;
 is_CPU = false;
-surrender_count = 0;
+exit_count = 0;
+exit_count_goal = 180;
 player_color = c_white;
 
 #region Initialize input values / buffers
-buffer_duration = 10;
+buffer_duration = 12;
 
 forward_hold = false;
 backward_hold = false;

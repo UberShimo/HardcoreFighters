@@ -1,7 +1,7 @@
 event_inherited();
 
-startup = generate_sprite_frames(Spr_Batman_8F_startup); // 100% informational not used in logic
-recovery = generate_sprite_frames(Spr_Batman_8F_recovery); // 100% informational not used in logic
+startup = generate_sprite_frames(Spr_Cultist_F_startup); // 100% informational not used in logic
+recovery = generate_sprite_frames(Spr_Cultist_F_recovery); // 100% informational not used in logic
 
 damage = 5;
 hit_stun = 16;
@@ -14,4 +14,4 @@ v_launch = -1;
 
 is_shockwave = true;
 shockwave_power = 6;
-is_sticky = true;
+active_frames = 2;

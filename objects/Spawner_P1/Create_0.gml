@@ -1,4 +1,4 @@
 index = 0;
-player_color = global.p1_color;
+player_color = global.p_colors[index];
 
 event_inherited();

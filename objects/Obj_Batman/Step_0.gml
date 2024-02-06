@@ -27,13 +27,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_forward_pressed){
-			action = "26F";
+			action = "Pitch";
 			sprite_index = Spr_Batman_Pitch_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(forward_down_pressed){
-			action = "62F";
+			action = "Curve Pitch";
 			sprite_index = Spr_Batman_Pitch_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -83,19 +83,19 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_forward_pressed){
-			action = "426S";
+			action = "High";
 			sprite_index = Spr_Batman_High_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_backward_pressed){
-			action = "624S";
+			action = "Sweep";
 			sprite_index = Spr_Batman_Sweep_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_forward_pressed){
-			action = "26S";
+			action = "Headbutt";
 			is_unstoppable = true;
 			sprite_index = Spr_Batman_Headbutt_startup;
 			image_index = 0;

@@ -6,11 +6,11 @@ recovery = generate_sprite_frames(Spr_Batman_Sweep_recovery); // 100% informatio
 damage = 10;
 hit_stun = 32;
 block_stun = 16;
-hit_push = 4;
+hit_push = 6;
 block_push = 4;
 freeze_duration = 4;
 h_launch = 1;
-v_launch = -8;
+v_launch = -6;
 
 is_low = true;
 is_launcher = true;

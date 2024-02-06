@@ -4,7 +4,7 @@
   "name": "Spr_Boomhand_Forward",
   "bbox_bottom": 94,
   "bbox_left": 48,
-  "bbox_right": 72,
+  "bbox_right": 82,
   "bbox_top": 34,
   "bboxMode": 2,
   "collisionKind": 4,

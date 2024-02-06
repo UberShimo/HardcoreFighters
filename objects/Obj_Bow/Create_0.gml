@@ -58,8 +58,6 @@ action_trigger = function(){
 		sprite_index = Spr_Bow_8F_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
-		
-		audio_play_sound(Snd_AP2, 0, false);
 	}
 	else if(action == "2F"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_2F_hitbox);
@@ -137,7 +135,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "426S"){
+	else if(action == "High"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_High_hitbox);
 		attack.initiate(self);
 		
@@ -145,7 +143,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "624S"){
+	else if(action == "Sweep"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_Sweep_hitbox);
 		attack.initiate(self);
 		
@@ -154,7 +152,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "26F"){
+	else if(action == "Boomerang Up"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_Boomerang);
 		attack.initiate(self);
 		attack.h_velocity = 5*image_xscale;
@@ -169,7 +167,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "426F"){
+	else if(action == "Boomerang Straight"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_Boomerang);
 		attack.initiate(self);
 		attack.h_velocity = 6*image_xscale;
@@ -182,7 +180,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "aim_d"){
+	else if(action == "Aim Down"){
 		attack = instance_create_depth(x, y-aim_height, 0, Obj_Bow_Arrow);
 		attack.initiate(self);
 		// Calculate take off
@@ -201,7 +199,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "aim_u"){
+	else if(action == "Aim Up"){
 		attack = instance_create_depth(x, y-aim_height, 0, Obj_Bow_Arrow);
 		attack.initiate(self);
 		// Calculate take off
@@ -221,7 +219,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "26S"){
+	else if(action == "Back Swing"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_Backsmack_hitbox);
 		attack.initiate(self);
 		attack.image_xscale *= -1; // Turn the hitbox aound
@@ -244,7 +242,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "426X"){
+	else if(action == "ULTRA"){
 		attack = instance_create_depth(x, y-aim_height, 0, Obj_Bow_ULTRA_Arrow);
 		attack.initiate(self);
 		attack.h_velocity = attack.max_speed*image_xscale;

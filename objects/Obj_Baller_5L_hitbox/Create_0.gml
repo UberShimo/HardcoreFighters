@@ -1,7 +1,7 @@
 event_inherited();
 
-startup = generate_sprite_frames(Spr_Batman_5L_startup); // 100% informational not used in logic
-recovery = generate_sprite_frames(Spr_Batman_5L_recovery); // 100% informational not used in logic
+startup = generate_sprite_frames(Spr_Baller_5L_startup); // 100% informational not used in logic
+recovery = generate_sprite_frames(Spr_Baller_5L_recovery); // 100% informational not used in logic
 
 damage = 10;
 hit_stun = 24;

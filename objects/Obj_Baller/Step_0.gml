@@ -39,7 +39,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			}
 			// Ball dash
 			else{
-				action = "balldash";
+				action = "Balldash";
 				h_velocity = 0;
 				v_velocity = -4;
 				ball.h_velocity = 0;
@@ -100,7 +100,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		if(!grounded){
 			if(is_holding_ball){
 				if(down_hold){
-					action = "ballsmash";
+					action = "Ballsmash";
 					v_velocity = -3;
 					sprite_index = Spr_Baller_Ballsmash_startup;
 					image_index = 0;
@@ -120,7 +120,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 				}
 				// Pull ball
 				else{
-					action = "pull";
+					action = "Pull";
 					ball.h_velocity = 0;
 					ball.v_velocity = -5;
 					ball.y -= 6;
@@ -131,13 +131,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			}
 		}
 		else if(half_circle_forward_pressed){
-			action = "426S";
+			action = "High";
 			sprite_index = Spr_Baller_High_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(half_circle_backward_pressed){
-			action = "624S";
+			action = "Sweep";
 			sprite_index = Spr_Baller_Sweep_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -162,7 +162,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 				}
 				// Pull ball
 				else{
-					action = "pull";
+					action = "Pull";
 					ball.h_velocity = 0;
 					ball.v_velocity = -5;
 					ball.y -= 6;
@@ -175,7 +175,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	}
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
-			action = "426X";
+			action = "ULTRA";
 			meter -= 100;
 			
 			is_holding_ball = false;
@@ -191,8 +191,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			global.game_time = 0.25;
 			action_alarm = generate_sprite_frames(sprite_index);
 			Obj_Match_Manager.global_time_reset_alarm = action_alarm*4;
-			
-			audio_play_sound(Snd_AP3, 0, false);
 		}
 		else if(meter >= 25 && ball_explosion_cd <= 0){
 			meter -= 25;
@@ -232,7 +230,7 @@ if(ball_explosion_cd >= 0){
 }
 
 // Dash to ball
-if(action == "balldash" && action_alarm <= 0){
+if(action == "Balldash" && action_alarm <= 0){
 	spd = 16;
 	dir = point_direction(x, y, ball.x, ball.y);
 	h_velocity = lengthdir_x(spd, dir);
@@ -260,7 +258,7 @@ else{
 }
 
 // Ballsmash effects ya know
-if(action == "ballsmash"){
+if(action == "Ballsmash"){
 	if(!grounded){
 		if(v_velocity > 8){
 			instance_create_depth(x, y, depth-1, Eff_Baller_Ball);
@@ -274,10 +272,10 @@ if(action == "ballsmash"){
 	}
 	else{
 		instance_create_depth(x, y, depth, Eff_Ball_Land);
-		action = "balland";
+		action = "Balland";
 	}
 }
-else if(action == "balland"){	
+else if(action == "Balland"){	
 	ball.y += 16;
 }
 

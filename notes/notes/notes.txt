@@ -1,18 +1,10 @@
 TODO{
-	Rename actions like "426S" to "high" so it is more humane. "This Is Standard Naming"
-	Make some attacks into hit_effect instead.
-	Check all attacks initiators and see so it works correctly.
-	Make all hitboxes have correct startup/recovery info.
-	Fix cpu behaviours
-	Respawn works bad. You can fly like hell. Hit opponent. Shitty stuff!
-	Fix character sprite size so it matches the size of the actual sprites. Then fix collision boxes ofc.
-	Fix actual menus
 	Fix so you can see character attacks n combos
+	Fix so you can beat Dojo puppet infinitely and get combo highscore.
+	Make so you can pick stages/BGS.
 	Add sound n music
-	Make cool death effect/scene
 	Make game look sexy, balanced and fun
-	
-	Move h_velocity/v_velocity logic to parent time?
+	Make Adventure mode
 	
 	Push :: Execution Error - Variable Index [8] out of range [8] - -1.players(100244,8)
  at gml_Script_anon_gml_Object_Obj_Match_Manager_Create_0_159_gml_Object_Obj_Match_Manager_Create_0 (line 18) - players[j] = players[j+1];
@@ -89,35 +81,37 @@ Agility:	Claws, Baller
 Zoner:		Bow, Mage
 
 Batman{
-	Make 5L, 5S and ULTRA reach longer. It looks stupid atm...
-	ULTRA should only one shot at TIP.
+	
 }
 
 Katana{
-	Clone quickdraw doest exist?
+	
 }
 
 Claws{
 	X = Go back 2 sec in time instead?
 }
 
-
 Baller{
 	
 }
 
-Wind Bow{
+Bow{
 	
 }
 
-Great sword{
-	Heaven_F can jump high if you also press/hold A which is kinda wierd...
+Greatsword{
+	EARTH stance can be perfermed with v<F also making you turn back.
+	Make v<L into HEAVEN stance.
+	Heaven_F should be 3 rolls back making it prett fun when using reversersed!
 }
 
-Boom hand{
+Boomhand{
 	
 }
 
-Dark ritual mage with a triangle{
-	
+Cultist{
+	Some circle_implode bug.
+	Circle pullback doest quite reach yourself looking kinda dumb.
+	Circle teleport could use some cool effects.
 }

@@ -128,7 +128,24 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
-	else if(action == "26F"){
+	else if(action == "High"){
+		attack = instance_create_depth(x, y, 0, Obj_Batman_High_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Batman_High_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Sweep"){
+		attack = instance_create_depth(x, y, 0, Obj_Batman_Sweep_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = -6*image_xscale;
+		sprite_index = Spr_Batman_Sweep_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Pitch"){
 		ball = instance_create_depth(x+(12*image_xscale), y-6, 0, Obj_Batman_Baseball);
 		ball.initiate(self);
 		ball.h_velocity = 1*image_xscale;
@@ -142,7 +159,7 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "62F"){
+	else if(action == "Curve Pitch"){
 		ball = instance_create_depth(x+(12*image_xscale), y-6, 0, Obj_Batman_Baseball);
 		ball.initiate(self);
 		ball.h_velocity = 3*image_xscale;
@@ -154,29 +171,12 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "26S"){
+	else if(action == "Headbutt"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_Headbutt_hitbox);
 		attack.initiate(self);
 		is_unstoppable = false;
 		
 		sprite_index = Spr_Batman_Headbutt_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "426S"){
-		attack = instance_create_depth(x, y, 0, Obj_Batman_High_hitbox);
-		attack.initiate(self);
-		
-		sprite_index = Spr_Batman_High_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "624S"){
-		attack = instance_create_depth(x, y, 0, Obj_Batman_Sweep_hitbox);
-		attack.initiate(self);
-		
-		h_velocity = -6*image_xscale;
-		sprite_index = Spr_Batman_Sweep_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
@@ -198,6 +198,8 @@ action_trigger = function(){
 	else if(action == "ULTRA"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox);
 		attack.initiate(self);
+		tip = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox_tip);
+		tip.initiate(self);
 		
 		sprite_index = Spr_Batman_ULTRA_recovery;
 		image_index = 0;

@@ -1,6 +1,8 @@
 event_inherited();
 
-index = -1;
+startup = generate_sprite_frames(Spr_Bow_Boomerang_Throw_startup);
+recovery = generate_sprite_frames(Spr_Bow_Boomerang_Throw_recovery);
+
 is_projectile = true;
 is_active = false;
 is_final = true;

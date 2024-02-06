@@ -19,6 +19,7 @@ v_launch = 0;
 freeze_duration = 1;
 swing_sound = Snd_Swing1;
 hit_sound = Snd_Hit1;
+block_sound = Snd_Block1;
 // Characterizing stats
 meter_gain = 0;
 meter_gain_multiplier = 1; // % based

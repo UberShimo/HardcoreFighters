@@ -113,6 +113,23 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	// Special moves
+	else if(action == "High"){
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_High_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Cultist_High_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Sweep"){
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_Sweep_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = 8*image_xscale;
+		sprite_index = Spr_Cultist_Sweep_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
 	else if(action == "Circle Teleport"){
 		x = circle.x;
 		y = circle.y;
@@ -207,23 +224,6 @@ action_trigger = function(){
 	}
 	else if(action == "Heal"){
 		sprite_index = Spr_Cultist_Heal;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "High"){
-		attack = instance_create_depth(x, y, 0, Obj_Cultist_High_hitbox);
-		attack.initiate(self);
-		
-		sprite_index = Spr_Cultist_High_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
-	else if(action == "Sweep"){
-		attack = instance_create_depth(x, y, 0, Obj_Cultist_Sweep_hitbox);
-		attack.initiate(self);
-		
-		h_velocity = 8*image_xscale;
-		sprite_index = Spr_Cultist_Sweep_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}

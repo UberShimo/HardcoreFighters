@@ -26,8 +26,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_EMPTY",
-    "path": "sprites/Spr_EMPTY/Spr_EMPTY.yy",
+    "name": "Spr_Press_A_To_Join",
+    "path": "sprites/Spr_Press_A_To_Join/Spr_Press_A_To_Join.yy",
   },
   "spriteMaskId": null,
   "visible": true,

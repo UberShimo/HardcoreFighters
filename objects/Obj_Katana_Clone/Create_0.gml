@@ -1,6 +1,5 @@
 event_inherited();
 
-index = -1;
 life_span = 24;
 
 #region Sprites
@@ -48,7 +47,7 @@ cancels = 0;
 lb_pressed = false;
 
 action_trigger = function(){
-	if(action == "426L"){
+	if(action == "Quickdraw"){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_Quickdraw_hitbox);
 		attack.initiate(self);
 		

@@ -1,7 +1,7 @@
 event_inherited();
 
-startup = generate_sprite_frames(Spr_Batman_Sweep_startup); // 100% informational not used in logic
-recovery = generate_sprite_frames(Spr_Batman_Sweep_recovery); // 100% informational not used in logic
+startup = generate_sprite_frames(Spr_Bow_Aim_Up_startup);
+recovery = generate_sprite_frames(Spr_Bow_Aim_Up_recovery);
 
 damage = 14;
 hit_stun = 16;

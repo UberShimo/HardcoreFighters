@@ -1,6 +1,6 @@
 // Looks if value exists in list. If not it returns -1
 if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
-&& !is_invincible && !is_respawning && other.is_active){
+&& !is_invincible && !is_respawning && other.is_active && death_alarm <= 0){
 	reset_physics();
 	
 	#region Check if you got hit
@@ -71,7 +71,7 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 				alarm[9] = other.freeze_duration; // Priority struck alarm
 			}
 			
-			action = "stunned";
+			action = "Stunned";
 			action_alarm = 0;
 			recover_alarm = other.hit_stun;
 			
@@ -105,7 +105,7 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 	
 			// Launch
 			if(other.is_launcher || !grounded){
-				action = "launched";
+				action = "Launched";
 				// Shockwave
 				if(other.is_shockwave){
 					dir = point_direction(other.x, other.y, x, y);
@@ -127,7 +127,7 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 	}
 	// Blocked
 	else if(other.block_stun > 0){
-		action = "stunned";
+		action = "Stunned";
 		recover_alarm = other.block_stun;
 		action_alarm = 0;
 		h_velocity = other.block_push*other.image_xscale;
@@ -165,10 +165,14 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 	}
 	y_other_diff = other.y - y;
 	y_pos = y+other.hit_effect_y+y_other_diff;
-	// Decide spawn effect
-	effect_to_spawn = Eff_Splash;
-	if(!hit){
+	// Decide spawn effect / sound
+	if(hit){
+		effect_to_spawn = Eff_Splash;
+		audio_play_sound(other.hit_sound, 0, false);
+	}
+	else{
 		effect_to_spawn = Eff_Spark;
+		audio_play_sound(other.block_sound, 0, false);
 	}
 	spawn_effect(x_pos, y_pos, 8, effect_to_spawn, 1, 0.05, other.hit_effect_scale);
 	
@@ -178,14 +182,13 @@ if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
 	eff.thickness *= other.hit_effect_scale;
 	#endregion
 	
-	audio_play_sound(other.hit_sound, 0, false);
 	ds_list_add(hitbox_list, other);
 	
-	// Just so HP bar wont freak out
+	// Die
 	if(HP <= 0){
 		HP = 0;
 		
-		shake_amount = 8;
+		shake_amount = 20;
 		object_time = 0;
 		time_reset_alarm = 30;
 		death_alarm = 30;

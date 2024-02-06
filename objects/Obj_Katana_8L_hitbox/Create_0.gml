@@ -2,6 +2,7 @@ event_inherited();
 
 startup = generate_sprite_frames(Spr_Katana_8L_startup); // 100% informational not used in logic
 recovery = generate_sprite_frames(Spr_Katana_8L_recovery); // 100% informational not used in logic
+info = "Slightly push you forward";
 
 damage = 10;
 hit_stun = 24;

@@ -1,5 +1,8 @@
 event_inherited();
 
+startup = generate_sprite_frames(Spr_Baller_Ballsmash_startup);
+recovery = generate_sprite_frames(Spr_Baller_Ballsmash_recovery);
+
 damage = 20;
 hit_stun = 32;
 block_stun = 20;

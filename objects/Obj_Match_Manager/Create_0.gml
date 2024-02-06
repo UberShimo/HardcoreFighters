@@ -23,8 +23,9 @@ check_for_winner = function(){
 			}
 		}
 	}
-	// Menu alarm
+	// Got a winner!!!
 	if(player_amount == 1){
+		// Menu alarm
 		alarm[11] = 180;
 	}
 }

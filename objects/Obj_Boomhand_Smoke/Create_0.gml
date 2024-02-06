@@ -1,8 +1,8 @@
 event_inherited();
 
 image_alpha = 0.2;
-image_xscale = 1.25;
-image_yscale = 1.25;
+image_xscale = 2.5;
+image_yscale = 2.5;
 
 is_dissapearing = false;
 slowdown = 0.02;

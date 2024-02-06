@@ -1,7 +1,8 @@
 event_inherited();
 
-startup = generate_sprite_frames(Spr_Batman_8F_startup); // 100% informational not used in logic
-recovery = generate_sprite_frames(Spr_Batman_8F_recovery); // 100% informational not used in logic
+startup = generate_sprite_frames(Spr_Greatsword_X_startup); // 100% informational not used in logic
+recovery = generate_sprite_frames(Spr_Greatsword_X_whiff); // 100% informational not used in logic
+info = "Grab opponent and destroy some of their meter";
 
 damage = 0;
 hit_stun = 32;

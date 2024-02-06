@@ -2,4 +2,4 @@
 
 global.game_time = 1;
 
-room_goto(Character_Select);
+room_goto(global.character_select);

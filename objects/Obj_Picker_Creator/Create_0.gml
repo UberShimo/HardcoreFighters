@@ -7,7 +7,7 @@ for(i = 0; i < 8; i++){
 	global.is_CPU[i] = false;
 }
 
-max_pickers = 8;
+max_pickers = global.max_players;
 
 global.reset_controllers();
 

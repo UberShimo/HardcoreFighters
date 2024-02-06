@@ -1,5 +1,9 @@
 event_inherited();
 
+startup = generate_sprite_frames(Spr_Batman_Pitch_startup); // 100% informational not used in logic
+recovery = generate_sprite_frames(Spr_Batman_Pitch_recovery); // 100% informational not used in logic
+info = "Lobs a baseball ready to get hit by a baseball bat";
+
 penetration = 0.25;
 is_projectile = true;
 is_cancelable = true;

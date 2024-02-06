@@ -1,7 +1,9 @@
 x_draw = x+random_range(-shake_amount, shake_amount);
 y_draw = y+random_range(-shake_amount, shake_amount);
 
+// Draw self
 draw_sprite_ext(sprite_index, image_index, x_draw, y_draw, image_xscale, image_yscale, image_angle, c_white, image_alpha);
+// Draw player number
 c = player_color;
 draw_text_transformed_color(x-8, y-character_height-32, string(index+1), 2, 2, 0, c, c, c, c, image_alpha);
 
@@ -27,8 +29,14 @@ if(global.chaos_mode){
 	}
 }
 
+// Draw EXITING...
+if(exit_count > 0){
+	a = exit_count/exit_count_goal;
+	draw_text_color(x-32, y-character_height, "EXITING...", c, c, c, c, a);
+}
+
 if(global.is_debugging){
-	draw_text(x, y-character_height-128, string(can_cancel));
+	draw_text(x, y-character_height-128, string(alarm[11]));
 	draw_text(x, y-character_height-112, "HP:  " + string(HP));
 	draw_text(x, y-character_height-96, "Meter:  " + string(meter));
 	draw_text(x, y-character_height-80, "h_vel:  " + string(h_velocity));

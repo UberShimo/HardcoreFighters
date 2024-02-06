@@ -1,5 +1,8 @@
 event_inherited();
 
+startup = generate_sprite_frames(Spr_Baller_ULTRA_startup);
+recovery = generate_sprite_frames(Spr_Baller_ULTRA_recovery);
+
 damage = 50;
 hit_stun = 40;
 block_stun = 24;

@@ -42,7 +42,7 @@ original_weight = weight;
 #endregion
 
 // Boomhand stuff
-smoke_max_cd = 4;
+smoke_max_cd = 8;
 smoke_cd = 0;
 roars = 0;
 max_roars = 3;

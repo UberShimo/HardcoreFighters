@@ -78,6 +78,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action = "Backstep";
 			
 			h_velocity = -12*image_xscale;
+			grip = 1;
 			
 			sprite_index = Spr_Boomhand_Backstep_startup;
 			image_index = 0;
@@ -182,9 +183,9 @@ if(action == "Hook Charge"){
 }
 
 // Smoke logic
-if(rb_hold && meter >= 2 && smoke_cd <= 0){
+if(rb_hold && meter >= 4 && smoke_cd <= 0){
 	instance_create_depth(x, y, depth-10, Obj_Boomhand_Smoke);
-	meter -= 2;
+	meter -= 4;
 	smoke_cd = smoke_max_cd;
 }
 if(smoke_cd > 0){

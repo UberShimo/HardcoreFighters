@@ -1,5 +1,13 @@
 event_inherited();
 
+if(is_respawning){
+	visible = false;
+	x = Obj_Respawner.x;
+	y = Obj_Respawner.y;
+	h_velocity = 0;
+	v_velocity = 0;
+}
+
 effect_counter += logic_time;
 ground_check = (character_height/2)+1;// +1 couse it works ok?
 
@@ -35,8 +43,6 @@ if(death_alarm > 0){
 		death_alarm = 0;
 		
 		hearts -= 1;
-		h_velocity = 0;
-		v_velocity = 0;
 		// Blood / respawn effect
 		spawn_effect(x, y, 12, Eff_Blood, 1, 0.05, 4);
 		eff = instance_create_depth(x, y, -1, Eff_Ring);
@@ -45,12 +51,10 @@ if(death_alarm > 0){
 		
 		if(hearts > 0){
 			respawn_alarm = 120;
+			is_controllable = false;
 			is_invincible = true;
 			is_respawning = true;
 		}
-		
-		x = Obj_Respawner.x;
-		y = Obj_Respawner.y;
 		
 		Obj_Match_Manager.check_for_winner();
 	}	
@@ -61,10 +65,10 @@ if(respawn_alarm > 0){
 	
 	if(respawn_alarm <= 0){
 		respawn_alarm = 0;
+		is_respawning = false;
 		
 		visible = true;
 		is_controllable = true;
-		is_respawning = false;
 		is_invincible = true;
 		invincibility_alarm = 120;
 		
@@ -79,8 +83,8 @@ if(respawn_alarm > 0){
 			h_velocity = -4*image_xscale;
 			v_velocity = -4;
 		}
-		HP = 100;
-		meter = 0;
+		HP = max_HP;
+		meter /= 2; // Loose half meter
 	}
 }
 
@@ -95,8 +99,6 @@ if(invincibility_alarm > 0){
 }
 #endregion
 
-if(!is_respawning){
-	
 #region control V-----V
 // Movement
 if(action == noone && grounded && !is_blocking){
@@ -170,19 +172,15 @@ else if(a_pressed && extra_jumps_left > 0 && (action == noone || check_for_cance
 if(action == noone && v_velocity < -jump_power*mini_jump_power && !a_hold){
 	v_velocity = -jump_power*mini_jump_power;
 }
-// Suicide
+// Exit
 if(start_hold){
-	surrender_count += 1;
-	if(surrender_count >= 180){
-		HP = 0;
-		hearts = 0;
-		att = instance_create_depth(x, y, 0, Obj_Suicide_Shockwave_hitbox);
-		att.initiate(self);
-		att.index = -1;
+	exit_count += 1;
+	if(exit_count >= exit_count_goal){
+		room_goto(global.character_select);
 	}
 }
 else{
-	surrender_count = 0;
+	exit_count = 0;
 }
 #endregion
 
@@ -335,7 +333,7 @@ if(action == noone){
 		}
 	}
 }
-else if(action == "launched" && !grounded){
+else if(action == "Launched" && !grounded){
 	sprite_index = launched_spr;
 	image_xscale = -1;
 	image_angle = point_direction(0, 0, h_velocity, v_velocity);
@@ -366,7 +364,41 @@ half_circle_backward_pressed--;
 #endregion
 
 #region universal moves V-----V
-// Dash
+// Meter dash
+if((action == "Stunned" || action == "Launched") && lb_pressed > 0 && rb_pressed > 0 && meter >= 25){
+	read_input();
+	reset_buffers();
+	meter -= 25;
+	cancels = 0;
+	
+	if(backward_hold){
+		sprite_index = dash_backward_spr;
+		h_velocity = -dash_speed*image_xscale;
+		blink_h(-dash_blink*image_xscale, true);
+	}
+	else{
+		sprite_index = dash_forward_spr;
+		h_velocity = dash_speed*image_xscale;
+		blink_h(dash_blink*image_xscale, true);
+	}
+	image_index = 0;
+	
+	// Cancel eff
+	eff = instance_create_depth(x, y, 1, Eff_Cancel);
+	eff.initiate(self);
+	
+	action = "Meter Dash";
+	is_collidable = false;
+	is_invincible = true;
+	grip = dash_grip;
+	air_grip = dash_grip;
+	v_velocity = dash_lift;
+	weight = original_weight/4;
+	action_alarm = 0;
+	recover_alarm = 24;
+	invincibility_alarm = 24;
+}
+// Normal Dash
 if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 	read_input();
 	lb_pressed = 0; // Just reset LB buffer
@@ -392,7 +424,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 			eff.initiate(self);
 		}
 	
-		action = "dash";
+		action = "Dash";
 		can_cancel = true;
 		is_collidable = false;
 		grip = dash_grip;
@@ -422,7 +454,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		eff = instance_create_depth(x, y, 1, Eff_Cancel);
 		eff.initiate(self);
 	
-		action = "dash";
+		action = "Dash";
 		can_cancel = true;
 		is_collidable = false;
 		grip = dash_grip;
@@ -431,40 +463,6 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		weight = original_weight/4;
 		recover_alarm = dash_duration;
 	}
-}
-// Force dash
-if(action == "stunned" && lb_pressed && rb_pressed && meter >= 25){
-	read_input();
-	reset_buffers();
-	meter -= 25;
-	cancels = 0;
-	
-	if(backward_hold){
-		sprite_index = dash_backward_spr;
-		h_velocity = -dash_speed*image_xscale;
-		blink_h(-dash_blink*image_xscale, true);
-	}
-	else{
-		sprite_index = dash_forward_spr;
-		h_velocity = dash_speed*image_xscale;
-		blink_h(dash_blink*image_xscale, true);
-	}
-	image_index = 0;
-	
-	// Cancel eff
-	eff = instance_create_depth(x, y, 1, Eff_Cancel);
-	eff.initiate(self);
-	
-	action = "force dash";
-	is_collidable = false;
-	is_invincible = true;
-	grip = dash_grip;
-	air_grip = dash_grip;
-	v_velocity = dash_lift;
-	weight = original_weight/4;
-	action_alarm = 0;
-	recover_alarm = 24;
-	invincibility_alarm = 24;
 }
 // Block
 if(grounded && (lt_hold || rt_hold)){
@@ -479,17 +477,9 @@ if(meter > max_meter){
 }
 #endregion
 
-// Fully charged
+// Fully charged effect
 if(meter == 100 && effect_counter >= 1){
 	eff = instance_create_depth(x, y, 1, Eff_Spark);
 	eff.image_blend = c_lime;
 	eff.image_xscale *= random_range(1, 2);
-}
-
-}
-// Is respawning THIS CODE SUCKS
-else{
-	visible = false;
-	is_controllable = false;
-	is_respawning = true;
 }
