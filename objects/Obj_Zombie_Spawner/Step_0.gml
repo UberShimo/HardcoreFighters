@@ -11,6 +11,7 @@ if(spawn_alarm <= 0){
 	zombie.is_CPU = true;
 	zombie.alarm[11] = 8;
 	zombie.hearts = 1;
+	zombie.draw_mini_ui = true;
 	
 	zombie_killer = instance_create_depth(x, y, 0, Obj_Cultist_Zombie_Killer);
 	zombie_killer.zombie = zombie;

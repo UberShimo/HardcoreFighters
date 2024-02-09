@@ -20,7 +20,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	reset_physics();
 	
 	if(x_pressed){
-		if(half_circle_forward_pressed && circle != noone){
+		if(half_circle_forward_pressed && instance_exists(circle)){
 			if(circle.implode_alarm == 0){
 				action = "Circle Teleport";
 			
@@ -29,7 +29,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 				action_alarm = generate_sprite_frames(sprite_index);
 			}
 		}
-		else if(half_circle_backward_pressed && circle != noone){
+		else if(half_circle_backward_pressed && instance_exists(circle)){
 			if(circle.implode_alarm == 0){
 				action = "Circle Pullback";
 			
@@ -95,6 +95,12 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		else if(backward_down_pressed){
 			action = "Rising Star";
 			sprite_index = Spr_Cultist_Starthrow_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(forward_down_pressed){
+			action = "Lightning";
+			sprite_index = Spr_Cultist_Lightning_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}

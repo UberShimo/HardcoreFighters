@@ -10,7 +10,7 @@ hit_push = 2;
 block_push = 2;
 freeze_duration = 20;
 h_launch = 3;
-v_launch = 10;
+v_launch = 15;
 
+is_sticky = true;
 is_high = true;
-effect = Obj_Cultist_8S_hit_eff;

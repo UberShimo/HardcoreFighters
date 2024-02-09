@@ -12,6 +12,7 @@ freeze_duration = 8;
 h_launch = 1;
 v_launch = -8;
 
+is_sticky = true;
 is_low = true;
 is_launcher = true;
 hit_effect_y = 16;

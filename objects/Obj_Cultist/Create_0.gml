@@ -20,10 +20,10 @@ crouch_block_spr = Spr_Cultist_Crouch_Block;
 start_speed = 3;
 max_speed = 5;
 acceleration = 0.1;
-dash_speed = 0;
-dash_blink = 96;
+dash_speed = 12;
+dash_blink = 0;
 dash_duration = 32;
-dash_grip = 1;
+dash_grip = 0.5;
 grip = global.standard_grip;
 air_grip = 0;
 jump_power = 13;
@@ -86,11 +86,8 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "8S"){
-		attack = instance_create_depth(x+32*image_xscale, y, 0, Obj_Cultist_8S_hitbox);
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_8S_hitbox);
 		attack.initiate(self);
-		
-		h_velocity = 0;
-		v_velocity = -6;
 		
 		sprite_index = Spr_Cultist_8S_recovery;
 		image_index = 0;
@@ -130,11 +127,25 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
+	else if(action == "Lightning"){
+		attack = instance_create_depth(x+32*image_xscale, y, 0, Obj_Cultist_Lightning_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = 0;
+		v_velocity = -9;
+		
+		sprite_index = Spr_Cultist_Lightning_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
 	else if(action == "Circle Teleport"){
 		x = circle.x;
 		y = circle.y;
 		instance_destroy(circle);
 		circle = noone;
+		
+		h_velocity = 0;
+		v_velocity = -2;
 		
 		action = noone;
 	}

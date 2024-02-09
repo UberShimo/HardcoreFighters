@@ -17,6 +17,14 @@ is_final = hr.is_final;
 
 instance_destroy(hr);
 
+// Fix some shit
+if(hit_stun < 1){
+	hit_stun = 0
+}
+if(block_stun < 1){
+	block_stun = 0
+}
+
 // Initiated afterwards
 air_ok = false;
 air_only = false;

@@ -20,9 +20,9 @@ if(time_reset_alarm > 0){
 // Friction logic
 if(velocity_friction > 0){
 	dir = point_direction(0, 0, h_velocity, v_velocity);
-	velocity = distance_to_point(h_velocity, v_velocity);
+	velocity = point_distance(0, 0, h_velocity, v_velocity);
 	
-	if(velocity >= velocity_friction){
+	if(velocity > velocity_friction){
 		h_velocity -= lengthdir_x(velocity_friction, dir)*logic_time;
 		v_velocity -= lengthdir_y(velocity_friction, dir)*logic_time;
 	}

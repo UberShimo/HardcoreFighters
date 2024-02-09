@@ -9,6 +9,7 @@ is_CPU = false;
 exit_count = 0;
 exit_count_goal = 180;
 player_color = c_white;
+draw_mini_ui = global.chaos_mode;
 
 #region Initialize input values / buffers
 buffer_duration = 12;

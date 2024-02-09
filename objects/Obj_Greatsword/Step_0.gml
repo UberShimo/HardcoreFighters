@@ -35,7 +35,16 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action = "Earth Start";
 			is_blocking = true;
 			grip = 0.2;
-			h_velocity = 2*image_xscale;
+			h_velocity = 4*image_xscale;
+			sprite_index = Spr_Greatsword_Earth_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(down_backward_pressed){
+			action = "Earth Start";
+			is_blocking = true;
+			grip = 0.2;
+			h_velocity = -4*image_xscale;
 			sprite_index = Spr_Greatsword_Earth_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -75,6 +84,15 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
+		else if(down_backward_pressed){
+			action = "Heaven Start";
+			
+			h_velocity = -8*image_xscale;
+			
+			sprite_index = Spr_Greatsword_Heaven_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
 		else if(forward_down_pressed){
 			action = "Stomp";
 			pillar_distance = 120;
@@ -111,16 +129,10 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(half_circle_backward_pressed){
 			action = "Sweep";
+			
+			h_velocity = 8*image_xscale;
+			
 			sprite_index = Spr_Greatsword_Sweep_startup;
-			image_index = 0;
-			action_alarm = generate_sprite_frames(sprite_index);
-		}
-		else if(down_forward_pressed){
-			action = "Heaven Start";
-			
-			h_velocity = -8*image_xscale;
-			
-			sprite_index = Spr_Greatsword_Heaven_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
@@ -258,7 +270,8 @@ else if(action == "Heaven"){
 	else if(b_pressed){
 		action = "Heaven S";
 		
-		h_velocity = 5*image_xscale;
+		h_velocity = 8*image_xscale;
+		grip = 0.25;
 		
 		sprite_index = Spr_Greatsword_Heaven_S_startup;
 		image_index = 0;

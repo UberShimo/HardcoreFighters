@@ -124,8 +124,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(down_hold){
 			action = "2S";
-			grip = original_grip/2;
-			h_velocity = 6*image_xscale;
+			
 			sprite_index = Spr_Bow_2S_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);

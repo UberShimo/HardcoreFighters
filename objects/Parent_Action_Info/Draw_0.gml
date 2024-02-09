@@ -15,7 +15,7 @@ draw_sprite(image, frame, x+64, y+64);
 draw_sprite(extra_image, 0, x+64, y+64);
 
 // Draw info
-draw_text(x+32*6+digit_offset, y+digit_offset, info);
+draw_text(x+32*6+digit_offset, y+digit_offset-4, info);
 draw_text(x+32+digit_offset, y+32*3+digit_offset, damage);
 draw_text(x+32*7+digit_offset, y+32*2+digit_offset, startup);
 draw_text(x+32*7+digit_offset, y+32*3+digit_offset, recovery);

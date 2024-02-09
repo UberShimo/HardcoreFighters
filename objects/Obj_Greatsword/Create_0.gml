@@ -131,7 +131,6 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Sweep_hitbox);
 		attack.initiate(self);
 		
-		h_velocity = -8*image_xscale;
 		sprite_index = Spr_Greatsword_Sweep_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -197,11 +196,11 @@ action_trigger = function(){
 			action_alarm = 8;
 			recover_alarm = generate_sprite_frames(sprite_index);
 		}
-		else if(multi_hit_action_index < 5){
+		else if(multi_hit_action_index < 6){
 			attack = instance_create_depth(x, y, 0, Obj_Greatsword_Earth_L_hitbox);
 			attack.initiate(self);
 			
-			if(multi_hit_action_index == 1 || multi_hit_action_index == 3){
+			if(multi_hit_action_index % 2 != 0){
 				attack.image_xscale *= -1;
 			}
 			
@@ -253,15 +252,33 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "Heaven F"){
-		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_F_hitbox);
-		attack.initiate(self);
+		if(multi_hit_action_index == 0){
+			multi_hit_action_index += 1;
+			
+			attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_F_hitbox1);
+			attack.initiate(self);
+			
+			h_velocity = -5*image_xscale;
 		
-		blink_h(-16*image_xscale, true);
-		h_velocity = -4*image_xscale;
-		
-		sprite_index = Spr_Greatsword_Heaven_F_recovery;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
+			sprite_index = Spr_Greatsword_Heaven_F_recovery;
+			image_index = 0;
+			action_alarm = 8;
+			recover_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(multi_hit_action_index < 6){
+			if(multi_hit_action_index % 2 == 0){
+				attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_F_hitbox1);
+				attack.initiate(self);
+			}
+			else{
+				attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_F_hitbox2);
+				attack.initiate(self);
+			}
+			h_velocity = -5*image_xscale;
+			
+			action_alarm = 8;
+			multi_hit_action_index += 1;
+		}
 	}
 	else if(action == "Heaven L"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Heaven_L_hitbox);

@@ -80,8 +80,11 @@ Power:		Boomhand, Greatsword
 Agility:	Claws, Baller
 Zoner:		Bow, Mage
 
+MOVES!:
+Leave DoT on ground.
+
 Batman{
-	
+	Add one more cool move on L
 }
 
 Katana{
@@ -93,17 +96,15 @@ Claws{
 }
 
 Baller{
-	
+	Add some cool L move.
 }
 
 Bow{
-	
+	Change 2S to bending the bow then smack em up!
 }
 
 Greatsword{
-	EARTH stance can be perfermed with v<F also making you turn back.
-	Make v<L into HEAVEN stance.
-	Heaven_F should be 3 rolls back making it prett fun when using reversersed!
+	
 }
 
 Boomhand{
@@ -111,7 +112,7 @@ Boomhand{
 }
 
 Cultist{
-	Some circle_implode bug.
+	Zombie dont attack...
 	Circle pullback doest quite reach yourself looking kinda dumb.
 	Circle teleport could use some cool effects.
 }

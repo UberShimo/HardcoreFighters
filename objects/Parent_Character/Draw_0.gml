@@ -13,7 +13,7 @@ if(is_invincible){
 	draw_sprite_ext(Spr_Circle, 0, x, y, scale, scale, 0, c_white, 0.5);
 }
 
-if(global.chaos_mode){
+if(draw_mini_ui){
 	hp_bar_x = x-sprite_get_width(Spr_Mini_HP_Bar)/2;
 	meter_bar_x = x-sprite_get_width(Spr_Mini_Meter_Bar)/2;
 	
