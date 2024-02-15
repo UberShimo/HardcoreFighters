@@ -45,7 +45,6 @@ original_weight = weight;
 is_holding_ball = true;
 ball = instance_create_depth(x, y, depth-1, Obj_Baller_Ball);
 ball.spawner = self;
-ball_fall_eff_counter = 0; // Used so eff dont fuck up in slowmo
 ball_explosion_max_cd = 90;
 ball_explosion_cd = ball_explosion_max_cd;
 

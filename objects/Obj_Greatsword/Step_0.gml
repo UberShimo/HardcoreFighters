@@ -308,4 +308,3 @@ if(action == "Earth L" && recover_alarm > 16){
 		h_velocity = -3*image_xscale*logic_time;
 	}
 }
-

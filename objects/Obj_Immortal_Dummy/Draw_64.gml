@@ -1,0 +1,1 @@
+draw_text_transformed(300, 32, "Combo damage:" + string(combo_damage), 2, 2, 0);

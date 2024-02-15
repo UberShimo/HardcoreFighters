@@ -465,7 +465,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 	}
 }
 // Block
-if(grounded && (lt_hold || rt_hold)){
+if(grounded && action == noone && (lt_hold || rt_hold)){
 	is_blocking = true;
 }
 else{

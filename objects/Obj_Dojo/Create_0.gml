@@ -45,7 +45,6 @@ original_weight = weight;
 is_doing_F_loop = false;
 is_jumping = false;
 
-
 action_trigger = function(){
 	// Normal moves
 	if(action == "F"){

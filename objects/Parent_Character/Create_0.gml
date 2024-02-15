@@ -12,7 +12,7 @@ player_color = c_white;
 draw_mini_ui = global.chaos_mode;
 
 #region Initialize input values / buffers
-buffer_duration = 12;
+buffer_duration = 16;
 
 forward_hold = false;
 backward_hold = false;
@@ -108,6 +108,7 @@ priority_struck = false; // When you get hit by a priority hitbox. Sweetspots us
 action = noone;
 last_action = noone; // Used for checking if cancel is legit
 hitbox_list = ds_list_create();
+legit_hit_check = false;
 cancelable_recovery_frames = 24;
 closest_enemy = self;
 multi_hit_action_index = 0; // When one move does many attacks this variable keeps track on what attack you are on

@@ -171,6 +171,17 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
+	else if(action == "Spinhop"){
+		attack = instance_create_depth(x, y, 0, Obj_Batman_Spinhop_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = -2*image_xscale;
+		v_velocity = -4;
+		
+		sprite_index = Spr_Batman_Spinhop_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
 	else if(action == "Headbutt"){
 		attack = instance_create_depth(x, y, 0, Obj_Batman_Headbutt_hitbox);
 		attack.initiate(self);

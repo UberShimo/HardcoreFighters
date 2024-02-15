@@ -1,6 +1,8 @@
 // Looks if value exists in list. If not it returns -1
-if(other.index != index && ds_list_find_index(hitbox_list, other) == -1
-&& !is_invincible && !is_respawning && other.is_active && death_alarm <= 0){
+legit_hit_check = other.index != index && ds_list_find_index(hitbox_list, other) == -1
+&& !is_invincible && !is_respawning && other.is_active && death_alarm <= 0;
+
+if(legit_hit_check){
 	reset_physics();
 	
 	#region Check if you got hit

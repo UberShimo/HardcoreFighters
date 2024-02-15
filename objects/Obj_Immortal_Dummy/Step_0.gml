@@ -124,3 +124,8 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		eff.initiate(self);
 	}
 }
+
+// Reset state
+if(action == noone){
+	HP = max_HP;
+}

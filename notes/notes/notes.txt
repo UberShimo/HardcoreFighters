@@ -1,7 +1,4 @@
 TODO{
-	Fix so you can see character attacks n combos
-	Fix so you can beat Dojo puppet infinitely and get combo highscore.
-	Make so you can pick stages/BGS.
 	Add sound n music
 	Make game look sexy, balanced and fun
 	Make Adventure mode
@@ -84,7 +81,7 @@ MOVES!:
 Leave DoT on ground.
 
 Batman{
-	Add one more cool move on L
+	
 }
 
 Katana{
@@ -97,10 +94,11 @@ Claws{
 
 Baller{
 	Add some cool L move.
+	Make longer L ranges. And change animations...
 }
 
 Bow{
-	Change 2S to bending the bow then smack em up!
+	Boomerangs dont bounce correct
 }
 
 Greatsword{
@@ -108,11 +106,18 @@ Greatsword{
 }
 
 Boomhand{
-	
+	Groundsmash hit effect is UGLY!
 }
 
 Cultist{
-	Zombie dont attack...
 	Circle pullback doest quite reach yourself looking kinda dumb.
 	Circle teleport could use some cool effects.
+}
+
+Rapier{
+	5F: Stab forward
+	4F: Stab stab slightly upward
+	v>F: Stab upward
+	
+	5L: Hold forward or back ward to step slightly while swinging.
 }

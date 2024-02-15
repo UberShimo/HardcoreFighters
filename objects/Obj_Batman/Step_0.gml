@@ -53,7 +53,21 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		reset_buffers();
 	}
 	else if(y_pressed){
-		if(!grounded){
+		if(down_forward_pressed){
+			action = "Spinhop";
+			
+			h_velocity = 2*image_xscale;
+			v_velocity = -7;
+			
+			if(!grounded){
+				v_velocity = -4;
+			}
+			
+			sprite_index = Spr_Batman_Spinhop_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(!grounded){
 			action = "8L";
 			sprite_index = Spr_Batman_8L_startup;
 			image_index = 0;

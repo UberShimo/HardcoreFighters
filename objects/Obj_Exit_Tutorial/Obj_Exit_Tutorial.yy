@@ -7,7 +7,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Basic Tutorial",
-    "path": "folders/Objects/Character Select/Basic Tutorial.yy",
+    "path": "folders/Objects/DOJO/Basic Tutorial.yy",
   },
   "parentObjectId": null,
   "persistent": false,

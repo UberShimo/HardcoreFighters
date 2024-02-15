@@ -127,6 +127,14 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
+	else if(action == "High"){
+		attack = instance_create_depth(x, y, 0, Obj_Greatsword_High_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Greatsword_High_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
 	else if(action == "Sweep"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_Sweep_hitbox);
 		attack.initiate(self);

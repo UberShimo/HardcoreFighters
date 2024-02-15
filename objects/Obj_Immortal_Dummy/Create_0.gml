@@ -21,6 +21,8 @@ HP = 100;
 max_HP = HP;
 #endregion
 
+combo_damage = 0;
+
 action_trigger = function(){
 	// Normal moves
 	if(action == "8F"){

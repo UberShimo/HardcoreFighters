@@ -72,7 +72,12 @@ if(gamepad_button_check_pressed(controller_index, gp_start)){
 	}
 	
 	if(all_players_ready){
-		room_goto(global.arena);
+		if(global.dojo_mode){
+			room_goto(Dojo_Place);
+		}
+		else{
+			room_goto(global.arena);
+		}
 	}
 }
 

@@ -12,8 +12,8 @@
     "path": "folders/Objects/Characters/Baller.yy",
   },
   "parentObjectId": {
-    "name": "Parent_Time",
-    "path": "objects/Parent_Time/Parent_Time.yy",
+    "name": "Parent_Effect",
+    "path": "objects/Parent_Effect/Parent_Effect.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

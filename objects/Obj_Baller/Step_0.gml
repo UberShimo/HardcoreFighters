@@ -32,7 +32,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	reset_physics();
 	
 	if(x_pressed){
-		if(down_forward_pressed && !is_holding_ball){
+		if((down_forward_pressed || down_backward_pressed) && !is_holding_ball){
 			// Pick up ball
 			if(place_meeting(x, y, ball)){
 				is_holding_ball = true;
@@ -51,7 +51,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			}
 		}
 		// Drop ball
-		else if(forward_down_pressed && is_holding_ball){
+		else if((forward_down_pressed || backward_down_pressed) && is_holding_ball){
 			is_holding_ball = false;
 		}
 		else if(!grounded){
@@ -262,11 +262,8 @@ if(action == "Ballsmash"){
 	if(!grounded){
 		if(v_velocity > 8){
 			instance_create_depth(x, y, depth-1, Eff_Baller_Ball);
-			// Messy but looks sexy in slowmo
-			ball_fall_eff_counter += logic_time;
-			if(ball_fall_eff_counter >= 1){
+			if(effect_counter >= 1){
 				instance_create_depth(x, y, depth-1, Eff_Ball_Fall);
-				ball_fall_eff_counter = 0;
 			}
 		}
 	}

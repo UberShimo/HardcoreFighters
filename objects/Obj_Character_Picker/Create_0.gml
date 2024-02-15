@@ -5,7 +5,7 @@ is_picking_for_cpu = false;
 connection = noone; // This is the connection to CPU_Option
 tag = noone;
 exit_count = 0;
-exit_count_goal = 120;
+exit_count_goal = 60;
 
 move_x_distance = sprite_get_width(sprite_index);
 move_y_distance = sprite_get_height(sprite_index);
