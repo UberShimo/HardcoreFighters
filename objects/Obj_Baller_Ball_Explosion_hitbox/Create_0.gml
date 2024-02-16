@@ -12,5 +12,5 @@ v_launch = 0;
 effect = Obj_Baller_Explosion_hit_eff;
 is_launcher = true;
 is_shockwave = true;
-shockwave_power = 12;
+shockwave_power = 4;
 meter_gain_multiplier = 0;

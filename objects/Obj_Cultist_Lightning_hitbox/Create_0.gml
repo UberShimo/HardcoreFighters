@@ -10,7 +10,8 @@ hit_push = 2;
 block_push = 2;
 freeze_duration = 20;
 h_launch = 0;
-v_launch = 5;
+v_launch = 6;
 
 is_high = true;
+penetration = 0.5;
 effect = Obj_Cultist_Lightning_hit_eff;

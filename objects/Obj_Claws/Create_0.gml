@@ -153,6 +153,7 @@ action_trigger = function(){
 			instance_destroy(ring1);
 		}
 		ring1 = instance_create_depth(x, y, 0, Obj_Claws_Skyring);
+		ring1.initiate(self);
 		ring1.h_velocity = -3*image_xscale;
 		ring1.h_acceleration *= image_xscale;
 		ring1.v_velocity = -1.5;
@@ -167,6 +168,7 @@ action_trigger = function(){
 			instance_destroy(ring2);
 		}
 		ring2 = instance_create_depth(x, y, 0, Obj_Claws_Skyring);
+		ring2.initiate(self);
 		ring2.h_velocity = -1*image_xscale;
 		ring2.h_acceleration *= 0.5*image_xscale;
 		ring2.v_velocity = -3;

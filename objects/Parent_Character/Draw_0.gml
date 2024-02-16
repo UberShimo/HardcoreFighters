@@ -40,9 +40,6 @@ if(exit_count > 0){
 }
 
 if(global.is_debugging){
-	draw_text(x, y-character_height-128, string(alarm[11]));
-	draw_text(x, y-character_height-112, "HP:  " + string(HP));
-	draw_text(x, y-character_height-96, "Meter:  " + string(meter));
 	draw_text(x, y-character_height-80, "h_vel:  " + string(h_velocity));
 	draw_text(x, y-character_height-64, "v_vel:  " + string(v_velocity));
 	draw_text(x, y-character_height-48, "cancels:  " + string(cancels));

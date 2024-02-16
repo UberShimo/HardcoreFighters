@@ -1,4 +1,5 @@
 TODO{
+	Add unadded moves to move lists.
 	Add sound n music
 	Make game look sexy, balanced and fun
 	Make Adventure mode
@@ -112,12 +113,4 @@ Boomhand{
 Cultist{
 	Circle pullback doest quite reach yourself looking kinda dumb.
 	Circle teleport could use some cool effects.
-}
-
-Rapier{
-	5F: Stab forward
-	4F: Stab stab slightly upward
-	v>F: Stab upward
-	
-	5L: Hold forward or back ward to step slightly while swinging.
 }

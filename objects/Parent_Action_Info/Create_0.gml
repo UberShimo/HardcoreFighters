@@ -33,6 +33,8 @@ movement_input = Spr_EMPTY;
 button_input = Spr_EMPTY;
 image = Spr_EMPTY;
 extra_image = Spr_EMPTY;
+extra_image_x = 0;
+extra_image_y = 0;
 frame = 0;
 meter_cost = 0;
 

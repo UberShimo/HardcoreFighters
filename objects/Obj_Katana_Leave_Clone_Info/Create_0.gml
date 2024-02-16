@@ -7,5 +7,5 @@ air_only = false;
 info = "Leave a clone and dash forward";
 movement_input = Spr_BDF;
 button_input = Spr_F;
-image = Spr_Katana_Clone_Dissapear;
+image = Spr_Katana_Dash_Forward;
 frame = 0;

@@ -4,12 +4,12 @@ startup = generate_sprite_frames(Spr_Baller_2L_startup); // 100% informational n
 recovery = generate_sprite_frames(Spr_Baller_2L_recovery); // 100% informational not used in logic
 
 damage = 10;
-hit_stun = 20;
+hit_stun = 24;
 block_stun = 8;
 hit_push = 6;
 block_push = 4;
 freeze_duration = 8;
 h_launch = 1;
-v_launch = -5.5;
+v_launch = -5;
 
 hit_effect_y = -8;

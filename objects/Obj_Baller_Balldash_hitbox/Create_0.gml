@@ -14,4 +14,4 @@ v_launch = -6;
 
 active_frames = 20;
 is_sticky = true;
-is_cancelable = true;
+is_final = true;

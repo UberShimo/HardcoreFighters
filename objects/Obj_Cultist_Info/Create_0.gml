@@ -1,4 +1,4 @@
 event_inherited();
 
-info = "Uses lots of shit. You control teeth\nsame as you control yourself.\nHas a ghostly dash with longer recovery.";
+info = "Controls teeth with left/right.\nDash duration is slightly longer.";
 image = Spr_Cultist_Stand;

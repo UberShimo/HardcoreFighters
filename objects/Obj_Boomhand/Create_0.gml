@@ -207,18 +207,6 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "Backstep"){		
-		sprite_index = Spr_Boomhand_Backstep_recovery;
-		image_index = 0;
-		
-		if(y_hold){
-			action = "BackstepBOOM";
-			action_alarm = 4;
-		}
-		else{
-			recover_alarm = generate_sprite_frames(sprite_index);
-		}
-	}
 	else if(action == "BackstepBOOM"){
 		attack = instance_create_depth(x, y, 0, Obj_Boomhand_BackstepBOOM_hitbox);
 		attack.initiate(self);

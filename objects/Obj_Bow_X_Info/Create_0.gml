@@ -8,4 +8,6 @@ info = "Create wind that lift opponent";
 movement_input = Spr_EMPTY;
 button_input = Spr_M;
 image = Spr_Bow_Upstream_recovery;
+extra_image = Spr_Bow_Upstream;
+extra_image_x = 64;
 frame = 0;

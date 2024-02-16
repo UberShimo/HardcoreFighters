@@ -20,7 +20,7 @@ crouch_block_spr = Spr_Cultist_Crouch_Block;
 start_speed = 3;
 max_speed = 5;
 acceleration = 0.1;
-dash_speed = 12;
+dash_speed = 10;
 dash_blink = 0;
 dash_duration = 32;
 dash_grip = 0.5;
@@ -44,8 +44,6 @@ original_weight = weight;
 // Cultist stuff
 circle = noone;
 triangle = noone;
-diamond = instance_create_depth(x, y, depth-1, Obj_Cultist_Diamond);
-diamond.spawner = self;
 shadow = instance_create_depth(x, y, depth-1, Obj_Cultist_Shadow);
 shadow.spawner = self;
 is_slowing_down_time = false;
@@ -69,11 +67,11 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "L"){
-		attack = instance_create_depth(diamond.x, diamond.y, 0, Obj_Cultist_L_hitbox);
+	else if(action == "8L"){
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_8L_hitbox);
 		attack.initiate(self);
 		
-		sprite_index = Spr_Cultist_L_recovery;
+		sprite_index = Spr_Cultist_8L_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
@@ -82,6 +80,22 @@ action_trigger = function(){
 		attack.initiate(self);
 		
 		sprite_index = Spr_Cultist_2L_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "5L"){
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_5L_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Cultist_5L_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "4L"){
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_4L_hitbox);
+		attack.initiate(self);
+		
+		sprite_index = Spr_Cultist_4L_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}

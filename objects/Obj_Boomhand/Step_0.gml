@@ -75,7 +75,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_backward_pressed){
-			action = "Backstep";
+			action = "BackstepBOOM";
 			
 			h_velocity = -12*image_xscale;
 			grip = 1;

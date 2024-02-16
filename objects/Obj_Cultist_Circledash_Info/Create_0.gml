@@ -9,3 +9,5 @@ movement_input = Spr_EMPTY;
 button_input = Spr_Earth_Input;
 image = Spr_Cultist_Circledash_Forward_recovery;
 frame = 0;
+
+is_cancelable = true;

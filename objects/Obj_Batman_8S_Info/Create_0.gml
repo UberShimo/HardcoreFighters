@@ -4,7 +4,7 @@ event_inherited();
 
 air_ok = false;
 air_only = true;
-info = "Has a sweetspot that spikes\nand hits harder";
+info = "";
 movement_input = Spr_EMPTY;
 button_input = Spr_S;
 image = Spr_Batman_8S_recovery;
