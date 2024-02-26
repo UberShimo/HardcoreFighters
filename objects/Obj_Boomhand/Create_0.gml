@@ -57,9 +57,9 @@ action_trigger = function(){
 	if(action == "8F"){
 		attack = instance_create_depth(x, y, 0, Obj_Boomhand_8F_hitbox);
 		attack.initiate(self);
-		
-		h_velocity = 4*image_xscale;
-		v_velocity = -1;
+		attack2 = instance_create_depth(x, y, 0, Obj_Boomhand_8F_hitbox);
+		attack2.initiate(self);
+		attack2.image_xscale *= -1;
 		
 		sprite_index = Spr_Boomhand_8F_recovery;
 		image_index = 0;

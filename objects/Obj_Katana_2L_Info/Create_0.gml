@@ -4,7 +4,7 @@ event_inherited();
 
 air_ok = false;
 air_only = false;
-info = "Good anti air";
+info = "";
 movement_input = Spr_D;
 button_input = Spr_L;
 image = Spr_Katana_2L_recovery;

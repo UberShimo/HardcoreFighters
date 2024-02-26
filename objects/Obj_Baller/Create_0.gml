@@ -53,13 +53,18 @@ action_trigger = function(){
 	if(action == "8F"){
 		attack = instance_create_depth(x, y, 0, Obj_Baller_8F_hitbox);
 		attack.initiate(self);
-		attack2 = instance_create_depth(x, y, 0, Obj_Baller_8F_hitbox);
-		attack2.initiate(self);
-		attack2.image_xscale *= -1;
+		
+		v_velocity = -4;
 		
 		sprite_index = Spr_Baller_8F_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
+		
+		if(multi_hit_action_index < 5 && x_hold){
+			action_alarm = 8;
+			multi_hit_action_index += 1;
+		}
+		
 	}
 	else if(action == "2F"){
 		attack = instance_create_depth(x, y, 0, Obj_Baller_2F_hitbox);
@@ -79,22 +84,12 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "8L"){
-		if(multi_hit_action_index == 0){
-			attack = instance_create_depth(x, y, 0, Obj_Baller_8L_hitbox);
-			attack.initiate(self);
+		attack = instance_create_depth(x, y, 0, Obj_Baller_8L_hitbox);
+		attack.initiate(self);
 		
-			sprite_index = Spr_Baller_8L_recovery;
-			image_index = 0;
-			recover_alarm = generate_sprite_frames(sprite_index);
-			action_alarm = 4;
-			multi_hit_action_index += 1;
-		}
-		else if(multi_hit_action_index < 3){
-			attack = instance_create_depth(x, y, 0, Obj_Baller_8L_hitbox);
-			attack.initiate(self);
-			action_alarm = 4;
-			multi_hit_action_index += 1;
-		}
+		sprite_index = Spr_Baller_8L_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "2L"){
 		attack = instance_create_depth(x, y, 0, Obj_Baller_2L_hitbox);
@@ -119,7 +114,7 @@ action_trigger = function(){
 		}
 		is_holding_ball = false;
 		
-		ball.h_velocity = 2*image_xscale;
+		ball.h_velocity = 2.5*image_xscale;
 		ball.v_velocity = 8;
 		
 		h_velocity = -start_speed*image_xscale;
@@ -133,13 +128,12 @@ action_trigger = function(){
 		if(is_holding_ball){
 			is_holding_ball = false;
 			
-			ball.h_velocity = 2.5*image_xscale;
-			ball.v_velocity = -14;
+			ball.h_velocity = 2*image_xscale;
+			ball.v_velocity = -12;
+			ball.cant_hurt_alarm = 8;
 		}
-		else{
-			attack = instance_create_depth(x, y, 0, Obj_Baller_2S_hitbox);
-			attack.initiate(self);
-		}
+		attack = instance_create_depth(x, y, 0, Obj_Baller_2S_hitbox);
+		attack.initiate(self);
 		
 		sprite_index = Spr_Baller_2S_recovery;
 		image_index = 0;
@@ -149,12 +143,12 @@ action_trigger = function(){
 		is_holding_ball = false;
 		
 		if(b_hold){
-			ball.h_velocity = 12*image_xscale;
-			ball.v_velocity = -6;
+			ball.h_velocity = 10*image_xscale;
+			ball.v_velocity = -5;
 		}
 		else{
-			ball.h_velocity = 6*image_xscale;
-			ball.v_velocity = -8;
+			ball.h_velocity = 5*image_xscale;
+			ball.v_velocity = -9;
 		}
 		
 		sprite_index = Spr_Baller_5S_recovery;
@@ -175,6 +169,17 @@ action_trigger = function(){
 		attack.initiate(self);
 		
 		sprite_index = Spr_Baller_Sweep_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Upswing"){
+		attack = instance_create_depth(x, y, 0, Obj_Baller_Upswing_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = 1.5*image_xscale;
+		v_velocity = -8;
+		
+		sprite_index = Spr_Baller_Upswing_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}

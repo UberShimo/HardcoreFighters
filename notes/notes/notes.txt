@@ -1,6 +1,8 @@
 TODO{
-	Add unadded moves to move lists.
-	Add sound n music
+	Fix Volume setting % (Shows "100.00%" but should be just "100%". Also "0%" shows "-0.00%");
+	Add extra freeze frames logic? For lightning or moves where you want them to be extra stunned...
+	Add sounds (Light hit / whiff, Crack sound, Spank sound)
+	Frame rate drops for some reason at times?
 	Make game look sexy, balanced and fun
 	Make Adventure mode
 	
@@ -27,6 +29,7 @@ When checking attack input it has to get checked in this order:
 
 Notes in notes:
 "This Is Standard Naming"
+Action infos ends with a "."
 Hurtbox = sprite collision
 Attack collision = purple sprites
 We are not using particles since we cant manipulate it good enough. Slow mo, scaling per dmg etc...
@@ -94,8 +97,7 @@ Claws{
 }
 
 Baller{
-	Add some cool L move.
-	Make longer L ranges. And change animations...
+	Ball stuck in wall.
 }
 
 Bow{
@@ -111,6 +113,6 @@ Boomhand{
 }
 
 Cultist{
-	Circle pullback doest quite reach yourself looking kinda dumb.
 	Circle teleport could use some cool effects.
+	Remove Bite yourself logic? Change bite mine logic?
 }

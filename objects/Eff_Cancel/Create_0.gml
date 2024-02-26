@@ -1,3 +1,5 @@
+event_inherited();
+
 object_time = 1;
 logic_time = 1;
 fade = 0.02;

@@ -167,7 +167,7 @@ action_trigger = function(){
 		attack = instance_create_depth(circle.x, circle.y, 0, Obj_Cultist_Circle_Pullback_hitbox);
 		attack.initiate(self);
 		eff = instance_create_depth(circle.x, circle.y, depth-1, Obj_Cultist_Circle_Pullback_hit_eff);
-		scale = distance_to_point(circle.x, circle.y)/sprite_get_width(Spr_Cultist_Circle_Pullback_hitbox);
+		scale = point_distance(x, y, circle.x, circle.y)/sprite_get_width(Spr_Cultist_Circle_Pullback_hitbox);
 		dir = point_direction(circle.x, circle.y, x, y);
 		instance_destroy(circle);
 		circle = noone;
@@ -176,6 +176,9 @@ action_trigger = function(){
 		attack.image_angle = dir;
 		eff.image_xscale = scale;
 		eff.image_angle = dir;
+		
+		h_velocity = 0;
+		v_velocity = -1;
 		
 		sprite_index = Spr_Cultist_Circlepull_recovery;
 		image_index = 0;

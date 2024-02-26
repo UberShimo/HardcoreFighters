@@ -10,7 +10,7 @@ if(is_returning){
 }
 
 // Hurting ball
-if(velocity > 7){
+if(velocity > 7 && cant_hurt_alarm <= 0){
 	// Spawn da hitbox
 	if(existing_hitbox == noone){
 		existing_hitbox = instance_create_depth(x, y, depth, Obj_Baller_Ball_hitbox);
@@ -20,8 +20,8 @@ if(velocity > 7){
 	// Make proper stats
 	existing_hitbox.hit_push = abs(h_velocity/2);
 	existing_hitbox.block_push = abs(h_velocity/3);
-	existing_hitbox.h_launch = abs(h_velocity);
-	existing_hitbox.v_launch = v_velocity;
+	existing_hitbox.h_launch = abs(h_velocity/2);
+	existing_hitbox.v_launch = v_velocity/2;
 	
 	// Turn it right?.. or left?
 	if(h_velocity > 4){
@@ -51,5 +51,13 @@ else{
 	if(existing_hitbox != noone){
 		instance_destroy(existing_hitbox);
 		existing_hitbox = noone;
+	}
+}
+
+// Cant hurt alarm
+if(cant_hurt_alarm > 0){
+	cant_hurt_alarm -= logic_time;
+	if(cant_hurt_alarm <= 0){
+		cant_hurt_alarm = 0;
 	}
 }

@@ -4,7 +4,7 @@ event_inherited();
 
 air_ok = false;
 air_only = false;
-info = "ULTIMATE MOVE! Tip destroys\nwhatever it touches";
+info = "Tip destroys whatever it touches.";
 movement_input = Spr_BDF;
 button_input = Spr_M;
 image = Spr_Batman_ULTRA_recovery;

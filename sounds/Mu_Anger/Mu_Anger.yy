@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "Mu_Anger.mp3",
   "type": 0,
-  "volume": 0.4,
+  "volume": 1.0,
 }

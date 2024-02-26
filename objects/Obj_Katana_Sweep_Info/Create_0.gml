@@ -8,4 +8,4 @@ info = "";
 movement_input = Spr_FDB;
 button_input = Spr_S;
 image = Spr_Katana_Sweep_recovery;
-frame = 0;
+frame = 1;

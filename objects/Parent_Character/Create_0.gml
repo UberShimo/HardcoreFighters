@@ -67,6 +67,7 @@ max_meter = 100;
 hearts = global.heart_amount;
 can_cancel = false;
 cancels = 2;
+max_cancels = cancels;
 is_blocking = false;
 is_unstoppable = false;
 is_invincible = false;
@@ -112,7 +113,6 @@ legit_hit_check = false;
 cancelable_recovery_frames = 24;
 closest_enemy = self;
 multi_hit_action_index = 0; // When one move does many attacks this variable keeps track on what attack you are on
-effect_counter = 0; // Fixes so that you spawn less effects when time goes slower
 
 // Alarms
 action_alarm = 0;
@@ -147,18 +147,26 @@ reset_buffers = function(){
 }
 
 face_closest_enemy = function(){
-	if(instance_number(Parent_Character) > 1){
-		temp_x = x;
-		x = -room_width;
-		closest_enemy = instance_nearest(temp_x, y, Parent_Character);
-		x = temp_x;
+	closest_enemy = self;
+	enemy_distance = room_width;
+	
+	// Loop through characters and find closest enemy
+	for(i = 0; i < instance_number(Parent_Character); i++){
+		if(instance_find(Parent_Character, i).index != index){
+			enemy = instance_find(Parent_Character, i);
+			temp_distance = abs(x-enemy.x);
+			if(temp_distance < enemy_distance){
+				enemy_distance = temp_distance;
+				closest_enemy = enemy;
+			}
+		}
+	}
 		
-		if(x < closest_enemy.x){
-			image_xscale = 1;
-		}
-		else{
-			image_xscale = -1;
-		}
+	if(x < closest_enemy.x){
+		image_xscale = 1;
+	}
+	else{
+		image_xscale = -1;
 	}
 }
 

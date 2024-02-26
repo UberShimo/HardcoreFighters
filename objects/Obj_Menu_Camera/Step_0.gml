@@ -7,16 +7,18 @@ if(shake > 0){
 }
 
 // Beat alarm
-beat_alarm -= 1;
-if(beat_alarm <= 0){
-	if(beats_are_shaky){
-		shake = 24;
-	}
-	if(shake_switch[beat_counter]){
-		beats_are_shaky = !beats_are_shaky;
-	}
-	beat_counter += 1;
-	beat_alarm += alarm_timer;
+if(beat_alarm > 0){
+	beat_alarm -= 1;
+	if(beat_alarm <= 0){
+		if(beats_are_shaky){
+			shake = 24;
+		}
+		if(shake_switch[beat_counter]){
+			beats_are_shaky = !beats_are_shaky;
+		}
+		beat_counter += 1;
+		beat_alarm += alarm_timer;
 	
-	alarm[1] = 8;
+		alarm[1] = 8;
+	}
 }

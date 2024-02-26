@@ -10,4 +10,7 @@ hit_push = 0;
 block_push = 0;
 freeze_duration = 24;
 h_launch = 0;
-v_launch = -5;
+v_launch = 0;
+
+is_shockwave = true;
+shockwave_power = 4;

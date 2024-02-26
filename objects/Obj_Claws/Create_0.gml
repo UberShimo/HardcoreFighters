@@ -124,7 +124,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "5S"){
-		attack = instance_create_depth(x, y, 0, Obj_Batman_5S_hitbox);
+		attack = instance_create_depth(x, y, 0, Obj_Claws_5S_hitbox);
 		attack.initiate(self);
 		
 		sprite_index = Spr_Claws_5S_recovery;
@@ -214,7 +214,7 @@ action_trigger = function(){
 			sprite_index = Spr_Claws_Flurry_recovery;
 			image_index = 0;
 			recover_alarm = generate_sprite_frames(sprite_index);
-			action_alarm = 12;
+			action_alarm = 8;
 			multi_hit_action_index += 1;
 		}
 		else if(multi_hit_action_index < 3){
@@ -224,7 +224,7 @@ action_trigger = function(){
 			blink_h(8*image_xscale, false);
 			h_velocity = 3*image_xscale;
 			
-			action_alarm = 12;
+			action_alarm = 8;
 			multi_hit_action_index += 1;
 		}
 	}

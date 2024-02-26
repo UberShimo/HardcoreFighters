@@ -59,6 +59,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			sprite_index = Spr_Baller_8F_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
+			multi_hit_action_index = 0;
 		}
 		else if(down_hold){
 			action = "2F";
@@ -76,12 +77,29 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 	}
 	else if(y_pressed){
-		if(!grounded){
+		if(down_forward_pressed){
+			action = "Upswing";
+			is_holding_ball = false;
+			
+			sprite_index = Spr_Baller_Upswing_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(down_backward_pressed){
+			action = "Upswing";
+			is_holding_ball = false;
+			
+			image_xscale *= -1;
+			
+			sprite_index = Spr_Baller_Upswing_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(!grounded){
 			action = "8L";
 			sprite_index = Spr_Baller_8L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
-			multi_hit_action_index = 0;
 		}
 		else if(down_hold){
 			action = "2L";
@@ -132,6 +150,9 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(half_circle_forward_pressed){
 			action = "High";
+			
+			h_velocity += 4*image_xscale;
+			
 			sprite_index = Spr_Baller_High_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -245,6 +266,8 @@ if(action == "Balldash" && action_alarm <= 0){
 		is_holding_ball = true;
 		h_velocity *= 0.25;
 		v_velocity *= 0.25;
+		// Regain cancels baby!
+		cancels = max_cancels;
 		
 		if(attack != noone){
 			instance_destroy(attack);
@@ -274,6 +297,11 @@ if(action == "Ballsmash"){
 }
 else if(action == "Balland"){	
 	ball.y += 16;
+}
+
+// Drop ball from 8F
+if(action == "8F" && down_pressed){
+	is_holding_ball = false;
 }
 
 // Hold ball if you respawn

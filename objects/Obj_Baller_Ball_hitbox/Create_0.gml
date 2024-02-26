@@ -14,6 +14,8 @@ v_launch = 0;
 
 active_frames = 0;
 
+swing_sound = Snd_NOTHING;
+
 // Ball stuff.
 // also Ball hits are actually considired melee
 ball = noone;

@@ -4,7 +4,7 @@ event_inherited();
 
 air_ok = false;
 air_only = true;
-info = "";
+info = "Smash down with ball if\nyou have it.";
 movement_input = Spr_D;
 button_input = Spr_S;
 image = Spr_Baller_Ballsmash_recovery;

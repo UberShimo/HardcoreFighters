@@ -1,3 +1,5 @@
+event_inherited();
+
 logic_time = object_time*global.game_time;
 
 image_alpha -= fade*logic_time;

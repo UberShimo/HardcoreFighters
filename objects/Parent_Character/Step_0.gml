@@ -8,7 +8,6 @@ if(is_respawning){
 	v_velocity = 0;
 }
 
-effect_counter += logic_time;
 ground_check = (character_height/2)+1;// +1 couse it works ok?
 
 #region alarms  V-----V
@@ -212,6 +211,7 @@ else{
 	// Wall bounce
 	if(action == "launched" && abs(h_velocity) > wall_bounce_limit){
 		h_velocity = -h_velocity*0.75;
+		v_velocity -= 4;
 		spawn_effect(x, y, 8, Eff_Splash, 1, 0.05, 1);
 	}
 }
@@ -279,7 +279,7 @@ if(position_meeting(x, y+ground_check, Parent_Collision)){
 	grounded = true;
 	
 	if(action == noone){
-		cancels = 2;
+		cancels = max_cancels;
 		extra_jumps_left = extra_jumps;
 	}
 }

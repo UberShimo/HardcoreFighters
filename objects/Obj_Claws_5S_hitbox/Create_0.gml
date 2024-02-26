@@ -12,4 +12,4 @@ freeze_duration = 16;
 h_launch = 2;
 v_launch = -6;
 
-effect = Obj_Katana_5S_hit_eff;
+is_sticky = true;

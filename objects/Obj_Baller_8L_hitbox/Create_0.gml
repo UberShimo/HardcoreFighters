@@ -10,7 +10,7 @@ hit_push = 4;
 block_push = 2;
 freeze_duration = 8;
 h_launch = 1;
-v_launch = -8;
+v_launch = 2;
 
-active_frames = 2;
 is_sticky = true;
+is_high = true;

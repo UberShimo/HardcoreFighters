@@ -2,7 +2,7 @@ event_inherited();
 
 if(is_controllable){
 	// Special moves
-	rng = irandom_range(1, 16);
+	rng = irandom_range(1, 10);
 
 	if(meter >= 25 && irandom_range(1, 4) == 1){
 		rb_pressed = buffer_duration;
@@ -19,34 +19,46 @@ if(is_controllable){
 		b_pressed = buffer_duration;
 	}
 	else if(rng == 3){
+		if(ring1 != noone){
+			rng = irandom_range(1, 2);
+			
+			if(rng == 1){
+				down_forward_pressed = buffer_duration;
+				x_pressed = buffer_duration;
+			}
+			else{
+				forward_down_pressed = buffer_duration;
+				x_pressed = buffer_duration;
+			}
+		}
+		else{
+			down_backward_pressed = buffer_duration;
+			x_pressed = buffer_duration;
+		}
+	}
+	else if(rng == 3){
+		if(ring2 != noone){
+			rng = irandom_range(1, 2);
+			
+			if(rng == 1){
+				down_forward_pressed = buffer_duration;
+				y_pressed = buffer_duration;
+			}
+			else{
+				forward_down_pressed = buffer_duration;
+				y_pressed = buffer_duration;
+			}
+		}
+		else{
+			down_backward_pressed = buffer_duration;
+			y_pressed = buffer_duration;
+		}
+	}
+	else if(rng == 4){
 		half_circle_forward_pressed = buffer_duration;
 		x_pressed = buffer_duration;
 	}
-	else if(rng == 4){
-		down_forward_pressed = buffer_duration;
-		x_pressed = buffer_duration;
-	}
 	else if(rng == 5){
-		forward_down_pressed = buffer_duration;
-		x_pressed = buffer_duration;
-	}
-	else if(rng == 6){
-		down_backward_pressed = buffer_duration;
-		x_pressed = buffer_duration;
-	}
-	else if(rng == 7){
-		down_forward_pressed = buffer_duration;
-		y_pressed = buffer_duration;
-	}
-	else if(rng == 8){
-		forward_down_pressed = buffer_duration;
-		y_pressed = buffer_duration;
-	}
-	else if(rng == 9){
-		down_backward_pressed = buffer_duration;
-		y_pressed = buffer_duration;
-	}
-	else if(rng == 10){
 		half_circle_forward_pressed = buffer_duration;
 		y_pressed = buffer_duration;
 	}

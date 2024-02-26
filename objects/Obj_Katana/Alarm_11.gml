@@ -34,7 +34,7 @@ if(is_controllable){
 		half_circle_forward_pressed = buffer_duration;
 		y_pressed = buffer_duration;
 	}
-	else if(rng == 8){
+	else if(rng == 8 && !grounded){
 		backward_down_pressed = buffer_duration;
 		y_pressed = buffer_duration;
 	}

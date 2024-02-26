@@ -2,7 +2,7 @@ event_inherited();
 
 if(is_controllable){
 	// Special moves
-	rng = irandom_range(1, 12);
+	rng = irandom_range(1, 10);
 
 	rb_hold = false;
 	if(meter >= 10 && irandom_range(1, 4) == 1){

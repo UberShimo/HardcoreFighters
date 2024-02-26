@@ -4,7 +4,7 @@ event_inherited();
 
 air_ok = false;
 air_only = false;
-info = "Roll then kick upward";
+info = "Roll then kick upward.";
 movement_input = Spr_D;
 button_input = Spr_S;
 image = Spr_Claws_2S_recovery;

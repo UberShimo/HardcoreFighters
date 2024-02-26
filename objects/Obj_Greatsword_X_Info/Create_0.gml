@@ -4,7 +4,7 @@ event_inherited();
 
 air_ok = true;
 air_only = false;
-info = "A grab that destroys\nopponents meter";
+info = "A grab that destroys\nopponents meter.";
 movement_input = Spr_EMPTY;
 button_input = Spr_M;
 image = Spr_Greatsword_X_whiff;

@@ -28,6 +28,10 @@ if(is_controllable){
 	}
 	else if(rng == 5){
 		down_forward_pressed = buffer_duration;
+		y_pressed = buffer_duration;
+	}
+	else if(rng == 6){
+		down_forward_pressed = buffer_duration;
 		b_pressed = buffer_duration;
 	}
 }

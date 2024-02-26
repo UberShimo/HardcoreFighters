@@ -2,6 +2,8 @@ event_inherited();
 
 student = noone;
 
+play_music(Mu_Tutorial, global.music_volume);
+
 // Methods
 // No winning in Dojo!
 check_for_winner = function(){

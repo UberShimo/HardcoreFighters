@@ -12,6 +12,7 @@ freeze_duration = 32;
 h_launch = 1;
 v_launch = -2;
 
+active_frames = 2;
 shake_amount = 12;
 penetration = 1;
 is_final = true;
