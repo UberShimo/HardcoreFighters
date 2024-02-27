@@ -15,6 +15,7 @@ v_launch = 0;
 active_frames = 0;
 
 swing_sound = Snd_NOTHING;
+block_sound = Snd_Heavy_Block;
 
 // Ball stuff.
 // also Ball hits are actually considired melee

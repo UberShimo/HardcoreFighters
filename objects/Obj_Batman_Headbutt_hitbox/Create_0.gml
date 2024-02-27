@@ -16,3 +16,6 @@ v_launch = 2;
 is_high = true;
 
 hit_effect_y = 16;
+
+hit_sound = Snd_Crack;
+block_sound = Snd_Heavy_Block;

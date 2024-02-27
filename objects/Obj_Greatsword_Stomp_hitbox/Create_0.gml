@@ -13,3 +13,5 @@ h_launch = 0;
 v_launch = 0;
 
 is_low = true;
+
+swing_sound = Snd_Block1;

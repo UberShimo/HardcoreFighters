@@ -13,3 +13,5 @@ h_launch = 0.5;
 v_launch = -5.5;
 
 hit_effect_y = -8;
+
+hit_sound = Snd_Light_Swing;

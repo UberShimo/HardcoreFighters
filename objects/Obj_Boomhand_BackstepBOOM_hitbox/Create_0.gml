@@ -14,3 +14,5 @@ v_launch = -2;
 
 is_sticky = true;
 active_frames = 20;
+
+block_sound = Snd_Heavy_Block;

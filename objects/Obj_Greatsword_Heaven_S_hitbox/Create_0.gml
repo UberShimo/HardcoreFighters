@@ -14,3 +14,7 @@ v_launch = -9;
 
 is_high = true;
 is_sticky = true;
+
+swing_sound = Snd_Smack;
+hit_sound = Snd_Crack;
+block_sound = Snd_Heavy_Block;

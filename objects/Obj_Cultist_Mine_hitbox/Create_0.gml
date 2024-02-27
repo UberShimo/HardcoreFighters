@@ -15,3 +15,5 @@ v_launch = -12;
 penetration = 1;
 is_launcher = true;
 effect = Obj_Cultist_Mine_hit_eff;
+
+hit_sound = Snd_Crack;

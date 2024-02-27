@@ -16,3 +16,5 @@ v_launch = -1;
 is_high = true;
 is_sticky = true;
 active_frames = 24;
+
+swing_sound = Snd_Light_Swing;

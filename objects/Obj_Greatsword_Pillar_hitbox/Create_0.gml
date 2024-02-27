@@ -10,3 +10,6 @@ h_launch = 3;
 v_launch = -7;
 
 is_launcher = true;
+
+swing_sound = Snd_Crack;
+block_sound = Snd_Heavy_Block;

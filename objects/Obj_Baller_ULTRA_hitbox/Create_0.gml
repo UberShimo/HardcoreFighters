@@ -17,3 +17,5 @@ penetration = 0.8;
 effect = Obj_Baller_ULTRA_hit_eff;
 is_launcher = true;
 meter_gain_multiplier = 0;
+
+hit_sound = Snd_Crack;

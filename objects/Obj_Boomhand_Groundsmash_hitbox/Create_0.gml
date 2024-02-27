@@ -16,3 +16,5 @@ is_final = true;
 is_low = true;
 hit_effect_y = 32;
 effect = Obj_Boomhand_Groundsmash_hit_eff;
+
+swing_sound = Snd_Crack;

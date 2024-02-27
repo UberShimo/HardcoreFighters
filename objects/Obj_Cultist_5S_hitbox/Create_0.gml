@@ -13,3 +13,5 @@ h_launch = 4;
 v_launch = -4;
 
 is_sticky = true;
+
+block_sound = Snd_Heavy_Block;

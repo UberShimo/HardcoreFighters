@@ -16,3 +16,6 @@ is_high = true;
 penetration = 0.3;
 is_sticky = true;
 meter_gain_multiplier = 0;
+
+hit_sound = Snd_Crack;
+block_sound = Snd_Heavy_Block;

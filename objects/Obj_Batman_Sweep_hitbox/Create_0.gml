@@ -16,3 +16,5 @@ is_low = true;
 is_launcher = true;
 effect = Obj_Batman_Sweep_hit_eff;
 hit_effect_y = 16;
+
+block_sound = Snd_Heavy_Block;

@@ -14,3 +14,5 @@ v_launch = -3;
 
 is_launcher = true;
 hit_effect_y = -8;
+
+block_sound = Snd_Heavy_Block;

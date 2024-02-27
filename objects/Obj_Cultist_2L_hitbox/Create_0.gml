@@ -14,3 +14,5 @@ v_launch = -5;
 
 hit_effect_y = -8;
 effect = Obj_Cultist_2L_hit_eff;
+
+swing_sound = Snd_Light_Swing;

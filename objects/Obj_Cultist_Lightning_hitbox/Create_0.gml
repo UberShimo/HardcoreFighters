@@ -15,3 +15,7 @@ v_launch = 6;
 is_high = true;
 penetration = 0.5;
 effect = Obj_Cultist_Lightning_hit_eff;
+
+swing_sound = Snd_Crack;
+hit_sound = Snd_Smack;
+block_sound = Snd_Heavy_Block;

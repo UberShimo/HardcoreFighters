@@ -16,3 +16,5 @@ is_sticky = true;
 is_low = true;
 is_launcher = true;
 hit_effect_y = 16;
+
+block_sound = Snd_Heavy_Block;

@@ -15,3 +15,5 @@ v_launch = -1;
 is_sticky = true;
 is_low = true;
 hit_effect_y = 16;
+
+swing_sound = Snd_Light_Swing;

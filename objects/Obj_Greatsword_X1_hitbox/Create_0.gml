@@ -15,3 +15,6 @@ v_launch = 0;
 
 penetration = 1;
 is_sticky = true;
+
+swing_sound = Snd_NOTHING;
+hit_sound = Snd_Block1;

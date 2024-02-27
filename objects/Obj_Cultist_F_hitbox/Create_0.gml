@@ -15,3 +15,5 @@ v_launch = 0;
 is_shockwave = true;
 shockwave_power = 8;
 active_frames = 2;
+
+swing_sound = Snd_Light_Swing;

@@ -19,3 +19,5 @@ is_priority = true;
 active_frames = 4;
 
 hit_effect_y = -8;
+
+hit_sound = Snd_Smack;

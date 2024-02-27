@@ -15,3 +15,5 @@ v_launch = -8;
 is_launcher = true;
 is_sticky = true;
 meter_gain_multiplier = 0;
+
+hit_sound = Snd_Crack;

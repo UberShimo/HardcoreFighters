@@ -14,3 +14,5 @@ v_launch = -4;
 
 is_launcher = true;
 effect = Obj_Greatsword_Heaven_F_hit_eff;
+
+swing_sound = Snd_Light_Swing;

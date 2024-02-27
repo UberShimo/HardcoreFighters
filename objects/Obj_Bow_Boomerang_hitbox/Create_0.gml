@@ -10,7 +10,8 @@ h_launch = 0;
 v_launch = 0;
 
 is_side_irrelevant = true;
-swing_sound = Snd_NOTHING;
-hit_sound = Snd_NOTHING;
 hit_effect_scale = 0.25;
 meter_gain_multiplier = 0;
+
+swing_sound = Snd_Light_Swing;
+hit_sound = Snd_NOTHING;

@@ -16,3 +16,6 @@ is_low = true;
 is_launcher = true;
 hit_effect_scale = 0;
 penetration = 1;
+
+swing_sound = Snd_Light_Swing;
+hit_sound = Snd_NOTHING;

@@ -13,3 +13,5 @@ is_priority = true;
 is_high = true;
 shake_amount = 8;
 effect = Obj_Bow_8S_hit_eff;
+
+hit_sound = Snd_Crack;

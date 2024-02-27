@@ -13,5 +13,4 @@ h_launch = 1;
 v_launch = -1;
 
 is_sticky = true;
-
 hit_effect_y = -8;

@@ -15,6 +15,8 @@ v_launch = -4;
 is_projectile = true;
 is_cancelable = true;
 
+swing_sound = Snd_Light_Swing;
+
 spd = 0;
 hitbox_list = ds_list_create();
 

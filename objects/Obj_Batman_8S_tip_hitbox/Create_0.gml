@@ -13,3 +13,5 @@ is_priority = true;
 is_high = true;
 is_sticky = true;
 shake_amount = 8;
+
+hit_sound = Snd_Crack;

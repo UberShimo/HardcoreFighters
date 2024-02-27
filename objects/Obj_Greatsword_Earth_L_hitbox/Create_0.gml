@@ -12,3 +12,4 @@ freeze_duration = 8;
 h_launch = 3;
 v_launch = -3;
 
+swing_sound = Snd_Light_Swing;

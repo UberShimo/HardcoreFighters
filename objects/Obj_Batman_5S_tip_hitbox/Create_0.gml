@@ -16,3 +16,5 @@ active_frames = 4;
 shake_amount = 8;
 
 hit_effect_y = -8;
+
+hit_sound = Snd_Crack;

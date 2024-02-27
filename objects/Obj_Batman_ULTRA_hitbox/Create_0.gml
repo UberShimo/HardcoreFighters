@@ -17,3 +17,5 @@ penetration = 0.5;
 meter_gain_multiplier = 0;
 
 hit_effect_y = -8;
+
+hit_sound = Snd_Crack;
