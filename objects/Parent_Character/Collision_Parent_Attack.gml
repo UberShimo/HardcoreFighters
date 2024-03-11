@@ -60,6 +60,7 @@ if(legit_hit_check){
 	#region Get smacked
 	if(hit){
 		HP -= other.damage;
+		// Give meter to players
 		if(other.is_initiated_by_character){
 			meter += other.meter_gain;
 			other.spawner.meter += other.meter_gain;
@@ -102,12 +103,10 @@ if(legit_hit_check){
 					h_velocity = other.hit_push*other.image_xscale;
 				}
 			}
-	
 			sprite_index = stunned_spr;
 	
 			// Launch
 			if(other.is_launcher || !grounded){
-				action = "Launched";
 				// Shockwave
 				if(other.is_shockwave){
 					dir = point_direction(other.x, other.y, x, y);
@@ -123,12 +122,13 @@ if(legit_hit_check){
 						h_velocity = other.h_launch*other.image_xscale;
 					}
 				}
-				sprite_index = launched_spr;
 			}
 		}
 	}
 	// Blocked
 	else if(other.block_stun > 0){
+		HP -= other.damage*other.penetration;
+		
 		action = "Stunned";
 		recover_alarm = other.block_stun;
 		action_alarm = 0;
@@ -150,7 +150,7 @@ if(legit_hit_check){
 			}
 		}
 		object_time = other.freeze_amount;
-		time_reset_alarm = other.freeze_duration;
+		time_reset_alarm = other.freeze_duration+other.extra_freeze_duration;
 		other.object_time = other.freeze_amount;
 		other.time_reset_alarm = other.freeze_duration;
 		if(!other.is_projectile){

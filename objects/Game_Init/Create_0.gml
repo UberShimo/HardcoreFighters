@@ -12,9 +12,11 @@ global.battle_music = Mu_Metalgroove;
 global.music_volume = 0.3;
 global.min_players = 2;
 global.max_players = 8;
-global.dojo_level = 0; // 0:freeform 1:Basic 2:Advanced
+global.dojo_level = 0; // 0:freeform 1:Basic tutorial 2:Advanced tutorial
 
 // Global character stats
+global.cancelable_recovery_frames = 24;
+
 global.slippy_grip = 0.3;
 global.standard_grip = 0.5;
 global.steady_grip = 0.7;

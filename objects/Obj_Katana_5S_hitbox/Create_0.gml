@@ -15,4 +15,5 @@ v_launch = -5;
 
 effect = Obj_Katana_5S_hit_eff;
 
+hit_sound = Snd_Hit2;
 block_sound = Snd_Heavy_Block;

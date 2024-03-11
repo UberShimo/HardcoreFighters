@@ -9,9 +9,10 @@ block_stun = 12;
 hit_push = 3;
 block_push = 2;
 freeze_duration = 8;
-h_launch = 1;
-v_launch = -5;
+h_launch = 2;
+v_launch = -6;
 
 is_sticky = true;
+is_launcher = true;
 
 block_sound = Snd_Heavy_Block;

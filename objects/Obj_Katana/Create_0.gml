@@ -20,12 +20,12 @@ crouch_block_spr = Spr_Katana_Crouch_Block;
 start_speed = 3.5;
 max_speed = 5;
 acceleration = 0.2;
+grip = global.standard_grip;
+air_control = 0.2;
 dash_speed = 10;
 dash_blink = 8;
 dash_duration = 24;
 dash_grip = 0.75;
-grip = global.standard_grip;
-air_grip = 0;
 jump_power = 10;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -37,7 +37,6 @@ character_width = 24;
 character_height = global.standard_height;
 // Original stats
 original_grip = grip;
-original_air_grip = air_grip;
 original_weight = weight;
 #endregion
 
@@ -187,7 +186,7 @@ action_trigger = function(){
 		can_cancel = true;
 		is_collidable = false;
 		grip = dash_grip;
-		air_grip = dash_grip;
+		extra_grip = dash_grip;
 		v_velocity = 0;
 		weight = original_weight/4;
 		recover_alarm = dash_duration;

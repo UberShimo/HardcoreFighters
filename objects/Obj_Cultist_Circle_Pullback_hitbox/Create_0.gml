@@ -8,9 +8,11 @@ hit_stun = 20;
 block_stun = 12;
 hit_push = 0;
 block_push = 0;
-freeze_duration = 24;
+freeze_duration = 12;
 h_launch = 0;
 v_launch = 0;
 
 is_shockwave = true;
 shockwave_power = 4;
+shake_amount = 2;
+extra_freeze_duration = 32;

@@ -20,12 +20,12 @@ crouch_block_spr = Spr_Claws_Crouch_Block;
 start_speed = 2;
 max_speed = 7;
 acceleration = 0.4;
+air_control = 0.05;
+grip = global.slippy_grip;
 dash_speed = 8;
 dash_blink = 54;
 dash_duration = 24;
 dash_grip = 1;
-grip = global.slippy_grip;
-air_grip = 0;
 jump_power = 12;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -37,7 +37,6 @@ character_width = 24;
 character_height = global.standard_height;
 // Original stats
 original_grip = grip;
-original_air_grip = air_grip;
 original_weight = weight;
 #endregion
 
@@ -241,14 +240,11 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "ULTRA"){
-		is_hypermode = true;
 		shake_amount = 0;
 		
 		sprite_index = stand_spr;
 		image_index = 0;
 		recover_alarm = 1;
-		Obj_Match_Manager.global_time_reset_alarm = 240;
-		alarm[10] = 240;
 	}
 	else if(action == "X"){
 		action = noone;

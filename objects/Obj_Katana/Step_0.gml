@@ -9,7 +9,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	last_h_velocity = h_velocity;
 	last_v_velocity = v_velocity;
 	last_grip = grip;
-	last_air_grip = air_grip;
 	
 	// Only used for moves that ends combo
 	final_move = false;
@@ -145,7 +144,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		h_velocity = last_h_velocity;
 		v_velocity = last_v_velocity;
 		grip = last_grip;
-		air_grip = last_air_grip;
 	}
 	// Cancel is legit
 	else if(recover_alarm > 0){

@@ -29,7 +29,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "Spr_Time",
+    "path": "sprites/Spr_Time/Spr_Time.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

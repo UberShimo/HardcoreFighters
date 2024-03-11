@@ -1,1 +1,0 @@
-global.game_time -= 0.1;

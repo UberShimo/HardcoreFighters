@@ -37,7 +37,7 @@ else if(is_cancelable){
 }
 // Not final or cancelable then show combo window
 else{
-	c_window = hit_stun-recovery+24; // Cancelable frames is 24
+	c_window = hit_stun-recovery+global.cancelable_recovery_frames;
 	
 	draw_text(x+32*13+digit_offset, y+32*3+digit_offset, string(c_window));
 }

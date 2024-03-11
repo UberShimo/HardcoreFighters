@@ -16,4 +16,5 @@ is_launcher = true;
 is_low = true;
 is_sticky = true;
 
+hit_sound = Snd_Hit2;
 block_sound = Snd_Heavy_Block;

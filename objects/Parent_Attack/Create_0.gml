@@ -17,6 +17,7 @@ block_push = 0;
 h_launch = 0;
 v_launch = 0;
 freeze_duration = 1;
+extra_freeze_duration = 0;
 swing_sound = Snd_Swing1;
 hit_sound = Snd_Hit1;
 block_sound = Snd_Block1;

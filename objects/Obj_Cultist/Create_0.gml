@@ -20,12 +20,12 @@ crouch_block_spr = Spr_Cultist_Crouch_Block;
 start_speed = 3;
 max_speed = 5;
 acceleration = 0.1;
+grip = global.standard_grip;
+air_control = 0.1;
 dash_speed = 10;
 dash_blink = 0;
 dash_duration = 32;
 dash_grip = 0.5;
-grip = global.standard_grip;
-air_grip = 0;
 jump_power = 13;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -37,7 +37,6 @@ character_width = 24;
 character_height = global.standard_height;
 // Original stats
 original_grip = grip;
-original_air_grip = air_grip;
 original_weight = weight;
 #endregion
 
@@ -192,7 +191,7 @@ action_trigger = function(){
 		circle.initiate(self);
 		
 		h_velocity = 10*image_xscale;
-		air_grip = 0.5;
+		extra_grip = 0.5;
 		
 		sprite_index = Spr_Cultist_Circledash_Forward_recovery;
 		image_index = 0;
@@ -206,7 +205,7 @@ action_trigger = function(){
 		circle.initiate(self);
 		
 		h_velocity = -10*image_xscale;
-		air_grip = 0.5;
+		extra_grip = 0.5;
 		
 		sprite_index = Spr_Cultist_Circledash_Backward_recovery;
 		image_index = 0;
@@ -250,14 +249,21 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "Heal"){
-		sprite_index = Spr_Cultist_Heal;
-		image_index = 0;
-		recover_alarm = generate_sprite_frames(sprite_index);
-	}
 	// Meter moves
 	else if(action == "ULTRA"){
 		action = noone;
+	}
+	else if(action == "Heal"){
+		eff = spawn_effect(x, y, 1, Eff_Ring, 2, 0.1, 1, c_green);
+		
+		HP += 10;
+		if(HP > max_HP){
+			HP = max_HP;
+		}
+		
+		sprite_index = Spr_Cultist_Heal_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else{
 		action = noone;

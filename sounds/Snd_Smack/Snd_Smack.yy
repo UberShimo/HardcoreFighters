@@ -13,11 +13,11 @@
   "duration": 0.7053,
   "parent": {
     "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "path": "folders/Sounds/Sounds.yy",
   },
   "preload": false,
   "sampleRate": 44100,
   "soundFile": "Snd_Smack.mp3",
   "type": 0,
-  "volume": 1.0,
+  "volume": 0.4,
 }

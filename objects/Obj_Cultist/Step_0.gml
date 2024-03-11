@@ -9,7 +9,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	last_h_velocity = h_velocity;
 	last_v_velocity = v_velocity;
 	last_grip = grip;
-	last_air_grip = air_grip;
 	
 	// Only used for moves that ends combo
 	final_move = false;
@@ -171,7 +170,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 	}
 	else if(rb_pressed){
-		if(half_circle_forward_pressed && meter >= 100){
+		if(half_circle_forward_pressed && meter >= 100 && grounded){
 			action = "ULTRA";
 			meter -= 100;
 			sprite_index = Spr_Cultist_ULTRA_startup;
@@ -185,6 +184,13 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			spawner.zombie_color = player_color;
 			spawner.character_to_spawn = closest_enemy.object_index;
 		}
+		else if(meter >= 25 && grounded){
+			action = "Heal";
+			meter -= 25;
+			sprite_index = Spr_Cultist_Heal_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
 	}
 	reset_buffers();
 	
@@ -197,7 +203,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		h_velocity = last_h_velocity;
 		v_velocity = last_v_velocity;
 		grip = last_grip;
-		air_grip = last_air_grip;
 	}
 	// Cancel is legit
 	else if(recover_alarm > 0){
@@ -208,31 +213,4 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		eff = instance_create_depth(x, y, 1, Eff_Cancel);
 		eff.initiate(self);
 	}
-}
-
-// Heal logic
-if(action == "Heal"){
-	if(HP < max_HP){
-		HP += logic_time/2;
-	}
-	else{
-		HP = max_HP;
-	}
-}
-
-// Time slowdown logic
-if(is_slowing_down_time){
-	if(meter >= logic_time && rb_hold){
-		meter -= logic_time;
-	}
-	else{
-		is_slowing_down_time = false;
-		if(Obj_Match_Manager.global_time_reset_alarm < 1){
-			Obj_Match_Manager.global_time_reset_alarm = 1;
-		}
-	}
-}
-else if(rb_hold && meter >= logic_time && global.game_time > slow_amount){
-	is_slowing_down_time = true;
-	global.game_time = slow_amount;
 }

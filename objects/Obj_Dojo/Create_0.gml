@@ -20,12 +20,11 @@ crouch_block_spr = Spr_Dojo_Crouch_Block;
 start_speed = 3;
 max_speed = 6;
 acceleration = 0.1;
+grip = global.standard_grip;
 dash_speed = 12;
 dash_blink = 16;
 dash_duration = 24;
 dash_grip = 1;
-grip = global.standard_grip;
-air_grip = 0;
 jump_power = 10;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -37,7 +36,6 @@ character_width = 24;
 character_height = global.standard_height;
 // Original stats
 original_grip = grip;
-original_air_grip = air_grip;
 original_weight = weight;
 #endregion
 

@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "Spr_Cultist_5L_hitbox",
   "bbox_bottom": 56,
-  "bbox_left": 22,
+  "bbox_left": 1,
   "bbox_right": 89,
   "bbox_top": 52,
   "bboxMode": 0,

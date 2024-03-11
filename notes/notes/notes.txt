@@ -1,8 +1,8 @@
 TODO{
-	Fix Volume setting % (Shows "100.00%" but should be just "100%". Also "0%" shows "-0.00%");
-	Add extra freeze frames logic? For lightning or moves where you want them to be extra stunned...
-	Frame rate drops for some reason at times?
+	Change the ULTRA input maybe. So it is easier to do.
 	Make game look sexy, balanced and fun
+	Frame rate drops for some reason at times?
+	Is extra freeze frames broken on block? Donnu.
 	Make Adventure mode
 	
 	Push :: Execution Error - Variable Index [8] out of range [8] - -1.players(100244,8)
@@ -92,8 +92,7 @@ Katana{
 }
 
 Claws{
-	Make 2L a boar butt move. Move slightly forward anti air. 12 startup launcher.
-	X = Go back 2 sec in time instead?
+	X = Go back 2 sec in time instead
 }
 
 Baller{
@@ -101,7 +100,7 @@ Baller{
 }
 
 Bow{
-	Boomerangs dont bounce correct
+	Boomerangs dont bounce correct... Stuck in wall.
 }
 
 Greatsword{
@@ -109,10 +108,9 @@ Greatsword{
 }
 
 Boomhand{
-	Groundsmash hit effect is UGLY!
+	Groundsmash hit effect sounds bad.
 }
 
 Cultist{
 	Circle teleport could use some cool effects.
-	Remove Bite yourself logic? Change bite mine logic (Make mine turn into vulcano of stars?)?
 }

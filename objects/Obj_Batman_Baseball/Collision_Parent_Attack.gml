@@ -1,4 +1,4 @@
-if(!other.is_projectile && ds_list_find_index(hitbox_list, other) == -1){
+if(!other.is_projectile && other.hit_stun > 0 && ds_list_find_index(hitbox_list, other) == -1){
 	index = other.index;
 	
 	h_velocity = other.h_launch*2*other.image_xscale;
@@ -19,7 +19,6 @@ if(!other.is_projectile && ds_list_find_index(hitbox_list, other) == -1){
 	
 	other.spawner.can_cancel = true;
 	
-	
 	// Freeze time
 	if(other.freeze_duration > 0){
 		object_time = other.freeze_amount;
@@ -32,8 +31,12 @@ if(!other.is_projectile && ds_list_find_index(hitbox_list, other) == -1){
 		}
 	}
 	
-	// spawn effect
-	spawn_effect(x, y, 8, Eff_Splash, 1, 0.05, other.hit_effect_scale);
+	// Spawn effect / sound
+	effect_to_spawn = Eff_Splash;
+	audio_play_sound(other.hit_sound, 0, false);
+	spawn_effect(x, y, 8, effect_to_spawn, 1, 0.05, other.hit_effect_scale);
+	
+	// Ring
 	eff = instance_create_depth(x, y, -1, Eff_Ring);
 	eff.grow *= other.hit_effect_scale;
 	eff.thickness *= other.hit_effect_scale;

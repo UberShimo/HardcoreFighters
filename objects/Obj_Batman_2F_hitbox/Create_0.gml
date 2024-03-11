@@ -16,4 +16,4 @@ is_sticky = true;
 is_low = true;
 hit_effect_y = 16;
 
-hit_sound = Snd_Light_Swing;
+swing_sound = Snd_Light_Swing;

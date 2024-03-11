@@ -1,6 +1,8 @@
 event_inherited();
 
+index = -1;
 student = noone;
+time_switch_pressed = false;
 
 play_music(Mu_Tutorial, global.music_volume);
 

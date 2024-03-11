@@ -14,5 +14,5 @@ v_launch = 7;
 
 is_high = true;
 
-hit_sound = Snd_Crack;
+hit_sound = Snd_Hit2;
 block_sound = Snd_Heavy_Block;

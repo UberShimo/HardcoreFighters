@@ -76,13 +76,14 @@ is_collidable = true;
 start_speed = 3;
 max_speed = 6;
 acceleration = 0.1;
+grip = global.standard_grip; // Slippy: 0.3, Standard: 0.5, Steady: 0.7
+air_control = 0.1;
+extra_grip = 0; // Used for moves that give extra grip
 dash_speed = 12;
-dash_lift = 0; // Only used for bow basically...
+dash_lift = 0; // Only used for Bow basically...
 dash_blink = 16;
 dash_duration = 24;
 dash_grip = 1;
-grip = global.standard_grip; // Slippy: 0.3, Standard: 0.5, Steady: 0.7
-air_grip = 0;
 jump_power = 12;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -94,7 +95,6 @@ character_width = 24;
 character_height = global.standard_height; // Short: 48, Standard: 64, Tall: 80
 // Original stats
 original_grip = grip;
-original_air_grip = air_grip;
 original_weight = weight;
 #endregion
 
@@ -110,7 +110,7 @@ action = noone;
 last_action = noone; // Used for checking if cancel is legit
 hitbox_list = ds_list_create();
 legit_hit_check = false;
-cancelable_recovery_frames = 24;
+cancelable_recovery_frames = global.cancelable_recovery_frames;
 closest_enemy = self;
 multi_hit_action_index = 0; // When one move does many attacks this variable keeps track on what attack you are on
 
@@ -285,7 +285,7 @@ read_input = function(){
 	
 reset_physics = function(){
 	grip = original_grip;
-	air_grip = original_air_grip;
+	extra_grip = 0;
 	weight = original_weight;
 	multi_hit_action_index = 0;
 	is_collidable = true;
@@ -304,7 +304,7 @@ check_for_cancel = function(){
 		return false;
 	}
 	
-	if(can_cancel && cancels > 0 && recover_alarm < cancelable_recovery_frames){
+	if(can_cancel && cancels > 0 && recover_alarm < cancelable_recovery_frames && action != "Stunned"){
 		return true;
 	}
 	return false;

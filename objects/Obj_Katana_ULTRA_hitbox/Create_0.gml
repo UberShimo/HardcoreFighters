@@ -20,5 +20,5 @@ meter_gain_multiplier = 0;
 
 effect = Obj_Katana_ULTRA_hit_eff;
 
-hit_sound = Snd_Crack;
+hit_sound = Snd_Hit2;
 swing_sound = Snd_Light_Swing;

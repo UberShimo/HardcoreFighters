@@ -10,14 +10,14 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 0.65305,
+  "duration": 0.18285,
   "parent": {
     "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "path": "folders/Sounds/Sounds.yy",
   },
   "preload": false,
   "sampleRate": 44100,
   "soundFile": "Snd_Heavy_Block.mp3",
   "type": 0,
-  "volume": 0.7,
+  "volume": 0.5,
 }

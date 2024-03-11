@@ -20,13 +20,13 @@ crouch_block_spr = Spr_Bow_Crouch_Block;
 start_speed = 2;
 max_speed = 6;
 acceleration = 0.1;
+grip = global.standard_grip;
+air_control = 0.1;
 dash_speed = 10;
 dash_lift = -4;
 dash_blink = 0;
 dash_duration = 24;
 dash_grip = 0.5;
-grip = global.standard_grip;
-air_grip = 0;
 jump_power = 11;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -38,7 +38,6 @@ character_width = 24;
 character_height = global.tall_height;
 // Original stats
 original_grip = grip;
-original_air_grip = air_grip;
 original_weight = weight;
 #endregion
 

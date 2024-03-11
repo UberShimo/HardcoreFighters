@@ -14,7 +14,8 @@
   "For3D": false,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"b0a29a09-1ead-4f01-b026-3711d254ba3f",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"1f4246e7-564f-4825-b532-d0879f07889b",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7a298dc1-877e-4f5a-b470-b43ab0ed2dda",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"ca2cb614-78b6-4f2b-9f98-08de5c719260",},
   ],
   "gridX": 32,
   "gridY": 32,
@@ -45,7 +46,7 @@
     "events": {"resourceType":"KeyframeStore<MessageEventKeyframe>","resourceVersion":"1.0","Keyframes":[],},
     "eventStubScript": null,
     "eventToFunction": {},
-    "length": 2.0,
+    "length": 3.0,
     "lockOrigin": false,
     "moments": {"resourceType":"KeyframeStore<MomentsEventKeyframe>","resourceVersion":"1.0","Keyframes":[],},
     "playback": 1,
@@ -57,7 +58,8 @@
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"b0a29a09-1ead-4f01-b026-3711d254ba3f","path":"sprites/Spr_Claws_2L_startup/Spr_Claws_2L_startup.yy",},},},"Disabled":false,"id":"5b8cf872-dea9-4ce1-8c90-fd506b62594b","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"1f4246e7-564f-4825-b532-d0879f07889b","path":"sprites/Spr_Claws_2L_startup/Spr_Claws_2L_startup.yy",},},},"Disabled":false,"id":"83a44446-31c5-46ab-90fa-b72cbad45b67","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"7a298dc1-877e-4f5a-b470-b43ab0ed2dda","path":"sprites/Spr_Claws_2L_startup/Spr_Claws_2L_startup.yy",},},},"Disabled":false,"id":"ff598614-aa6b-4634-bb9e-47f4c3edc528","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"ca2cb614-78b6-4f2b-9f98-08de5c719260","path":"sprites/Spr_Claws_2L_startup/Spr_Claws_2L_startup.yy",},},},"Disabled":false,"id":"d1eceac0-6bcb-44ce-b4fe-9e9faa8d287f","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

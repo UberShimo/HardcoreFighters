@@ -23,14 +23,12 @@ if(recover_alarm > 0){
 	recover_alarm -= logic_time;
 	
 	if(recover_alarm <= 0){
-		recover_alarm = 0;
-		
-		action = noone;
 		sprite_index = stand_spr;
-		
-		reset_physics()
+		recover_alarm = 0;
+		action = noone;
 		is_unstoppable = false;
 		
+		reset_physics()
 		can_cancel = false;
 	}
 }
@@ -100,7 +98,7 @@ if(invincibility_alarm > 0){
 
 #region control V-----V
 // Movement
-if(action == noone && grounded && !is_blocking){
+if(action == noone && !is_blocking){
 	
 	// Crouch
 	if(down_hold){
@@ -108,52 +106,61 @@ if(action == noone && grounded && !is_blocking){
 	}
 	// Forward
 	else if(forward_hold){
-		if(abs(h_velocity) < start_speed){
-			h_velocity = start_speed*image_xscale;
+		if(grounded){
+			if(abs(h_velocity) < start_speed){
+				h_velocity = start_speed*image_xscale;
+			}
+			if(abs(h_velocity) < max_speed){
+				h_velocity += (grip+acceleration)*image_xscale*logic_time;
+			}
+			// Gain meter by moving forward
+			meter += 10/60*logic_time; // 10 meter / second
 		}
-		if(abs(h_velocity) < max_speed){
-			h_velocity += (grip+acceleration)*image_xscale*logic_time;
+		else if(abs(h_velocity) < max_speed){
+			// air_control*2 because it is also the grip variable
+			h_velocity += (air_control*2)*image_xscale*logic_time;
 		}
-		// Gain meter by moving forward
-		meter += 10/60*logic_time; // 10 meter / second
 	}
 	// Backward
 	else if(backward_hold){
-		if(abs(h_velocity) < start_speed){
-			h_velocity = -start_speed*image_xscale;
+		if(grounded){
+			if(abs(h_velocity) < start_speed){
+				h_velocity = -start_speed*image_xscale;
+			}
+			if(abs(h_velocity) < max_speed){
+				h_velocity += -(grip+acceleration)*image_xscale*logic_time;
+			}
 		}
-		if(abs(h_velocity) < max_speed){
-			h_velocity += -(grip+acceleration)*image_xscale*logic_time;
+		else if(abs(h_velocity) < max_speed){
+			// air_control*2 because it is also the grip variable
+			h_velocity += -(air_control*2)*image_xscale*logic_time;
 		}
 	}
 	// Jump
 	if(a_pressed){
 		reset_physics();
 		a_pressed = 0; // Just reset A buffer
-		v_velocity = -jump_power;
+		
+		if(grounded){
+			v_velocity = -jump_power;
+		}
+		else if(extra_jumps_left > 0){
+			extra_jumps_left -= 1;
+			v_velocity = -jump_power*extra_jump_strength;
+		}
 	}	
 }
-// Extra jump / Jump cancel
-else if(a_pressed && extra_jumps_left > 0 && (action == noone || check_for_cancel())){
+// Jump cancel
+else if(a_pressed && extra_jumps_left > 0 && check_for_cancel()){
 	reset_physics();
 	a_pressed = 0; // Just reset A buffer
 	
 	if(grounded){
 		v_velocity = -jump_power;
 	}
-	else{
+	else if(extra_jumps_left > 0){
 		extra_jumps_left -= 1;
 		v_velocity = -jump_power*extra_jump_strength;
-	}
-	
-	if(forward_hold){
-		h_velocity = start_speed*image_xscale;
-	}
-	else if(backward_hold){
-		h_velocity = -start_speed*image_xscale;
-	}
-	else{
-		h_velocity = 0;
 	}
 	
 	// Cancel
@@ -171,6 +178,7 @@ else if(a_pressed && extra_jumps_left > 0 && (action == noone || check_for_cance
 if(action == noone && v_velocity < -jump_power*mini_jump_power && !a_hold){
 	v_velocity = -jump_power*mini_jump_power;
 }
+
 // Exit
 if(start_hold){
 	exit_count += 1;
@@ -209,7 +217,7 @@ else{
 		}
 	}
 	// Wall bounce
-	if(action == "launched" && abs(h_velocity) > wall_bounce_limit){
+	if(action == "Stunned" && abs(h_velocity) > wall_bounce_limit){
 		h_velocity = -h_velocity*0.75;
 		v_velocity -= 4;
 		spawn_effect(x, y, 8, Eff_Splash, 1, 0.05, 1);
@@ -217,9 +225,15 @@ else{
 }
 
 // Grip logic
-val = grip*logic_time;
-if(!grounded){
-	val = air_grip*logic_time;
+val = 0;
+if(extra_grip > 0){
+	val = extra_grip*logic_time;
+}
+else if(grounded){
+	val = grip*logic_time;
+}
+else if(action == noone){
+	val = air_control*logic_time;
 }
 
 if(h_velocity > val){
@@ -256,7 +270,7 @@ else if(v_velocity > 0){
 		y += 1;
 	}
 	// Ground bounce
-	if(action == "launched" && v_velocity > ground_bounce_limit){
+	if(action == "Stunned" && v_velocity > ground_bounce_limit){
 		v_velocity = -v_velocity*0.5;
 		spawn_effect(x, y, 8, Eff_Splash, 1, 0.05, 1);
 	}
@@ -333,7 +347,7 @@ if(action == noone){
 		}
 	}
 }
-else if(action == "Launched" && !grounded){
+else if(action == "Stunned" && !grounded){
 	sprite_index = launched_spr;
 	image_xscale = -1;
 	image_angle = point_direction(0, 0, h_velocity, v_velocity);
@@ -365,7 +379,7 @@ half_circle_backward_pressed--;
 
 #region universal moves V-----V
 // Meter dash
-if((action == "Stunned" || action == "Launched") && lb_pressed > 0 && rb_pressed > 0 && meter >= 25){
+if(action == "Stunned" && lb_pressed > 0 && rb_pressed > 0 && meter >= 25){
 	read_input();
 	reset_buffers();
 	meter -= 25;
@@ -391,7 +405,7 @@ if((action == "Stunned" || action == "Launched") && lb_pressed > 0 && rb_pressed
 	is_collidable = false;
 	is_invincible = true;
 	grip = dash_grip;
-	air_grip = dash_grip;
+	extra_grip = dash_grip;
 	v_velocity = dash_lift;
 	weight = original_weight/4;
 	action_alarm = 0;
@@ -428,7 +442,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		can_cancel = true;
 		is_collidable = false;
 		grip = dash_grip;
-		air_grip = dash_grip;
+		extra_grip = dash_grip;
 		v_velocity = dash_lift;
 		weight = original_weight/4;
 		recover_alarm = dash_duration;
@@ -458,7 +472,7 @@ if(lb_pressed > 0 && (action == noone || check_for_cancel())){
 		can_cancel = true;
 		is_collidable = false;
 		grip = dash_grip;
-		air_grip = dash_grip;
+		extra_grip = dash_grip;
 		v_velocity = dash_lift;
 		weight = original_weight/4;
 		recover_alarm = dash_duration;

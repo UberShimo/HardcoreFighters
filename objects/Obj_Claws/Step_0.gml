@@ -14,7 +14,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	last_h_velocity = h_velocity;
 	last_v_velocity = v_velocity;
 	last_grip = grip;
-	last_air_grip = air_grip;
 	
 	// Only used for moves that ends combo
 	final_move = false;
@@ -123,6 +122,9 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(down_hold){
 			action = "2L";
+		
+			h_velocity += 4*image_xscale;
+		
 			sprite_index = Spr_Claws_2L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -173,9 +175,12 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			meter -= 100;
 			shake_amount = 16;
 			global.game_time = 0.5;
+			is_hypermode = true;
 			eff = instance_create_depth(x, y, depth, Eff_Ring);
 			eff.grow *= 8;
 			action_alarm = 4;
+			Obj_Match_Manager.global_time_reset_alarm = 240;
+			alarm[10] = 240;
 		}
 		else if(meter >= 25){
 			action = "X";
@@ -197,7 +202,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		h_velocity = last_h_velocity;
 		v_velocity = last_v_velocity;
 		grip = last_grip;
-		air_grip = last_air_grip;
 	}
 	// Cancel is legit
 	else if(recover_alarm > 0){

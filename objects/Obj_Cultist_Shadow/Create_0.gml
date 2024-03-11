@@ -10,24 +10,14 @@ move_speed = 3;
 
 action_trigger = function(){
 	if(action == "Bite"){
-		// Super explosion
+		attack = instance_create_depth(x, y, 0, Obj_Cultist_Shadow_Bite_hitbox);
+		attack.initiate(self);
+		attack.index = spawner.index; // Kinda ugly solution
+		
+		// Shoot star
 		if(place_meeting(x, y, Obj_Cultist_Mine)){
-			attack = instance_create_depth(x, y+64, 0, Obj_Cultist_Shadow_Explosion_hitbox);
-			attack.initiate(self);
-		}
-		// Heal
-		else if(place_meeting(x, y, spawner)){
-			spawner.action = "Heal";
-			spawner.action_alarm = 1;
-			spawner.h_velocity = 0;
-			spawner.x = x;
-			spawner.y = y;
-		}
-		// Just bite
-		else{
-			attack = instance_create_depth(x, y, 0, Obj_Cultist_Shadow_Bite_hitbox);
-			attack.initiate(self);
-			attack.index = spawner.index; // Kinda ugly solution
+			star = instance_create_depth(x, y, depth-1, Obj_Cultist_Star);
+			star.index = spawner.index; // Kinda ugly solution
 		}
 		
 		sprite_index = Spr_Cultist_Shadow_Bite_recovery;

@@ -20,12 +20,12 @@ crouch_block_spr = Spr_Baller_Crouch_Block;
 start_speed = 3.5;
 max_speed = 5;
 acceleration = 0.2;
+air_control = 0.15;
+grip = global.standard_grip;
 dash_speed = 10;
 dash_blink = 8;
 dash_duration = 24;
 dash_grip = 1;
-grip = global.standard_grip;
-air_grip = 0;
 jump_power = 11;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -37,7 +37,6 @@ character_width = 24;
 character_height = global.short_height;
 // Original stats
 original_grip = grip;
-original_air_grip = air_grip;
 original_weight = weight;
 #endregion
 

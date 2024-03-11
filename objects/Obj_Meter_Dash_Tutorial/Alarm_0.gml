@@ -3,4 +3,4 @@ Obj_Dojo_Manager.student.y = Obj_Dojo.y-64;
 
 Obj_Dojo_Manager.student.h_velocity = 0;
 Obj_Dojo_Manager.student.v_velocity = 0;
-Obj_Dojo_Manager.student.action = "Launched";
+Obj_Dojo_Manager.student.action = "Stunned";
