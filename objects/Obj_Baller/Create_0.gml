@@ -217,10 +217,8 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "ULTRA"){
-		ball.weight = ball.original_weight;
-		ball.v_velocity = 12;
-		ball.armageddon_is_coming = true;
-		ball.shake_amount = 0;
+		ult = instance_create_depth(0, 0, 0, Obj_Baller_ULTRA_Spawner);
+		ult.spawner = self;
 		
 		shake_amount = 0;
 		

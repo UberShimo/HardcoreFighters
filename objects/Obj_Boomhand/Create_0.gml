@@ -232,9 +232,18 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "ULTRA"){
-		action = noone;
-		is_invincible = true;
-		invincibility_alarm = 360;
+		blink_h(32*image_xscale, false);
+		
+		attack = instance_create_depth(x, y, 0, Obj_Boomhand_ULTRA_hitbox);
+		attack.initiate(self);
+		
+		h_velocity = 4*image_xscale;
+		is_invincible = false;
+		shake_amount = 0;
+		
+		sprite_index = Spr_Boomhand_ULTRA_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else{
 		action = noone;

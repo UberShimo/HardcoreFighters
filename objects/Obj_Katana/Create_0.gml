@@ -139,7 +139,8 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Katana_Sweep_hitbox);
 		attack.initiate(self);
 		
-		h_velocity += 9*image_xscale;
+		h_velocity = 9*image_xscale;
+		grip = original_grip;
 		
 		sprite_index = Spr_Katana_Sweep_recovery;
 		image_index = 0;

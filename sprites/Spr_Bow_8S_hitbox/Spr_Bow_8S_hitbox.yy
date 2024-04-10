@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "Spr_Bow_8S_hitbox",
   "bbox_bottom": 226,
-  "bbox_left": 138,
+  "bbox_left": 94,
   "bbox_right": 216,
   "bbox_top": 132,
   "bboxMode": 0,

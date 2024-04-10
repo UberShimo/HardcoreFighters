@@ -14,7 +14,7 @@
   "For3D": false,
   "frames": [
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"40fb61f1-a77a-4e4f-991e-d7f72dd38e56",},
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"63f07755-eae6-4893-8121-92d4447f107e",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"c6833611-af28-4f02-8184-9ca06ae4c751",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"9de72561-4c99-4029-b5ef-a78ad9bfcfbf",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"f2068947-f640-4330-a657-97e1160b20c1",},
   ],
@@ -59,7 +59,7 @@
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"40fb61f1-a77a-4e4f-991e-d7f72dd38e56","path":"sprites/Spr_Batman_Spinhop_startup/Spr_Batman_Spinhop_startup.yy",},},},"Disabled":false,"id":"794ec9d0-53e4-4e25-a481-c9b2d1cbd302","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"63f07755-eae6-4893-8121-92d4447f107e","path":"sprites/Spr_Batman_Spinhop_startup/Spr_Batman_Spinhop_startup.yy",},},},"Disabled":false,"id":"b2b676b5-4295-47b3-ae20-d891d39624ee","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c6833611-af28-4f02-8184-9ca06ae4c751","path":"sprites/Spr_Batman_Spinhop_startup/Spr_Batman_Spinhop_startup.yy",},},},"Disabled":false,"id":"b7d6e683-a12f-46e1-b239-5f81fc8bf65d","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"9de72561-4c99-4029-b5ef-a78ad9bfcfbf","path":"sprites/Spr_Batman_Spinhop_startup/Spr_Batman_Spinhop_startup.yy",},},},"Disabled":false,"id":"17845663-0639-4fa4-b1f3-e79dc2f72dbd","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"f2068947-f640-4330-a657-97e1160b20c1","path":"sprites/Spr_Batman_Spinhop_startup/Spr_Batman_Spinhop_startup.yy",},},},"Disabled":false,"id":"82215b20-ba2e-4e87-910d-831a151f16da","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},

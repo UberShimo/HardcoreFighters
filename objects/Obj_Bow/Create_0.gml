@@ -42,6 +42,7 @@ original_weight = weight;
 #endregion
 
 // Bow related
+has_boomerang = true;
 aim_height = 12;
 aim_dir = 0;
 aim_duration = generate_sprite_frames(Spr_Bow_Aim_Down_startup);
@@ -101,11 +102,8 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "8S"){
-		attack1 = instance_create_depth(x, y, 0, Obj_Bow_8S_hitbox);
-		attack1.initiate(self);
-		attack2 = instance_create_depth(x, y, 0, Obj_Bow_8S_hitbox);
-		attack2.initiate(self);
-		attack2.image_xscale = -image_xscale;
+		attack = instance_create_depth(x, y, 0, Obj_Bow_8S_hitbox);
+		attack.initiate(self);
 		tip = instance_create_depth(x, y, 0, Obj_Bow_8S_tip_hitbox);
 		tip.initiate(self);
 		
@@ -151,29 +149,48 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "Boomerang Up"){
+	else if(action == "Boomerang Straight"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_Boomerang);
 		attack.initiate(self);
-		attack.h_velocity = 5*image_xscale;
-		attack.v_velocity = -3;
+		attack.h_velocity = 10*image_xscale;
 		
 		if(x_hold){
-			attack.h_velocity = 7*image_xscale;
-			attack.v_velocity = -4;
+			attack.return_alarm = 300;
 		}
+		
+		has_boomerang = false;
 		
 		sprite_index = Spr_Bow_Boomerang_Throw_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "Boomerang Straight"){
+	else if(action == "Boomerang Up"){
 		attack = instance_create_depth(x, y, 0, Obj_Bow_Boomerang);
 		attack.initiate(self);
-		attack.h_velocity = 6*image_xscale;
+		attack.h_velocity = 9*image_xscale;
+		attack.v_velocity = -4;
 		
 		if(x_hold){
-			attack.h_velocity = 9*image_xscale;
+			attack.return_alarm = 300;
 		}
+		
+		has_boomerang = false;
+		
+		sprite_index = Spr_Bow_Boomerang_Throw_recovery;
+		image_index = 0;
+		recover_alarm = generate_sprite_frames(sprite_index);
+	}
+	else if(action == "Boomerang Down"){
+		attack = instance_create_depth(x, y, 0, Obj_Bow_Boomerang);
+		attack.initiate(self);
+		attack.h_velocity = 9*image_xscale;
+		attack.v_velocity = 4;
+		
+		if(x_hold){
+			attack.return_alarm = 300;
+		}
+		
+		has_boomerang = false;
 		
 		sprite_index = Spr_Bow_Boomerang_Throw_recovery;
 		image_index = 0;

@@ -14,5 +14,6 @@ v_launch = 15;
 
 is_sticky = true;
 is_high = true;
+is_side_irrelevant = true;
 
 block_sound = Snd_Heavy_Block;

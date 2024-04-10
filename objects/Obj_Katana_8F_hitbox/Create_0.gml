@@ -16,5 +16,6 @@ v_launch = -3;
 is_high = true;
 is_sticky = true;
 is_cancelable = true;
+is_side_relevant = true;
 
-hit_sound = Snd_Light_Swing;
+swing_sound = Snd_Light_Swing;

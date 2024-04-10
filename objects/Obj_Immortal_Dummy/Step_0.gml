@@ -1,6 +1,6 @@
 event_inherited();
 
 // Reset state
-if(action == noone){
+if(action == noone && grounded){
 	HP = max_HP;
 }

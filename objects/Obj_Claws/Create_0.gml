@@ -44,6 +44,8 @@ original_weight = weight;
 ring1 = noone;
 ring2 = noone;
 is_hypermode = false;
+rewind_list = ds_list_create();
+rewind_length = 90;
 
 action_trigger = function(){
 	// Normal moves
@@ -126,6 +128,8 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_5S_hitbox);
 		attack.initiate(self);
 		
+		h_velocity = 4*image_xscale;
+		
 		sprite_index = Spr_Claws_5S_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -194,7 +198,7 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Claws_Deepdive_hitbox);
 		attack.initiate(self);
 		
-		h_velocity = 6*image_xscale;
+		h_velocity = 4*image_xscale;
 		v_velocity = 16;
 		grip = 1;
 		
@@ -252,15 +256,12 @@ action_trigger = function(){
 		eff = instance_create_depth(x, y, depth, Eff_Claws_Teleport);
 		eff.image_xscale = image_xscale;
 		
-		if(!place_meeting(closest_enemy.x + 24*image_xscale, y, Parent_Collision)){
-			x = closest_enemy.x + 24*image_xscale;
-		}
-		else{
-			x = closest_enemy.x;
-		}
-		y = closest_enemy.y - 32;
-		h_velocity = 0;
-		v_velocity = -4;
+		// Find oldest position
+		pos = ds_list_find_value(rewind_list, 0);
+		ds_list_clear(rewind_list);
+		x = pos[0];
+		y = pos[1];
+		cancels = max_cancels;
 		face_closest_enemy();
 	}
 	else{

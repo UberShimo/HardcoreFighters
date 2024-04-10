@@ -25,8 +25,8 @@ if(legit_hit_check){
 					hit = true;
 				}
 			}
-			// Shockwave
-			else if(other.is_shockwave){
+			// Side relevant
+			else if(other.is_side_relevant || other.is_shockwave){
 				// Attack on right
 				if(x < other.x && image_xscale < 0){
 					hit = true;
@@ -36,7 +36,7 @@ if(legit_hit_check){
 					hit = true;
 				}
 			}
-			// Melee
+			// Normal melee
 			else{
 				// Attack on right
 				if(other.image_xscale < 0 && image_xscale < 0){
@@ -89,8 +89,8 @@ if(legit_hit_check){
 						h_velocity = -other.hit_push;
 					}
 				}
-				// Shockwave
-				else if(other.is_shockwave){
+				// Side relevant
+				else if(other.is_side_relevant || other.is_shockwave){
 					if(x > other.x){
 						h_velocity = other.hit_push;
 					}
@@ -98,7 +98,7 @@ if(legit_hit_check){
 						h_velocity = -other.hit_push;
 					}
 				}
-				// Melee
+				// Normal melee
 				else{
 					h_velocity = other.hit_push*other.image_xscale;
 				}
@@ -120,6 +120,15 @@ if(legit_hit_check){
 					}
 					if(other.h_affecting){
 						h_velocity = other.h_launch*other.image_xscale;
+						// Side relevant
+						if(other.is_side_relevant){
+							if(x > other.x){
+								h_velocity = other.h_launch;
+							}
+							else{
+								h_velocity = -other.h_launch;
+							}
+						}
 					}
 				}
 			}
@@ -132,7 +141,32 @@ if(legit_hit_check){
 		action = "Stunned";
 		recover_alarm = other.block_stun;
 		action_alarm = 0;
-		h_velocity = other.block_push*other.image_xscale;
+		
+		// Grounded push
+		if(other.h_affecting){
+			// Projectile
+			if(other.is_projectile && other.h_velocity != 0){
+				if(other.h_velocity > 0){
+					h_velocity = other.block_push;
+				}
+				else{
+					h_velocity = -other.block_push;
+				}
+			}
+			// Side relevant
+			else if(other.is_side_relevant || other.is_shockwave){
+				if(x > other.x){
+					h_velocity = other.block_push;
+				}
+				else{
+					h_velocity = -other.block_push;
+				}
+			}
+			// Normal melee
+			else{
+				h_velocity = other.block_push*other.image_xscale;
+			}
+		}
 		
 		if(other.is_initiated_by_character){
 			other.spawner.meter += other.meter_gain;
@@ -167,6 +201,12 @@ if(legit_hit_check){
 	}
 	y_other_diff = other.y - y;
 	y_pos = y+other.hit_effect_y+y_other_diff;
+	if(y_pos < y-character_height){
+		y_pos = y-character_height;
+	}
+	else if(y_pos > y+character_height){
+		y_pos = y+character_height;
+	}
 	// Decide spawn effect / sound
 	if(hit){
 		effect_to_spawn = Eff_Splash;

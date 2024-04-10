@@ -35,6 +35,8 @@ image = Spr_EMPTY;
 extra_image = Spr_EMPTY;
 extra_image_x = 0;
 extra_image_y = 0;
+extra_image_color = c_white;
+extra_image_scale = 1;
 frame = 0;
 meter_cost = 0;
 

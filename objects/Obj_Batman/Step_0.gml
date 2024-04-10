@@ -52,7 +52,19 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		reset_buffers();
 	}
 	else if(y_pressed){
-		if(down_forward_pressed){
+		if(half_circle_forward_pressed){
+			action = "Dropkick";
+			
+			if(grounded){
+				h_velocity += 2*image_xscale;
+				v_velocity = -6;
+			}
+			
+			sprite_index = Spr_Batman_Dropkick_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(down_forward_pressed){
 			action = "Spinhop";
 			
 			h_velocity = 2*image_xscale;

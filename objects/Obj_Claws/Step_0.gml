@@ -1,5 +1,5 @@
 if(is_hypermode){
-	object_time = 3;
+	object_time = 2;
 	meter = 0;
 }
 
@@ -102,8 +102,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(!grounded){
 			action = "8L";
-			h_velocity = 4*image_xscale;
-			v_velocity = -2;
 			sprite_index = Spr_Claws_8L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -179,12 +177,12 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			eff = instance_create_depth(x, y, depth, Eff_Ring);
 			eff.grow *= 8;
 			action_alarm = 4;
-			Obj_Match_Manager.global_time_reset_alarm = 240;
-			alarm[10] = 240;
+			Obj_Match_Manager.global_time_reset_alarm = 300;
+			alarm[10] = 300;
 		}
-		else if(meter >= 25){
+		else if(meter >= 50 && ds_list_size(rewind_list) >= rewind_length-1){
 			action = "X";
-			meter -= 25;
+			meter -= 50;
 			
 			sprite_index = Spr_Claws_Teleport_startup;
 			image_index = 0;
@@ -212,4 +210,15 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		eff = instance_create_depth(x, y, 1, Eff_Cancel);
 		eff.initiate(self);
 	}
+}
+
+// Rewind stashing
+if(effect_counter >= 1){
+	// Delete oldest stash at bottom of list
+	if(ds_list_size(rewind_list) > rewind_length){
+	   ds_list_delete(rewind_list, 0);
+	}
+	
+	// Add new value at top of list
+	ds_list_add(rewind_list, [x, y, sprite_index, image_index, image_xscale]);
 }

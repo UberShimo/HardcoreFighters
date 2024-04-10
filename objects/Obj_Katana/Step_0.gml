@@ -100,6 +100,10 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(half_circle_backward_pressed){
 			action = "Sweep";
+			
+			h_velocity += 6*image_xscale;
+			grip = 0;
+			
 			sprite_index = Spr_Katana_Sweep_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);

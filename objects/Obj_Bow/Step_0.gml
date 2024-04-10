@@ -27,21 +27,27 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	reset_physics();
 	
 	if(x_pressed){
-		if(!grounded){
-			action = "8F";
-			sprite_index = Spr_Bow_8F_startup;
-			image_index = 0;
-			action_alarm = generate_sprite_frames(sprite_index);
-		}
-		else if(half_circle_forward_pressed){
+		if(half_circle_forward_pressed && has_boomerang){
 			action = "Boomerang Straight";
 			sprite_index = Spr_Bow_Boomerang_Throw_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
-		else if(down_forward_pressed){
+		else if(down_forward_pressed && has_boomerang){
 			action = "Boomerang Up";
 			sprite_index = Spr_Bow_Boomerang_Throw_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(backward_down_pressed && has_boomerang){
+			action = "Boomerang Down";
+			sprite_index = Spr_Bow_Boomerang_Throw_startup;
+			image_index = 0;
+			action_alarm = generate_sprite_frames(sprite_index);
+		}
+		else if(!grounded){
+			action = "8F";
+			sprite_index = Spr_Bow_8F_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}

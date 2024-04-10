@@ -14,6 +14,7 @@ v_launch = -4;
 
 is_projectile = true;
 is_cancelable = true;
+projectile_duration = 120;
 
 swing_sound = Snd_Light_Swing;
 

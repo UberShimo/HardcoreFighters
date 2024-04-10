@@ -13,5 +13,6 @@ h_launch = 3;
 v_launch = 10;
 
 is_high = true;
+is_side_relevant = true;
 
 block_sound = Snd_Heavy_Block;

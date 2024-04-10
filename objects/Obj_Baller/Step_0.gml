@@ -200,11 +200,6 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			
 			is_holding_ball = false;
 			shake_amount = 4;
-			ball.weight = 0;
-			ball.h_velocity = 0;
-			ball.v_velocity = -8;
-			ball.y -= 6;
-			ball.shake_amount = 8;
 			
 			sprite_index = Spr_Baller_ULTRA_startup;
 			image_index = 0;

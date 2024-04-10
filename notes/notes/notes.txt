@@ -1,12 +1,10 @@
 TODO{
+	Move BG/Music/Layout settings to character select
 	Change the ULTRA input maybe. So it is easier to do.
 	Make game look sexy, balanced and fun
 	Frame rate drops for some reason at times?
 	Is extra freeze frames broken on block? Donnu.
 	Make Adventure mode
-	
-	Push :: Execution Error - Variable Index [8] out of range [8] - -1.players(100244,8)
- at gml_Script_anon_gml_Object_Obj_Match_Manager_Create_0_159_gml_Object_Obj_Match_Manager_Create_0 (line 18) - players[j] = players[j+1];
 }
 
 Debug tips:
@@ -34,44 +32,6 @@ Attack collision = purple sprites
 We are not using particles since we cant manipulate it good enough. Slow mo, scaling per dmg etc...
 Dont fuck with image angle on attacks...
 
-Battle system:
-Hitting an attack makes you able to cancel attack earlier with another actions.
-Works 2 times / combo. Combo wont reset in air and air dashes consume cancels.
-If you press down when hitting attack in air you will launch down making it easier to continue combo on ground.
-First cancel blink orange and second cancel blinks red meaning no more combo.
-You have meter that fills up to 4 bars.
-Build meter by: Moving toward opponent, hitting opponent (on block also), getting hit without blocking.
-You block with RT and LT.
-RT and LT also makes you unable to cancel if you want to not cancel a move.
-Low attacks hit standing blockers.
-High attacks hit crouching blockers.
-
-Some moves are cancelable meaning you can cancel them without hitting opponent and
-some are are final meaning it will finish you combo instantly.
-
-F = FAST
-F:				Fast short attack.
-F + down:		Fast low attack.
-F + air:		Fast air attack.
-
-L = LONG
-L:				Fast long attack with longer recovery.
-L + down:		Anti air attack.
-L + air:		Bigger air attack.
-
-S = STRONG
-S:				Strong but slow attack.
-S + down:		Launcher. Combos without using cancels.
-S + air:		Spike attack.
-
-Circle movements + attack: Special moves
-
-<,v,> S:			20 frames High grounded attack.
->,v,< S:			20 frames Sweep low attack.
-
-X:				Meter moves that costs meter.
-<,v,> X:		Ultra move. Cost 100% meter.
-X + Dash:		Force dash. Can be used in bad situations but ends combo and cost 25% meter.
 
 Character stuff:
 
@@ -81,7 +41,6 @@ Agility:	Claws, Baller
 Zoner:		Bow, Mage
 
 MOVES!:
-Leave DoT on ground.
 
 Batman{
 	
@@ -92,15 +51,15 @@ Katana{
 }
 
 Claws{
-	X = Go back 2 sec in time instead
+	Flurry looks underwhelming.
 }
 
 Baller{
-	Ball stuck in wall.
+	
 }
 
 Bow{
-	Boomerangs dont bounce correct... Stuck in wall.
+	
 }
 
 Greatsword{
@@ -108,9 +67,12 @@ Greatsword{
 }
 
 Boomhand{
+	ULTRA should look cooler on startup.
+	2L > BackstepBOOM doesnt quite work for some reason.
 	Groundsmash hit effect sounds bad.
+	Groundsmash leave DoT on ground.
 }
 
 Cultist{
-	Circle teleport could use some cool effects.
+	Teleport effect could be sexier.
 }

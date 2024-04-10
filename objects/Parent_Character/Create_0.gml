@@ -60,7 +60,7 @@ crouch_block_spr = noone;
 
 #region Stats
 // Fixed stats
-HP = 100;
+HP = 120;
 max_HP = HP;
 meter = 0;
 max_meter = 100;
@@ -68,6 +68,7 @@ hearts = global.heart_amount;
 can_cancel = false;
 cancels = 2;
 max_cancels = cancels;
+dash_cancel_max_amount = 0.75; // % based
 is_blocking = false;
 is_unstoppable = false;
 is_invincible = false;
@@ -302,6 +303,16 @@ action_button_pressed = function(){
 check_for_cancel = function(){
 	if(lt_hold || rt_hold){
 		return false;
+	}
+	
+	// Nerf h_velocity so dash cancel is more consistent
+	if(abs(h_velocity) > dash_speed*dash_cancel_max_amount){
+		if(h_velocity > 0){
+			h_velocity = dash_speed*dash_cancel_max_amount;
+		}
+		else{
+			h_velocity = -dash_speed*dash_cancel_max_amount;
+		}
 	}
 	
 	if(can_cancel && cancels > 0 && recover_alarm < cancelable_recovery_frames && action != "Stunned"){

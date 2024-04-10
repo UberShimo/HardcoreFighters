@@ -7,6 +7,6 @@ air_only = false;
 info = "Heal a small amount.";
 movement_input = Spr_EMPTY;
 button_input = Spr_M;
-image = Spr_Cultist_Heal;
+image = Spr_Cultist_Heal_startup;
 frame = 6;
 meter_cost = 25;

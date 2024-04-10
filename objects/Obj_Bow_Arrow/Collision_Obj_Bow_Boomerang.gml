@@ -1,7 +1,11 @@
 if(ds_list_find_index(hitbox_list, other) == -1){
 	// Push away boomerang
-	other.h_velocity = h_velocity/6;
-	other.v_velocity = v_velocity/6;
+	other.h_velocity = h_velocity/4;
+	other.v_velocity = v_velocity/4;
+	other.is_returning = false;
+	if(other.return_alarm < 60){
+		other.return_alarm = 60;
+	}
 
 	// Bounce toward closest enemy
 	spawner_temp_x = spawner.x;

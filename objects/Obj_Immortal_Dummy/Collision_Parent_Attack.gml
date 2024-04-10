@@ -1,4 +1,4 @@
-if(action == noone){
+if(action == noone && grounded){
 	combo_damage = 0;
 }
 

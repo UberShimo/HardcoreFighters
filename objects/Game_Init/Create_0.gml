@@ -15,7 +15,7 @@ global.max_players = 8;
 global.dojo_level = 0; // 0:freeform 1:Basic tutorial 2:Advanced tutorial
 
 // Global character stats
-global.cancelable_recovery_frames = 24;
+global.cancelable_recovery_frames = 22;
 
 global.slippy_grip = 0.3;
 global.standard_grip = 0.5;

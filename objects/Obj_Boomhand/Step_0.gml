@@ -137,7 +137,11 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		if(half_circle_forward_pressed && meter >= 100){
 			action = "ULTRA";
 			meter -= 100;
-			sprite_index = Spr_Boomhand_ULTRA_recovery;
+			
+			is_invincible = true;
+			shake_amount = 4;
+			
+			sprite_index = Spr_Boomhand_ULTRA_startup;
 			image_index = 0;
 			global.game_time = 0.25;
 			action_alarm = generate_sprite_frames(sprite_index);
