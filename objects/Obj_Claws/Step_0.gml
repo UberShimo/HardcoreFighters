@@ -1,5 +1,5 @@
 if(is_hypermode){
-	object_time = 2;
+	object_time = 3;
 	meter = 0;
 }
 
@@ -176,6 +176,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			is_hypermode = true;
 			eff = instance_create_depth(x, y, depth, Eff_Ring);
 			eff.grow *= 8;
+			eff.image_blend = c_lime;
 			action_alarm = 4;
 			Obj_Match_Manager.global_time_reset_alarm = 300;
 			alarm[10] = 300;

@@ -1,5 +1,6 @@
 TODO{
 	Move BG/Music/Layout settings to character select
+	Add all your super cool music
 	Change the ULTRA input maybe. So it is easier to do.
 	Make game look sexy, balanced and fun
 	Frame rate drops for some reason at times?
@@ -67,7 +68,7 @@ Greatsword{
 }
 
 Boomhand{
-	ULTRA should look cooler on startup.
+	Make 2L more legit. Dont backstep so far. Reduce hit effect/hitbox.
 	2L > BackstepBOOM doesnt quite work for some reason.
 	Groundsmash hit effect sounds bad.
 	Groundsmash leave DoT on ground.

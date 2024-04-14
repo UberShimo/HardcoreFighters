@@ -14,8 +14,9 @@ v_launch = -20;
 
 is_sticky = true;
 is_launcher = true;
-penetration = 0.5;
+penetration = 0.25;
 shake_amount = 8;
+is_final = true;
 
 hit_sound = Snd_Crack;
 block_sound = Snd_Heavy_Block;

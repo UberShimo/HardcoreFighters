@@ -5,7 +5,7 @@ recovery = generate_sprite_frames(Spr_Greatsword_X_whiff); // 100% informational
 info = "Grab opponent and destroy some of their meter";
 
 damage = 0;
-hit_stun = 32;
+hit_stun = 60;
 block_stun = 0;
 hit_push = 0;
 block_push = 0;

@@ -17,6 +17,7 @@ penetration = 1;
 meter_gain_multiplier = 0;
 is_priority = true;
 active_frames = 4;
+is_final = true;
 
 hit_effect_y = -8;
 

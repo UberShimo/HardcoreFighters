@@ -120,10 +120,10 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 			action_alarm = generate_sprite_frames(sprite_index);
 		}
 		else if(down_forward_pressed){
-			action = "Back Swing";
-			h_velocity = 10*image_xscale;
+			action = "Crosspin";
+			h_velocity = 8*image_xscale;
 			is_collidable = false;
-			sprite_index = Spr_Bow_Backsmack_startup;
+			sprite_index = Spr_Bow_Crosspin_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
 		}

@@ -1,5 +1,6 @@
 if(other.index != index){
 	other.x = x+16*image_xscale;
+	other.y = y;
 	
 	spawner.action = "X2";
 	spawner.sprite_index = Spr_Greatsword_X_hit;

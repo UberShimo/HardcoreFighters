@@ -1,9 +1,11 @@
 event_inherited();
 
-if(other.meter > 25){
-	other.meter -= 25;
+if(other.index != index){
+	if(other.meter > 25){
+		other.meter -= 25;
+	}
+	else{
+		other.meter = 0;
+	}
+	instance_destroy();
 }
-else{
-	other.meter = 0;
-}
-instance_destroy();

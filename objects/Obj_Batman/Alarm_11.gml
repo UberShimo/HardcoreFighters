@@ -27,10 +27,14 @@ if(is_controllable){
 		x_pressed = buffer_duration;
 	}
 	else if(rng == 5){
-		down_forward_pressed = buffer_duration;
+		half_circle_forward_pressed = buffer_duration;
 		y_pressed = buffer_duration;
 	}
 	else if(rng == 6){
+		down_forward_pressed = buffer_duration;
+		y_pressed = buffer_duration;
+	}
+	else if(rng == 7){
 		down_forward_pressed = buffer_duration;
 		b_pressed = buffer_duration;
 	}

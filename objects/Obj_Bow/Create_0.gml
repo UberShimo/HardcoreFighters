@@ -235,12 +235,11 @@ action_trigger = function(){
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
-	else if(action == "Back Swing"){
-		attack = instance_create_depth(x, y, 0, Obj_Bow_Backsmack_hitbox);
+	else if(action == "Crosspin"){
+		attack = instance_create_depth(x, y, 0, Obj_Bow_Crosspin_hitbox);
 		attack.initiate(self);
-		attack.image_xscale *= -1; // Turn the hitbox aound
 		
-		sprite_index = Spr_Bow_Backsmack_recovery;
+		sprite_index = Spr_Bow_Crosspin_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}

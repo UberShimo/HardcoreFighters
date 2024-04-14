@@ -12,6 +12,7 @@ v_launch = 4;
 is_projectile = true;
 is_side_irrelevant = true;
 is_high = true;
+swing_sound = Snd_NOTHING;
 
 h_velocity = random_range(-4, 4);
 weight = 0.1;

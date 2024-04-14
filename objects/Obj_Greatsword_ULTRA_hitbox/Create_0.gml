@@ -15,6 +15,7 @@ v_launch = 10;
 is_high = true;
 penetration = 0.3;
 is_sticky = true;
+is_final = true;
 meter_gain_multiplier = 0;
 
 hit_sound = Snd_Crack;
