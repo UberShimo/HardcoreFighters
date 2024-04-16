@@ -4,7 +4,7 @@
   "name": "Spr_Boomhand_Block",
   "bbox_bottom": 95,
   "bbox_left": 48,
-  "bbox_right": 81,
+  "bbox_right": 83,
   "bbox_top": 34,
   "bboxMode": 2,
   "collisionKind": 4,

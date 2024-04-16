@@ -13,8 +13,8 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"4d396fab-7fe7-4b73-bb10-6c3a8edd73f1",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"36148c61-336f-46ba-affd-11191d0c14d9",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"96c6bd8e-9555-4cb7-abb3-f1e93a0c24b0",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"80f31ab8-e491-4e4a-8d32-fda3b19927a0",},
     {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"f3058adf-74ee-4944-9cf9-1de8056ea4c2",},
   ],
@@ -27,7 +27,7 @@
     {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"cc8aefe2-31d7-4852-923b-bdfabc77b00c","blendMode":0,"displayName":"Body","isLocked":false,"opacity":100.0,"visible":false,},
   ],
   "nineSlice": null,
-  "origin": 9,
+  "origin": 4,
   "parent": {
     "name": "Attacks",
     "path": "folders/Sprites/Characters/Boomhand/Attacks.yy",
@@ -58,15 +58,15 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"4d396fab-7fe7-4b73-bb10-6c3a8edd73f1","path":"sprites/Spr_Boomhand_2L_hit_eff/Spr_Boomhand_2L_hit_eff.yy",},},},"Disabled":false,"id":"aff4d235-ccad-46b8-accc-56e36c177817","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"36148c61-336f-46ba-affd-11191d0c14d9","path":"sprites/Spr_Boomhand_2L_hit_eff/Spr_Boomhand_2L_hit_eff.yy",},},},"Disabled":false,"id":"3ac1ac80-16f1-47f1-be1f-edfc412c8f8c","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"36148c61-336f-46ba-affd-11191d0c14d9","path":"sprites/Spr_Boomhand_2L_hit_eff/Spr_Boomhand_2L_hit_eff.yy",},},},"Disabled":false,"id":"3ac1ac80-16f1-47f1-be1f-edfc412c8f8c","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"96c6bd8e-9555-4cb7-abb3-f1e93a0c24b0","path":"sprites/Spr_Boomhand_2L_hit_eff/Spr_Boomhand_2L_hit_eff.yy",},},},"Disabled":false,"id":"604d3365-2ebc-43fa-9373-3afa57605f03","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"80f31ab8-e491-4e4a-8d32-fda3b19927a0","path":"sprites/Spr_Boomhand_2L_hit_eff/Spr_Boomhand_2L_hit_eff.yy",},},},"Disabled":false,"id":"c37b5f98-dbb9-447d-ac08-dab1aec2b138","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"f3058adf-74ee-4944-9cf9-1de8056ea4c2","path":"sprites/Spr_Boomhand_2L_hit_eff/Spr_Boomhand_2L_hit_eff.yy",},},},"Disabled":false,"id":"aadbf23e-4162-49ee-adb9-01d538c50b4a","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
     "volume": 1.0,
-    "xorigin": 96,
+    "xorigin": 64,
     "yorigin": 64,
   },
   "swatchColours": null,

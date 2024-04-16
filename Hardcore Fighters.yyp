@@ -887,7 +887,6 @@
     {"id":{"name":"Spr_Boomhand_5L_startup","path":"sprites/Spr_Boomhand_5L_startup/Spr_Boomhand_5L_startup.yy",},},
     {"id":{"name":"Spr_Character_Frame","path":"sprites/Spr_Character_Frame/Spr_Character_Frame.yy",},},
     {"id":{"name":"Spr_Boomhand_2S_hold_startup","path":"sprites/Spr_Boomhand_2S_hold_startup/Spr_Boomhand_2S_hold_startup.yy",},},
-    {"id":{"name":"Spr_Boomhand_Backstep_recovery","path":"sprites/Spr_Boomhand_Backstep_recovery/Spr_Boomhand_Backstep_recovery.yy",},},
     {"id":{"name":"init","path":"rooms/init/init.yy",},},
     {"id":{"name":"Obj_Baller_5L_hitbox","path":"objects/Obj_Baller_5L_hitbox/Obj_Baller_5L_hitbox.yy",},},
     {"id":{"name":"Obj_Bow_5F_hitbox1","path":"objects/Obj_Bow_5F_hitbox1/Obj_Bow_5F_hitbox1.yy",},},

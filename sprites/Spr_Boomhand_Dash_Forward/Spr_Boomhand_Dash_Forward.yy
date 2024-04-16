@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "Spr_Boomhand_Dash_Forward",
   "bbox_bottom": 94,
-  "bbox_left": 48,
+  "bbox_left": 40,
   "bbox_right": 98,
   "bbox_top": 71,
   "bboxMode": 2,

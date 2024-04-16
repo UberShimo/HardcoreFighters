@@ -90,6 +90,7 @@ mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
 extra_jumps = 1;
 extra_jumps_left = extra_jumps;
+jump_startup = 4; // Amount of frames to take off from ground
 weight = global.standard_weight; // Light: 0.6, Standard: 0.7, Heavy: 0.8
 max_fall_speed = 16;
 character_width = 24;
@@ -117,6 +118,7 @@ multi_hit_action_index = 0; // When one move does many attacks this variable kee
 
 // Alarms
 action_alarm = 0;
+jump_alarm = 0;
 recover_alarm = 0;
 time_reset_alarm = 0;
 respawn_alarm = 0;
@@ -305,17 +307,16 @@ check_for_cancel = function(){
 		return false;
 	}
 	
-	// Nerf h_velocity so dash cancel is more consistent
-	if(abs(h_velocity) > dash_speed*dash_cancel_max_amount){
-		if(h_velocity > 0){
-			h_velocity = dash_speed*dash_cancel_max_amount;
-		}
-		else{
-			h_velocity = -dash_speed*dash_cancel_max_amount;
-		}
-	}
-	
 	if(can_cancel && cancels > 0 && recover_alarm < cancelable_recovery_frames && action != "Stunned"){
+		// Nerf h_velocity so dash cancel is more consistent
+		if(abs(h_velocity) > dash_speed*dash_cancel_max_amount){
+			if(h_velocity > 0){
+				h_velocity = dash_speed*dash_cancel_max_amount;
+			}
+			else{
+				h_velocity = -dash_speed*dash_cancel_max_amount;
+			}
+		}
 		return true;
 	}
 	return false;

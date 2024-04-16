@@ -4,7 +4,7 @@
   "name": "Spr_Boomhand_Stunned",
   "bbox_bottom": 94,
   "bbox_left": 58,
-  "bbox_right": 75,
+  "bbox_right": 78,
   "bbox_top": 34,
   "bboxMode": 2,
   "collisionKind": 4,

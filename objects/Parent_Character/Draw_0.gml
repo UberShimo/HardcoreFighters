@@ -40,9 +40,9 @@ if(exit_count > 0){
 }
 
 if(global.is_debugging){
-	draw_text(x, y-character_height-80, "h_vel:  " + string(h_velocity));
-	draw_text(x, y-character_height-64, "v_vel:  " + string(v_velocity));
-	draw_text(x, y-character_height-48, "cancels:  " + string(cancels));
+	draw_text(x, y-character_height-80, "Grip:  " + string(grip));
+	draw_text(x, y-character_height-64, "h_vel:  " + string(h_velocity));
+	draw_text(x, y-character_height-48, "v_vel:  " + string(v_velocity));
 	draw_text(x, y-character_height-32, "startup:  " + string(action_alarm));
 	draw_text(x, y-character_height-16, "recovery:  " + string(recover_alarm));
 	draw_text(x, y-character_height, "action:  " + string(action));

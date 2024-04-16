@@ -45,7 +45,7 @@ ring1 = noone;
 ring2 = noone;
 is_hypermode = false;
 rewind_list = ds_list_create();
-rewind_length = 90;
+rewind_length = 120;
 
 action_trigger = function(){
 	// Normal moves
@@ -217,7 +217,7 @@ action_trigger = function(){
 			sprite_index = Spr_Claws_Flurry_recovery;
 			image_index = 0;
 			recover_alarm = generate_sprite_frames(sprite_index);
-			action_alarm = 8;
+			action_alarm = 16;
 			multi_hit_action_index += 1;
 		}
 		else if(multi_hit_action_index < 3){
@@ -227,7 +227,11 @@ action_trigger = function(){
 			blink_h(8*image_xscale, false);
 			h_velocity = 3*image_xscale;
 			
-			action_alarm = 8;
+			if(multi_hit_action_index == 2){
+				v_velocity = -7;
+			}
+			
+			action_alarm = 16;
 			multi_hit_action_index += 1;
 		}
 	}

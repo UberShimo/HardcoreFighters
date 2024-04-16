@@ -4,7 +4,7 @@
   "name": "Spr_Boomhand_BackstepBOOM_recovery",
   "bbox_bottom": 95,
   "bbox_left": 48,
-  "bbox_right": 71,
+  "bbox_right": 76,
   "bbox_top": 34,
   "bboxMode": 2,
   "collisionKind": 4,

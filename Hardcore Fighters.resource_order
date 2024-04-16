@@ -811,7 +811,6 @@
     {"name":"Spr_Boomhand_5L_startup","order":6,"path":"sprites/Spr_Boomhand_5L_startup/Spr_Boomhand_5L_startup.yy",},
     {"name":"Spr_Character_Frame","order":11,"path":"sprites/Spr_Character_Frame/Spr_Character_Frame.yy",},
     {"name":"Spr_Boomhand_2S_hold_startup","order":16,"path":"sprites/Spr_Boomhand_2S_hold_startup/Spr_Boomhand_2S_hold_startup.yy",},
-    {"name":"Spr_Boomhand_Backstep_recovery","order":31,"path":"sprites/Spr_Boomhand_Backstep_recovery/Spr_Boomhand_Backstep_recovery.yy",},
     {"name":"Obj_Baller_5L_hitbox","order":5,"path":"objects/Obj_Baller_5L_hitbox/Obj_Baller_5L_hitbox.yy",},
     {"name":"Obj_Bow_5F_hitbox1","order":2,"path":"objects/Obj_Bow_5F_hitbox1/Obj_Bow_5F_hitbox1.yy",},
     {"name":"Spr_Boomhand_Roar_startup","order":28,"path":"sprites/Spr_Boomhand_Roar_startup/Spr_Boomhand_Roar_startup.yy",},

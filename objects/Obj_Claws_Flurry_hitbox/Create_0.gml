@@ -4,12 +4,12 @@ startup = generate_sprite_frames(Spr_Claws_Flurry_startup); // 100% informationa
 recovery = generate_sprite_frames(Spr_Claws_Flurry_recovery); // 100% informational not used in logic
 info = "A 3 hit combo";
 
-damage = 5;
-hit_stun = 16;
+damage = 6;
+hit_stun = 18;
 block_stun = 8;
 hit_push = 4;
 block_push = 4;
-freeze_duration = 8;
+freeze_duration = 4;
 h_launch = 2;
 v_launch = -3;
 

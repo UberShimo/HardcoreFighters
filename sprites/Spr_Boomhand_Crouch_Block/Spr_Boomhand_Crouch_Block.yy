@@ -4,7 +4,7 @@
   "name": "Spr_Boomhand_Crouch_Block",
   "bbox_bottom": 94,
   "bbox_left": 48,
-  "bbox_right": 82,
+  "bbox_right": 84,
   "bbox_top": 51,
   "bboxMode": 2,
   "collisionKind": 4,

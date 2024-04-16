@@ -52,7 +52,7 @@ Katana{
 }
 
 Claws{
-	Flurry looks underwhelming.
+	
 }
 
 Baller{
@@ -64,14 +64,11 @@ Bow{
 }
 
 Greatsword{
-	
+	Make Heaven > F look better
 }
 
 Boomhand{
-	Make 2L more legit. Dont backstep so far. Reduce hit effect/hitbox.
-	2L > BackstepBOOM doesnt quite work for some reason.
 	Groundsmash hit effect sounds bad.
-	Groundsmash leave DoT on ground.
 }
 
 Cultist{

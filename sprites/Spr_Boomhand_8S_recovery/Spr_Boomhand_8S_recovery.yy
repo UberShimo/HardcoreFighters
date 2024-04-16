@@ -4,7 +4,7 @@
   "name": "Spr_Boomhand_8S_recovery",
   "bbox_bottom": 75,
   "bbox_left": 48,
-  "bbox_right": 69,
+  "bbox_right": 75,
   "bbox_top": 45,
   "bboxMode": 2,
   "collisionKind": 4,

@@ -95,7 +95,7 @@ action_trigger = function(){
 		attack = instance_create_depth(x, y, 0, Obj_Boomhand_2L_hitbox);
 		attack.initiate(self);
 		
-		blink_h(-64*image_xscale, true);
+		blink_h(-48*image_xscale, true);
 		
 		sprite_index = Spr_Boomhand_2L_recovery;
 		image_index = 0;

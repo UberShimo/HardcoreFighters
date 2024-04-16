@@ -344,6 +344,8 @@ action_trigger = function(){
 	else if(action == "X2"){
 		attack = instance_create_depth(x, y, 0, Obj_Greatsword_X2_hitbox);
 		attack.initiate(self);
+		
+		reset_physics();
 	}
 	else{
 		action = noone;

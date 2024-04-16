@@ -19,6 +19,15 @@ if(action_alarm > 0){
 	}
 }
 
+if(jump_alarm > 0){
+	jump_alarm -= logic_time;
+	
+	if(jump_alarm <= 0){
+		action = noone;
+		v_velocity = -jump_power;
+	}
+}
+
 if(recover_alarm > 0){
 	recover_alarm -= logic_time;
 	
@@ -28,7 +37,7 @@ if(recover_alarm > 0){
 		action = noone;
 		is_unstoppable = false;
 		
-		reset_physics()
+		reset_physics();
 		can_cancel = false;
 	}
 }
@@ -142,7 +151,9 @@ if(action == noone && !is_blocking){
 		a_pressed = 0; // Just reset A buffer
 		
 		if(grounded){
-			v_velocity = -jump_power;
+			action = "Jump";
+			sprite_index = land_spr;
+			jump_alarm = jump_startup;
 		}
 		else if(extra_jumps_left > 0){
 			extra_jumps_left -= 1;
@@ -156,7 +167,9 @@ else if(a_pressed && extra_jumps_left > 0 && check_for_cancel()){
 	a_pressed = 0; // Just reset A buffer
 	
 	if(grounded){
-		v_velocity = -jump_power;
+			action = "Jump";
+			sprite_index = land_spr;
+			jump_alarm = jump_startup;
 	}
 	else if(extra_jumps_left > 0){
 		extra_jumps_left -= 1;
@@ -349,12 +362,18 @@ if(action == noone){
 }
 else if(action == "Stunned" && !grounded){
 	sprite_index = launched_spr;
-	image_xscale = -1;
-	image_angle = point_direction(0, 0, h_velocity, v_velocity);
-	image_angle -= 90; // Rotate image correctly
-		
-	if(h_velocity < 0){ // face right
+	
+	// Must be actually moving to change your image. Otherwise it looks like you lay down in air while still.
+	if(abs(h_velocity) > 0 && abs(v_velocity) > 0){
+		image_angle = point_direction(0, 0, h_velocity, v_velocity);
+		image_angle -= 90; // Rotate image correctly
+	}
+	
+	if(h_velocity < 0){ // face right way
 		image_xscale = 1;
+	}
+	else if(h_velocity > 0){
+		image_xscale = -1;
 	}
 }
 #endregion
