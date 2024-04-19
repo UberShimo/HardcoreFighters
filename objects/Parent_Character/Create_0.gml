@@ -34,6 +34,10 @@ lb_pressed = 0;
 lt_hold = false;
 rt_hold = false;
 start_hold = false;
+rs_up = false;
+rs_down = false;
+rs_right = false;
+rs_left = false;
 down_forward_pressed = 0;
 forward_down_pressed = 0;
 half_circle_forward_pressed = 0;
@@ -56,6 +60,9 @@ launched_spr = noone;
 land_spr = noone;
 block_spr = noone;
 crouch_block_spr = noone;
+pose1 = noone;
+pose2 = noone;
+pose3 = noone;
 #endregion
 
 #region Stats
@@ -284,6 +291,13 @@ read_input = function(){
 		forward_down_pressed = 0;
 		down_backward_pressed = 0;
 	}
+	
+	// Right stick input
+	rs_up = gamepad_axis_value(controller_index, gp_axisrv) < -0.5;
+	rs_down = gamepad_axis_value(controller_index, gp_axisrv) > 0.5;
+	rs_right = gamepad_axis_value(controller_index, gp_axisrh) > 0.5;
+	rs_left = gamepad_axis_value(controller_index, gp_axisrh) < -0.5;
+		
 }
 	
 reset_physics = function(){

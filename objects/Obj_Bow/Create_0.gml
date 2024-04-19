@@ -14,6 +14,9 @@ launched_spr = Spr_Bow_Launched;
 land_spr = Spr_Bow_Land;
 block_spr = Spr_Bow_Block;
 crouch_block_spr = Spr_Bow_Crouch_Block;
+pose1 = Spr_Bow_Pose1;
+pose2 = Spr_Bow_Pose1;
+pose3 = Spr_Bow_Pose1;
 #endregion
 
 #region Stats
@@ -258,6 +261,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "ULTRA"){
+		meter -= 50;
 		attack = instance_create_depth(x, y-aim_height, 0, Obj_Bow_ULTRA_Arrow);
 		attack.initiate(self);
 		attack.h_velocity = attack.max_speed*image_xscale;

@@ -14,6 +14,9 @@ launched_spr = Spr_Baller_Launched;
 land_spr = Spr_Baller_Land;
 block_spr = Spr_Baller_Block;
 crouch_block_spr = Spr_Baller_Crouch_Block;
+pose1 = Spr_Baller_Pose1;
+pose2 = Spr_Baller_Pose1;
+pose3 = Spr_Baller_Pose1;
 #endregion
 
 #region Stats
@@ -217,6 +220,7 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "ULTRA"){
+		meter -= 50;
 		ult = instance_create_depth(0, 0, 0, Obj_Baller_ULTRA_Spawner);
 		ult.spawner = self;
 		

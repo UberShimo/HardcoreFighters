@@ -2,7 +2,7 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "Spr_Bow_5S_recovery",
-  "bbox_bottom": 166,
+  "bbox_bottom": 168,
   "bbox_left": 123,
   "bbox_right": 150,
   "bbox_top": 85,

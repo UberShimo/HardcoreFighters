@@ -14,6 +14,9 @@ launched_spr = Spr_Greatsword_Launched;
 land_spr = Spr_Greatsword_Land;
 block_spr = Spr_Greatsword_Block;
 crouch_block_spr = Spr_Greatsword_Crouch_Block;
+pose1 = Spr_Greatsword_Pose1;
+pose2 = Spr_Greatsword_Pose1;
+pose3 = Spr_Greatsword_Pose1;
 #endregion
 
 #region Stats
@@ -305,6 +308,8 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "ULTRA"){
+		meter = 0;
+		
 		if(multi_hit_action_index < 8){
 			action = "More Smash";
 			multi_hit_action_index += 1;

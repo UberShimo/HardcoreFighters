@@ -196,7 +196,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
 			action = "ULTRA";
-			meter -= 100;
+			meter -= 50;
 			
 			is_holding_ball = false;
 			shake_amount = 4;

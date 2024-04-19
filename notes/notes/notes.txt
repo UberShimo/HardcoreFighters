@@ -1,7 +1,7 @@
 TODO{
+	Make 3 poses for all characters. Use R stick to do poses.
 	Move BG/Music/Layout settings to character select
 	Add all your super cool music
-	Change the ULTRA input maybe. So it is easier to do.
 	Make game look sexy, balanced and fun
 	Frame rate drops for some reason at times?
 	Is extra freeze frames broken on block? Donnu.
@@ -60,7 +60,7 @@ Baller{
 }
 
 Bow{
-	
+	Landing shall not cancel bow aimin nor boomerang throw.
 }
 
 Greatsword{

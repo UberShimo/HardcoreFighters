@@ -14,6 +14,9 @@ launched_spr = Spr_Katana_Launched;
 land_spr = Spr_Katana_Land;
 block_spr = Spr_Katana_Block;
 crouch_block_spr = Spr_Katana_Crouch_Block;
+pose1 = Spr_Katana_Pose1;
+pose2 = Spr_Katana_Pose1;
+pose3 = Spr_Katana_Pose1;
 #endregion
 
 #region Stats
@@ -147,6 +150,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "Send Clone"){
+		sprite_index = stand_spr;
 		v_velocity = 0;
 		h_velocity = 0;
 		can_cancel = true;
@@ -235,6 +239,7 @@ action_trigger = function(){
 			recover_alarm = 1;
 	}
 	else if(action == "ULTRA"){
+		meter -= 50;
 		step_distance = 16;
 		steps = 0;
 		attack_spr_width = sprite_get_width(Spr_Katana_ULTRA_hitbox);

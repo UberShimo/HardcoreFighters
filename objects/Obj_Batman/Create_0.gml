@@ -14,6 +14,9 @@ launched_spr = Spr_Batman_Launched;
 land_spr = Spr_Batman_Land;
 block_spr = Spr_Batman_Block;
 crouch_block_spr = Spr_Batman_Crouch_Block;
+pose1 = Spr_Batman_Pose1;
+pose2 = Spr_Batman_Pose1;
+pose3 = Spr_Batman_Pose1;
 #endregion
 
 #region Stats
@@ -214,6 +217,7 @@ action_trigger = function(){
 		recover_alarm = generate_sprite_frames(sprite_index);
 	}
 	else if(action == "ULTRA"){
+		meter -= 50;
 		attack = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox);
 		attack.initiate(self);
 		tip = instance_create_depth(x, y, 0, Obj_Batman_ULTRA_hitbox_tip);

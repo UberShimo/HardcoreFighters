@@ -14,6 +14,9 @@ launched_spr = Spr_Dojo_Launched;
 land_spr = Spr_Dojo_Land;
 block_spr = Spr_Dojo_Block;
 crouch_block_spr = Spr_Dojo_Crouch_Block;
+pose1 = Spr_Dojo_Stand;
+pose2 = Spr_Dojo_Stand;
+pose3 = Spr_Dojo_Stand;
 #endregion
 
 #region Stats

@@ -334,6 +334,24 @@ if(action == noone){
 		}
 		else{
 			sprite_index = stand_spr;
+			
+			// Or maybe pose?
+			if(rs_up || rs_down || rs_right || rs_left){
+				sprite_index = pose1;
+				
+				if(rs_up){
+					sprite_index = pose2;
+				}
+				else if(rs_down){
+					sprite_index = pose3;
+				}
+				if(rs_right){
+					image_xscale = 1;
+				}
+				else if(rs_left){
+					image_xscale = -1;
+				}
+			}
 		}
 		
 		// Blocking sprites

@@ -14,6 +14,9 @@ launched_spr = Spr_Boomhand_Launched;
 land_spr = Spr_Boomhand_Land;
 block_spr = Spr_Boomhand_Block;
 crouch_block_spr = Spr_Boomhand_Crouch_Block;
+pose1 = Spr_Boomhand_Pose1;
+pose2 = Spr_Boomhand_Pose1;
+pose3 = Spr_Boomhand_Pose1;
 #endregion
 
 #region Stats
@@ -232,6 +235,7 @@ action_trigger = function(){
 	}
 	// Meter moves
 	else if(action == "ULTRA"){
+		meter -= 50;
 		blink_h(32*image_xscale, false);
 		
 		attack = instance_create_depth(x, y, 0, Obj_Boomhand_ULTRA_hitbox);

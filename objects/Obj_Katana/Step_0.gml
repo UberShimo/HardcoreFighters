@@ -124,7 +124,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 	else if(rb_pressed){
 		if(half_circle_forward_pressed && meter >= 100){
 			action = "ULTRA";
-			meter -= 100;
+			meter -= 50;
 			sprite_index = Spr_Katana_ULTRA_startup;
 			image_index = 0;
 			global.game_time = 0.5;
