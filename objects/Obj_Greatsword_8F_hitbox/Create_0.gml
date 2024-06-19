@@ -3,7 +3,7 @@ event_inherited();
 startup = generate_sprite_frames(Spr_Greatsword_8F_startup); // 100% informational not used in logic
 recovery = generate_sprite_frames(Spr_Greatsword_8F_recovery); // 100% informational not used in logic
 
-damage = 5;
+damage = 3;
 hit_stun = 16;
 block_stun = 8;
 hit_push = 4;

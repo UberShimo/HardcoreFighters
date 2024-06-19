@@ -14,9 +14,9 @@ launched_spr = Spr_Bow_Launched;
 land_spr = Spr_Bow_Land;
 block_spr = Spr_Bow_Block;
 crouch_block_spr = Spr_Bow_Crouch_Block;
-pose1 = Spr_Bow_Pose1;
-pose2 = Spr_Bow_Pose1;
-pose3 = Spr_Bow_Pose1;
+pose1_spr = Spr_Bow_Pose1;
+pose2_spr = Spr_Bow_Pose2;
+pose3_spr = Spr_Bow_Pose3;
 #endregion
 
 #region Stats
@@ -25,11 +25,11 @@ max_speed = 6;
 acceleration = 0.1;
 grip = global.standard_grip;
 air_control = 0.1;
-dash_speed = 10;
+dash_speed = 8;
 dash_lift = -4;
 dash_blink = 0;
-dash_duration = 24;
-dash_grip = 0.5;
+dash_duration = 16;
+dash_grip = 0.2;
 jump_power = 11;
 mini_jump_power = 0.6; // % based
 extra_jump_strength = 0.8; // % based
@@ -214,6 +214,8 @@ action_trigger = function(){
 		eff.image_xscale = image_xscale;
 		eff.image_angle = aim_dir*image_xscale;
 		
+		reset_physics();
+		
 		sprite_index = Spr_Bow_Aim_Down_recovery;
 		image_index = 0;
 		recover_alarm = generate_sprite_frames(sprite_index);
@@ -233,6 +235,8 @@ action_trigger = function(){
 		eff = instance_create_depth(x, y-aim_height, depth, Obj_Bow_Arrow_Shoot_eff);
 		eff.image_xscale = image_xscale;
 		eff.image_angle = aim_dir*image_xscale;
+		
+		reset_physics();
 		
 		sprite_index = Spr_Bow_Aim_Up_recovery;
 		image_index = 0;

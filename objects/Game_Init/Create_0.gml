@@ -39,6 +39,8 @@ global.p_colors[5] = make_color_rgb(255, 255, 0);
 global.p_colors[6] = make_color_rgb(255, 102, 0);
 global.p_colors[7] = make_color_rgb(0, 102, 255);
 
+global.menu_controller_index = -1;
+
 // Initiate arrays
 for(i = 0; i < 8; i++){
 	global.picked_characters[i] = noone;

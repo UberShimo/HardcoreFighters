@@ -93,7 +93,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else{
 			action = "5L";
-			h_velocity = 6*image_xscale;
+			h_velocity += 4*image_xscale;
 			sprite_index = Spr_Batman_5L_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);

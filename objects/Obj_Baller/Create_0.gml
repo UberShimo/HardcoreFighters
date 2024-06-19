@@ -14,9 +14,9 @@ launched_spr = Spr_Baller_Launched;
 land_spr = Spr_Baller_Land;
 block_spr = Spr_Baller_Block;
 crouch_block_spr = Spr_Baller_Crouch_Block;
-pose1 = Spr_Baller_Pose1;
-pose2 = Spr_Baller_Pose1;
-pose3 = Spr_Baller_Pose1;
+pose1_spr = Spr_Baller_Pose1;
+pose2_spr = Spr_Baller_Pose2;
+pose3_spr = Spr_Baller_Pose3;
 #endregion
 
 #region Stats

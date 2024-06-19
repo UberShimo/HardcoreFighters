@@ -40,7 +40,7 @@ if(exit_count > 0){
 }
 
 if(global.is_debugging){
-	draw_text(x, y-character_height-80, "Grip:  " + string(grip));
+	draw_text(x, y-character_height-80, ":  " + string(wall_bounce_limit));
 	draw_text(x, y-character_height-64, "h_vel:  " + string(h_velocity));
 	draw_text(x, y-character_height-48, "v_vel:  " + string(v_velocity));
 	draw_text(x, y-character_height-32, "startup:  " + string(action_alarm));

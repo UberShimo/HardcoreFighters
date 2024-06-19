@@ -231,9 +231,12 @@ else{
 	}
 	// Wall bounce
 	if(action == "Stunned" && abs(h_velocity) > wall_bounce_limit){
-		h_velocity = -h_velocity*0.75;
-		v_velocity -= 4;
+		h_velocity = -h_velocity*0.25;
 		spawn_effect(x, y, 8, Eff_Splash, 1, 0.05, 1);
+		
+		if(grounded){
+			v_velocity = -6;
+		}
 	}
 }
 
@@ -337,14 +340,16 @@ if(action == noone){
 			
 			// Or maybe pose?
 			if(rs_up || rs_down || rs_right || rs_left){
-				sprite_index = pose1;
-				
 				if(rs_up){
-					sprite_index = pose2;
+					sprite_index = pose2_spr;
 				}
 				else if(rs_down){
-					sprite_index = pose3;
+					sprite_index = pose3_spr;
 				}
+				else{
+					sprite_index = pose1_spr;
+				}
+				// Face correct
 				if(rs_right){
 					image_xscale = 1;
 				}

@@ -1,4 +1,3 @@
-
 for(i = 0; i < max_pickers; i++){
 	if(gamepad_button_check_pressed(i, gp_face1)){
 		controller_index_is_used = false;
@@ -18,6 +17,9 @@ for(i = 0; i < max_pickers; i++){
 					picker.controller_index = i;
 					global.controller_indexes[j] = i;
 					exit;
+				}
+				if(global.menu_controller_index == -1){
+					global.menu_controller_index = i;
 				}
 			}
 		}

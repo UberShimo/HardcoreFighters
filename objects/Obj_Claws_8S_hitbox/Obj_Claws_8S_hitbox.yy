@@ -31,8 +31,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Spr_Claws_8S_tip_hitbox",
-    "path": "sprites/Spr_Claws_8S_tip_hitbox/Spr_Claws_8S_tip_hitbox.yy",
+    "name": "Spr_Claws_8S_hitbox",
+    "path": "sprites/Spr_Claws_8S_hitbox/Spr_Claws_8S_hitbox.yy",
   },
   "spriteMaskId": null,
   "visible": false,

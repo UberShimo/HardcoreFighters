@@ -2,9 +2,8 @@ event_inherited();
 
 startup = generate_sprite_frames(Spr_Batman_Headbutt_startup); // 100% informational not used in logic
 recovery = generate_sprite_frames(Spr_Batman_Headbutt_recovery); // 100% informational not used in logic
-info = "Unstoppable headbutt";
 
-damage = 15;
+damage = 13;
 hit_stun = 24;
 block_stun = 12;
 hit_push = 4;

@@ -14,9 +14,9 @@ launched_spr = Spr_Katana_Launched;
 land_spr = Spr_Katana_Land;
 block_spr = Spr_Katana_Block;
 crouch_block_spr = Spr_Katana_Crouch_Block;
-pose1 = Spr_Katana_Pose1;
-pose2 = Spr_Katana_Pose1;
-pose3 = Spr_Katana_Pose1;
+pose1_spr = Spr_Katana_Pose1;
+pose2_spr = Spr_Katana_Pose2;
+pose3_spr = Spr_Katana_Pose3;
 #endregion
 
 #region Stats

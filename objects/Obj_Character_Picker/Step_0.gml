@@ -58,6 +58,7 @@ else{
 if(gamepad_button_check_pressed(controller_index, gp_face4)
 && place_meeting(x, y, Parent_Character_Option)){
 	option = instance_place(x, y, Parent_Character_Option);
+	global.menu_controller_index = controller_index;
 	room_goto(option.move_list_room);
 }
 

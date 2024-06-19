@@ -1,11 +1,20 @@
 TODO{
-	Make 3 poses for all characters. Use R stick to do poses.
+	Remove blocking.
+	Introduce parry.
+	Make strong attacks unparryable.
+	Change Sweep and high attacks.
+	Main menu should control with stick input also.
+	Main menu crash after a while.
+	Main angry menu music follow to settings and still bounce everything.
 	Move BG/Music/Layout settings to character select
 	Add all your super cool music
 	Make game look sexy, balanced and fun
 	Frame rate drops for some reason at times?
-	Is extra freeze frames broken on block? Donnu.
 	Make Adventure mode
+	
+	When 8 players:
+	Push :: Execution Error - Variable Index [8] out of range [8] - -1.players(100417,8)
+ at gml_Script_anon_gml_Object_Obj_Match_Manager_Create_0_244_gml_Object_Obj_Match_Manager_Create_0 (line 21) -                                    players[j] = players[j+1];
 }
 
 Debug tips:
@@ -44,7 +53,7 @@ Zoner:		Bow, Mage
 MOVES!:
 
 Batman{
-	
+	Superball stuck in ground at times
 }
 
 Katana{
@@ -60,7 +69,7 @@ Baller{
 }
 
 Bow{
-	Landing shall not cancel bow aimin nor boomerang throw.
+	
 }
 
 Greatsword{
@@ -73,4 +82,6 @@ Boomhand{
 
 Cultist{
 	Teleport effect could be sexier.
+	Unable to find instance for object index -4
+ at gml_Script_anon_gml_Object_Obj_Cultist_Create_0_1425_gml_Object_Obj_Cultist_Create_0 (line 169) -               attack = instance_create_depth(circle.x, circle.y, 0, Obj_Cultist_Circle_Pullback_hitbox);
 }

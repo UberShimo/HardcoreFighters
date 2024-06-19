@@ -3,7 +3,7 @@ event_inherited();
 startup = generate_sprite_frames(Spr_Boomhand_2L_startup); // 100% informational not used in logic
 recovery = generate_sprite_frames(Spr_Boomhand_2L_recovery); // 100% informational not used in logic
 
-damage = 10;
+damage = 7;
 hit_stun = 16;
 block_stun = 8;
 hit_push = 6;

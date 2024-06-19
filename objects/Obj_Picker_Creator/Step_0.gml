@@ -1,4 +1,3 @@
-
 for(i = 0; i < max_pickers; i++){
 	if(gamepad_button_check_pressed(i, gp_face1)){
 		controller_index_is_used = false;

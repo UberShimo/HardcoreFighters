@@ -3,7 +3,7 @@ event_inherited();
 startup = generate_sprite_frames(Spr_Baller_Balldash_startup);
 recovery = generate_sprite_frames(Spr_Baller_Balldash_recovery);
 
-damage = 5;
+damage = 3;
 hit_stun = 16;
 block_stun = 8;
 hit_push = 6;

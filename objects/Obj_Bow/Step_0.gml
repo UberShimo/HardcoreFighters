@@ -68,6 +68,11 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		if(down_forward_pressed){
 			action = "Aim Down";
 			aim_dir = -45;
+			
+			h_velocity = 0;
+			v_velocity = 0;
+			weight = 0;
+			
 			sprite_index = Spr_Bow_Aim_Down_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -75,6 +80,11 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		else if(forward_down_pressed){
 			action = "Aim Up";
 			aim_dir = 45;
+			
+			h_velocity = 0;
+			v_velocity = 0;
+			weight = 0;
+			
 			sprite_index = Spr_Bow_Aim_Up_startup;
 			image_index = 0;
 			action_alarm = generate_sprite_frames(sprite_index);
@@ -121,7 +131,7 @@ if(action_button_pressed() && (action == noone || check_for_cancel())){
 		}
 		else if(down_forward_pressed){
 			action = "Crosspin";
-			h_velocity = 8*image_xscale;
+			h_velocity = 9*image_xscale;
 			is_collidable = false;
 			sprite_index = Spr_Bow_Crosspin_startup;
 			image_index = 0;

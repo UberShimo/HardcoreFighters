@@ -3,7 +3,7 @@ event_inherited();
 startup = generate_sprite_frames(Spr_Boomhand_Fistdive_startup); // 100% informational not used in logic
 recovery = generate_sprite_frames(Spr_Boomhand_Fistdive_recovery); // 100% informational not used in logic
 
-damage = 50;
+damage = 40;
 hit_stun = 120;
 block_stun = 12;
 hit_push = 0;

@@ -60,9 +60,9 @@ launched_spr = noone;
 land_spr = noone;
 block_spr = noone;
 crouch_block_spr = noone;
-pose1 = noone;
-pose2 = noone;
-pose3 = noone;
+pose1_spr = noone;
+pose2_spr = noone;
+pose3_spr = noone;
 #endregion
 
 #region Stats
@@ -108,7 +108,7 @@ original_weight = weight;
 #endregion
 
 #region Physics values
-wall_bounce_limit = 4;
+wall_bounce_limit = 6;
 ground_bounce_limit = 10;
 grounded = true;
 priority_struck = false; // When you get hit by a priority hitbox. Sweetspots usually. This variable resets in time_alarm

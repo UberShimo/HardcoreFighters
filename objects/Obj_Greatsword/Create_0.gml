@@ -14,9 +14,9 @@ launched_spr = Spr_Greatsword_Launched;
 land_spr = Spr_Greatsword_Land;
 block_spr = Spr_Greatsword_Block;
 crouch_block_spr = Spr_Greatsword_Crouch_Block;
-pose1 = Spr_Greatsword_Pose1;
-pose2 = Spr_Greatsword_Pose1;
-pose3 = Spr_Greatsword_Pose1;
+pose1_spr = Spr_Greatsword_Pose1;
+pose2_spr = Spr_Greatsword_Pose2;
+pose3_spr = Spr_Greatsword_Pose3;
 #endregion
 
 #region Stats

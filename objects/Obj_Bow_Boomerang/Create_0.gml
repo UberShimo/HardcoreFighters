@@ -3,7 +3,7 @@ event_inherited();
 startup = generate_sprite_frames(Spr_Bow_Boomerang_Throw_startup);
 recovery = generate_sprite_frames(Spr_Bow_Boomerang_Throw_recovery);
 
-damage = 6;
+damage = 4;
 hit_stun = 16;
 block_stun = 2;
 hit_push = 0;
